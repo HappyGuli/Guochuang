@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学校"/>
+        <AutoCompleteTextView
+            android:id="@+id/et_school"
+            android:hint="请输入学校"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:textColor="#88000000"
+            android:textCursorDrawable="@drawable/cousor_color"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_height="30dp" />
+
+
+
+    </LinearLayout>
+    <View
+        android:id="@+id/view_school"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#45000000"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="角色"/>
+        <AutoCompleteTextView
+             android:id="@+id/et_add_role"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:hint="教师 or 学生"
+            android:textSize="14sp"
+            android:textColor="#88000000"
+            android:textCursorDrawable="@drawable/cousor_color"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_height="30dp" />
+
+
+
+    </LinearLayout>
+    <View
+        android:id="@+id/view_role"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#45000000"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学号"/>
+        <EditText
+            android:id="@+id/et_student_num"
+            android:layout_marginLeft="30dp"
+            android:hint="请输入学号"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:textColor="#88000000"
+            android:textCursorDrawable="@drawable/cousor_color"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+    <View
+        android:id="@+id/view_student_number"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#45000000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码"/>
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_marginLeft="30dp"
+            android:hint="请输入密码"
+            android:inputType="number"
+            android:password="true"
+            android:textSize="14sp"
+            android:textColor="#88000000"
+            android:textCursorDrawable="@drawable/cousor_color"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_height="30dp" />
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/iv_see_pasword"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/see_pass_word"
+            android:layout_marginRight="5dp"
+            />
+
+
+    </LinearLayout>
+    <View
+        android:id="@+id/view_password"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#45000000"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:textColor="#ffffff"
+        android:background="@drawable/btn_add_answer_bg"
+        />
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新用户？请注册"
+            android:textColor="@color/xinqi_color"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/xinqi_color"
+            android:text="忘记密码"
+            android:layout_alignParentRight="true"
+            />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tv_myquestion_question_title"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#050505"
+                android:text="健身教练有哪些内幕?"
+                />
+            <View
+                android:id="@+id/view_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dcdcdc">
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_marginLeft="26dp"
+                    android:id="@+id/tv_myquestion_questioncontent"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:text="hello"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="16dp"
+                    android:id="@+id/tv_myquestion_time"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="2016年 1月22日"
+                    />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</FrameLayout>

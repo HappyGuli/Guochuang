@@ -1,0 +1,14 @@
+
+<level-list xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <item android:maxLevel="50"   android:drawable="@mipmap/n_wifi_04" />
+    <item android:maxLevel="65"  android:drawable="@mipmap/n_wifi_03" />
+    <item android:maxLevel="80"  android:drawable="@mipmap/n_wifi_02" />
+    <item android:maxLevel="100"  android:drawable="@mipmap/n_wifi_01" />
+</level-list> 
+
+
+<!-- <level-list xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <item android:maxLevel="0"   android:drawable="@drawable/img04" /> 
+    <item android:maxLevel="60"  android:drawable="@drawable/img03" /> 
+    <item android:maxLevel="100" android:drawable="@drawable/img02" /> 
+</level-list>  -->

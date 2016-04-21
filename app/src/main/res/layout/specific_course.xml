@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <include android:id="@+id/main_toolbar"
+        layout="@layout/include_normal_toolbar"></include>
+
+
+    <ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    >
+
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <FrameLayout
+            android:id="@+id/course_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="课堂信息"
+                        android:textColor="#6bacfa"
+                        android:layout_marginLeft="8dp"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#6bacfa"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        ></View>
+                    <RelativeLayout
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        >
+                        <ImageView
+                            android:id="@+id/course_name_iv"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@mipmap/course_name"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/course_name_hint_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/course_name_iv"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#262525"
+                            android:textSize="16dp"
+                            android:text="课程"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_course_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/course_name_hint_tv"
+                            android:layout_marginLeft="25dp"
+                            android:textSize="16dp"
+                            android:textColor="#6bacfa"
+                            android:text="课程"
+                            />
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        >
+                        <ImageView
+                            android:id="@+id/classroom_iv"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@mipmap/course_class_room"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/class_room_hint_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/classroom_iv"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#262525"
+                            android:textSize="16dp"
+                            android:text="教室"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_classroom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/class_room_hint_tv"
+                            android:layout_marginLeft="25dp"
+                            android:textSize="16dp"
+                            android:textColor="#6bacfa"
+                            android:text="教室"
+                            />
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        >
+                        <ImageView
+                            android:id="@+id/teacher_name_iv"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@mipmap/course_teacher"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/teacher_name_hint_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/teacher_name_iv"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#262525"
+                            android:textSize="16dp"
+                            android:text="老师"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_teacher_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/teacher_name_hint_tv"
+                            android:layout_marginLeft="25dp"
+                            android:textSize="16dp"
+                            android:textColor="#6bacfa"
+                            android:text="老师"
+                            />
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        >
+                        <ImageView
+                            android:id="@+id/class_num_iv"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@mipmap/course_class_num"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/class_num_hint_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/class_num_iv"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#262525"
+                            android:textSize="16dp"
+                            android:text="节数"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_class_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/class_num_hint_tv"
+                            android:layout_marginLeft="25dp"
+                            android:textSize="16dp"
+                            android:textColor="#6bacfa"
+                            android:text="节数"
+                            />
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="5dp"
+                        >
+                        <ImageView
+                            android:id="@+id/week_num_iv"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@mipmap/course_week_num"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/week_num_hint_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/week_num_iv"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#262525"
+                            android:textSize="16dp"
+                            android:text="周数"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_week_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/week_num_hint_tv"
+                            android:layout_marginLeft="25dp"
+                            android:textSize="16dp"
+                            android:textColor="#6bacfa"
+                            android:text="周数"
+                            />
+
+
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/course_comunication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/cdv_course_comunication"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="6dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_course_comunication"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/course_comunication"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#151515"
+                            android:textSize="18sp"
+                            android:text="课程交流"
+                            android:layout_marginTop="16dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="增进感情,随意畅聊"
+                            />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/course_signs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.CardView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cdv_course_sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="6dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_course_sign"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/course_sign"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#151515"
+                            android:textSize="18sp"
+                            android:text="快速签到"
+                            android:layout_marginTop="16dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="节约时间,方便你我"
+                            />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/course_board"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/cdv_course_board"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="6dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_course_board"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/course_board"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#151515"
+                            android:textSize="18sp"
+                            android:text="课程公告"
+                            android:layout_marginTop="16dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="随时了解课堂信息"
+                            />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+
+
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

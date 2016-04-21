@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/tool_bar_color"
+    android:elevation="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tool_bar_height"
+         >
+        <TextView
+            android:id="@+id/tool_bar_crstbl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/xinqi_color"
+            android:text="课程表"
+            android:alpha="0.6"
+            android:textSize="@dimen/tool_bar_text_size"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_marginLeft="65dp"
+            />
+
+        <TextView
+            android:id="@+id/tool_bar_help"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/tool_bar_text_size"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="65dp"
+            android:text="同学帮"
+            android:textColor="@color/xinqi_color"
+            android:alpha="0.6"
+
+            />
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.Toolbar>

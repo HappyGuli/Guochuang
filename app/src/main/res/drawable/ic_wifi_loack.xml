@@ -1,0 +1,8 @@
+<level-list xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <item android:maxLevel="50"   android:drawable="@mipmap/l_wifi_04" />
+    <item android:maxLevel="65"  android:drawable="@mipmap/l_wifi_03" />
+    <item android:maxLevel="80"  android:drawable="@mipmap/l_wifi_02" />
+    <item android:maxLevel="100"  android:drawable="@mipmap/l_wifi_01" />
+</level-list> 
+
+

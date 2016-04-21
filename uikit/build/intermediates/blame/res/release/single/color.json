@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/color/color_picker_preview_selector.xml",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/color/color_picker_preview_selector.xml"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/color/abc_search_url_text_holo.xml",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/color/abc_search_url_text_holo.xml"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/color/color_green_text_view_selector.xml",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/color/color_green_text_view_selector.xml"
+    }
+]

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/main_toolbar"
+        layout="@layout/include_normal_toolbar"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/wifi_layout"
+        android:gravity="center_vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/wifi_result_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="打开wifi功能"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cb_open_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/wifi_list"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/wifi_layout"
+        android:gravity="center_vertical"
+        android:padding="10dp" >
+
+        <ListView
+            android:id="@+id/wifiItemListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2px"
+            android:layout_weight="1"
+            android:cacheColorHint="#00000000"
+            android:divider="#ccc"
+            android:dividerHeight="1px"
+            android:fastScrollEnabled="true" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

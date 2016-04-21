@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="23dp"
+        android:textColor="@color/black"
+       android:layout_marginTop="8dp"
+        android:text="信号强度" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+         android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:text="安全性" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+         android:textColor="@color/black"
+         android:layout_marginTop="8dp"
+        android:text="密码" />
+
+     <EditText
+         android:id="@+id/wifi_pw"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView3"
+         android:layout_below="@+id/textView3"
+         android:layout_marginRight="16dip"
+         android:layout_marginTop="8dp"
+         android:capitalize="none"
+         android:gravity="fill_horizontal"
+         android:inputType="textPassword"
+         android:scrollHorizontally="true"
+         android:singleLine="true"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/aqx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:layout_alignRight="@+id/wifi_pw"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="TextView"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/xhqd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignLeft="@+id/aqx"
+         android:textColor="@color/black"
+        android:layout_marginLeft="16dp"
+        android:text="aaa" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/wifi_pw"
+        android:layout_below="@+id/wifi_pw"
+        android:layout_marginTop="8dp"
+        android:text="显示密码"
+        android:textColor="@color/black" />
+    
+</RelativeLayout>

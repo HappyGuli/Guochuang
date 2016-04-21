@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/main_toolbar"
+        layout="@layout/include_normal_toolbar"> </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/wifi_layout"
+        android:gravity="center_vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/wifi_result_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="按照能力排序如下："
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp">
+
+        <ListView
+            android:id="@+id/lv_invite_other_to_answer"
+            android:layout_width="match_parent"
+            android:layout_height="360dp">
+
+        </ListView>
+
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_invite_confirm"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="确认邀请"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_add_answer_bg"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

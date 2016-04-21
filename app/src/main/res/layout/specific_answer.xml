@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/main_toolbar"
+        layout="@layout/include_normal_toolbar">
+    </include>
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="4dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/item_question_title"
+                android:text="问题"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d7d7d7"
+                ></View>
+            <TextView
+                android:id="@+id/tv_question_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/item_question_detail"
+                android:textSize="17sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="6dp"
+                android:text="去法国留学有没有必要买保险呢?"
+                />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="4dp"
+        android:clickable="true"
+        >
+        <RelativeLayout
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/tv_answer_author_hint"
+                android:layout_margin="8dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="答者"
+                android:textColor="@color/item_question_title"
+                />
+
+            <TextView
+                android:id="@+id/tv_answer_author"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_answer_author_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="张三"
+                />
+
+            <LinearLayout
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:clickable="true"
+                    android:background="@drawable/volt_selector"
+                    android:id="@+id/iv_volt"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+                    android:src="@mipmap/ic_thanked"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_specific_answer_thanked_num"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_marginRight="5dp"
+                    />
+
+                <ImageView
+                    android:clickable="true"
+                    android:background="@drawable/volt_down_selector"
+                    android:id="@+id/iv_volt_down"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+                    android:src="@mipmap/ic_vote_down_normal"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="80dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_specific_answer_disliked_num"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="0"
+                    />
+
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/item_question_title"
+                    android:text="回答内容"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#d7d7d7"
+                    ></View>
+                <TextView
+                    android:id="@+id/tv_answer_content"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:lineSpacingExtra="8dp"
+                    android:textColor="@color/item_question_username"
+                    android:text="完全有必要在一个完全陌生，尤其是沟通还有障碍的国家学习和生活，还是会遇到蛮多问题的。除了日常生活中偶尔生病，在学校、住处、旅游的目的地可能遇到的人身意外和财产损失，
+                            还有些是由于学生自己的责任造成第三方损失（比如损毁房东的家具）、不熟悉海外驾驶习
+                            惯和交通规则撞伤他人等。为了减少这些风险所造成的损失，在到达留学目的地之前最好是能够买一份保险。
+                            因为遇到的风险多种多样，所以最好是买一份相对来说保障比较全面的保险。除了医疗保险
+                            （办理签证时必须买的nhs），最好再配下人身意外和财产的保障，而且最好是选择全球范
+                            围内的保险公司的保险产品，他们通常都会有24小时的紧急救援团队，比较熟悉当地的语言、
+                            文化和法律，而且可以提供24小时的中文服务。"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </ScrollView>
+
+</LinearLayout>
