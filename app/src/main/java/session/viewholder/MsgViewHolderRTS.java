@@ -2,8 +2,9 @@ package session.viewholder;
 
 import android.widget.TextView;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.session.extension.RTSAttachment;
+import hello.login.R;
+import session.extension.RTSAttachment;
+
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderBase;
 
 public class MsgViewHolderRTS extends MsgViewHolderBase {

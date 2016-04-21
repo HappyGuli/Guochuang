@@ -11,7 +11,7 @@ import com.netease.nim.uikit.common.util.sys.TimeUtil;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.msg.model.CustomNotification;
 
-import hello.chat.R;
+import hello.login.R;
 import main.helper.MessageHelper;
 
 public class CustomNotificationViewHolder extends TViewHolder {

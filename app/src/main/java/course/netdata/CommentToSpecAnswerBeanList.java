@@ -51,6 +51,7 @@ public class CommentToSpecAnswerBeanList extends Base{
                 comment.setUserImgUrl(commentJson.getString("userImgUrl"));
                 comment.setDate(commentJson.getString("date"));
                 comment.setUserName(commentJson.getString("userName"));
+                comment.setCommentid(Integer.valueOf(commentJson.getString("commentid")));
 
                 commentlist.list.add(comment);
             }

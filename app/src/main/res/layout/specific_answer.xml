@@ -189,7 +189,8 @@
                     android:layout_height="1dp"
                     android:background="#d7d7d7"
                     ></View>
-                <TextView
+
+                <course.customUI.HtmlTextView
                     android:id="@+id/tv_answer_content"
                     android:textSize="15sp"
                     android:layout_width="match_parent"
@@ -200,19 +201,16 @@
                     android:layout_marginBottom="5dp"
                     android:lineSpacingExtra="8dp"
                     android:textColor="@color/item_question_username"
-                    android:text="完全有必要在一个完全陌生，尤其是沟通还有障碍的国家学习和生活，还是会遇到蛮多问题的。除了日常生活中偶尔生病，在学校、住处、旅游的目的地可能遇到的人身意外和财产损失，
-                            还有些是由于学生自己的责任造成第三方损失（比如损毁房东的家具）、不熟悉海外驾驶习
-                            惯和交通规则撞伤他人等。为了减少这些风险所造成的损失，在到达留学目的地之前最好是能够买一份保险。
-                            因为遇到的风险多种多样，所以最好是买一份相对来说保障比较全面的保险。除了医疗保险
-                            （办理签证时必须买的nhs），最好再配下人身意外和财产的保障，而且最好是选择全球范
-                            围内的保险公司的保险产品，他们通常都会有24小时的紧急救援团队，比较熟悉当地的语言、
-                            文化和法律，而且可以提供24小时的中文服务。"
+
                     />
+
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
     </ScrollView>
+
+
 
 </LinearLayout>

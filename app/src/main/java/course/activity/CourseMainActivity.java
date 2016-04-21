@@ -1,7 +1,6 @@
 package course.activity;
 
 import hello.login.R;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -40,6 +39,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.netease.nim.uikit.cache.DataCacheManager;
+import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
+import com.netease.nimlib.sdk.AbortableFuture;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.RequestCallback;
+import com.netease.nimlib.sdk.auth.AuthService;
+import com.netease.nimlib.sdk.auth.LoginInfo;
+
+import org.cqu.DemoCache;
+import org.cqu.preference.Preferences;
+import org.cqu.preference.UserPreferences;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +66,7 @@ import course.bean.HelpRecyDataBean;
 import course.util.DoGet;
 import course.util.IsConnectedToNet;
 import widget.AppContext;
+import widget.AppException;
 
 
 public class CourseMainActivity extends ActionBarActivity {
@@ -129,6 +140,18 @@ public class CourseMainActivity extends ActionBarActivity {
     private SharedPreferences.Editor editor;
     private String str_name;
 
+
+
+    //和登录到网易云信相关的东西
+    private String account;
+    private String accid;
+    private String name;
+    private String token;
+    private String sb_result;
+    private AbortableFuture<LoginInfo> loginRequest;
+
+
+
     //handler 的使用  在从教务网中获取课表数据之后的工作
     public Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -150,6 +173,9 @@ public class CourseMainActivity extends ActionBarActivity {
                             Log.e("TTTT",str_phoneid);
 
                             ApiClient.saveUserInfo(appContext,str_sid,str_name,str_password,str_phoneid,str_role,"第一级","00000002");
+
+                            //登录到网易云信
+                            loginToWYYX();
                             //保存用户信息成功
                             message.what = 1;
 
@@ -175,13 +201,14 @@ public class CourseMainActivity extends ActionBarActivity {
     public Handler mHandler1 = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                Toast.makeText(CourseMainActivity.this,"保存用户信息成功",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CourseMainActivity.this,"保存用户信息成功",Toast.LENGTH_SHORT).show();
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
 
                             try {
+
                                 JSONArray json = new JSONArray();
                                 for (CourseJsonBean courseJson : jsonCourses) {
                                     JSONObject jo = new JSONObject();
@@ -193,14 +220,21 @@ public class CourseMainActivity extends ActionBarActivity {
                                 }
 
                                 //上传到服务器
-                                ApiClient.saveUserCourseTable(appContext, json.toString());
+                                //ApiClient.saveUserCourseTable(appContext, json.toString());
 
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 Toast.makeText(CourseMainActivity.this, "Json 解析封装错误", Toast.LENGTH_SHORT).show();
 
-                            } catch (Exception e) {
+
+                            }
+//                            catch (AppException e){
+//                                e.printStackTrace();
+//                                Toast.makeText(CourseMainActivity.this, "服务器出错", Toast.LENGTH_SHORT).show();
+//
+//                            }
+                            catch (Exception e) {
                                 e.printStackTrace();
                                 Toast.makeText(CourseMainActivity.this, "服务器出错", Toast.LENGTH_SHORT).show();
                             }
@@ -209,7 +243,7 @@ public class CourseMainActivity extends ActionBarActivity {
 
 
             } else if (msg.what == 0) {
-                Toast.makeText(CourseMainActivity.this,"保存用户信息失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(CourseMainActivity.this,"保存课表信息失败",Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -217,6 +251,73 @@ public class CourseMainActivity extends ActionBarActivity {
 
 
 
+    /*************************处理登录线程完成之后的事情***********************/
+
+    android.os.Handler loginHandler = new android.os.Handler() {
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+
+                // 登录
+                loginRequest = NIMClient.getService(AuthService.class).login(new LoginInfo(accid, token));
+                loginRequest.setCallback(new RequestCallback<LoginInfo>() {
+                    @Override
+                    public void onSuccess(LoginInfo param) {
+
+
+                        onLoginDone();
+                        DemoCache.setAccount(accid);
+                        saveLoginInfo(accid, token);
+
+                        // 初始化消息提醒
+                        NIMClient.toggleNotification(UserPreferences.getNotificationToggle());
+
+                        // 初始化免打扰
+                        NIMClient.updateStatusBarNotificationConfig(UserPreferences.getStatusConfig());
+
+                        // 构建缓存
+                        DataCacheManager.buildDataCacheAsync();
+
+                        // 进入主界面
+
+                        Toast.makeText(CourseMainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onFailed(int code) {
+
+                        if (code == 302 || code == 404) {
+                            Toast.makeText(CourseMainActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(CourseMainActivity.this, "登录失败: " + code, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onException(Throwable exception) {
+                        onLoginDone();
+                    }
+                });
+
+
+            } else  if(msg.what == -1){
+
+                Toast.makeText(CourseMainActivity.this, "网易云信服务器出错", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    /******处理登录到网易云信端*********/
+    private void onLoginDone() {
+        loginRequest = null;
+        DialogMaker.dismissProgressDialog();
+    }
+
+    /******处理登录到网易云信端*********/
+    private void saveLoginInfo(final String account, final String token) {
+        Preferences.saveUserAccount(account);
+        Preferences.saveUserToken(token);
+    }
 
 
     //应用上下文
@@ -301,6 +402,41 @@ public class CourseMainActivity extends ActionBarActivity {
     }
 
 
+    /*****************登录到网易云信****这个必须得放在线程当中 因为使用到了网络****************************/
+    private void loginToWYYX(){
+
+        //从sharedPreferences 中获取学号信息
+        sharedPreferences = getSharedPreferences("info", MODE_WORLD_READABLE);
+        account = sharedPreferences.getString("str_sid", "20134942");
+
+        //获取token成功
+        Message msg = new Message();
+        //捕捉异常
+        try{
+            sb_result = AppContext.getRegisterToken(appContext, account);
+
+        }catch (AppException e){
+            msg.what = -1;
+            loginHandler.sendMessage(msg);
+        }
+
+        String[] results = sb_result.split("_");
+
+        token = results[0];
+        name = results[1];
+        accid = results[2];
+
+
+        if(token!=null) {
+            msg.what = 1;
+            loginHandler.sendMessage(msg);
+        }else{
+            msg.what = -1;
+            loginHandler.sendMessage(msg);
+        }
+
+    }
+
     /**************从intent中获取数据***************/
     public void getDataFromIntent(){
 
@@ -339,18 +475,19 @@ public class CourseMainActivity extends ActionBarActivity {
 
     /*************获取用户手机的mac地址***************************************/
     public String getPhoneMac(){
+//
+//        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+//        WifiInfo info = wifi.getConnectionInfo();
+//        String mac =  info.getMacAddress();
+//
+//        StringBuffer stringBuffer = new StringBuffer();
+//        String[] macs = mac.split(":");
+//        for(int i=0;i<macs.length;i++){
+//            stringBuffer.append(macs[i]);
+//        }
 
-        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = wifi.getConnectionInfo();
-        String mac =  info.getMacAddress();
-
-        StringBuffer stringBuffer = new StringBuffer();
-        String[] macs = mac.split(":");
-        for(int i=0;i<macs.length;i++){
-            stringBuffer.append(macs[i]);
-        }
-
-        return stringBuffer.toString();
+        return "test";
+       // return stringBuffer.toString();
     }
 
 
@@ -429,7 +566,7 @@ public class CourseMainActivity extends ActionBarActivity {
                 //初始化孩子对象
                 mTvName = (TextView) itemView.findViewById(R.id.tv_name);
                 mIvIcon = (ImageView) itemView.findViewById(R.id.iv_icon);
-                cardView = (CardV) itemView.findViewById(R.id.card_view_help);
+                cardView = (CardView) itemView.findViewById(R.id.card_view_help);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -944,7 +1081,7 @@ public class CourseMainActivity extends ActionBarActivity {
         view1.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view1.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view1.setTextSize(6);
-        view1.setGravity(Gravity.CENTER_VERTICAL);
+        view1.setGravity(Gravity.CENTER);
         view1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view1.setText("MON");
 
@@ -953,7 +1090,7 @@ public class CourseMainActivity extends ActionBarActivity {
         view2.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view2.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view2.setTextSize(6);
-        view2.setGravity(Gravity.CENTER_VERTICAL);
+        view2.setGravity(Gravity.CENTER);
         view2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view2.setText("TUE");
 
@@ -962,7 +1099,7 @@ public class CourseMainActivity extends ActionBarActivity {
         view3.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view3.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view3.setTextSize(6);
-        view3.setGravity(Gravity.CENTER_VERTICAL);
+        view3.setGravity(Gravity.CENTER);
         view3.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view3.setText("WED");
 
@@ -971,7 +1108,8 @@ public class CourseMainActivity extends ActionBarActivity {
         view4.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view4.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view4.setTextSize(6);
-        view4.setGravity(Gravity.CENTER_VERTICAL);
+//        view4.setGravity(Gravity.CENTER_VERTICAL);
+        view4.setGravity(Gravity.CENTER);
         view4.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view4.setText("THU");
 
@@ -980,7 +1118,7 @@ public class CourseMainActivity extends ActionBarActivity {
         view5.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view5.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view5.setTextSize(6);
-        view5.setGravity(Gravity.CENTER_VERTICAL);
+        view5.setGravity(Gravity.CENTER);
         view5.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view5.setText("FRI");
 
@@ -989,7 +1127,7 @@ public class CourseMainActivity extends ActionBarActivity {
         view6.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view6.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view6.setTextSize(6);
-        view6.setGravity(Gravity.CENTER_VERTICAL);
+        view6.setGravity(Gravity.CENTER);
         view6.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view6.setText("SAT");
 
@@ -998,7 +1136,7 @@ public class CourseMainActivity extends ActionBarActivity {
         view7.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
         view7.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
         view7.setTextSize(6);
-        view7.setGravity(Gravity.CENTER_VERTICAL);
+        view7.setGravity(Gravity.CENTER);
         view7.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view7.setText("SUN");
 
@@ -1188,6 +1326,7 @@ public class CourseMainActivity extends ActionBarActivity {
                 bundle.putString("teacher", course.getCourseTeacher()); //传入字串
                 bundle.putString("weeks", course.getCourseWeeks()); //传入字串
                 bundle.putString("cid", course.getCourseNumber()); //传入字串
+                bundle.putString("str_sid",str_sid); //传入字串
 
                 intent.putExtras(bundle);
                 intent.setClass(CourseMainActivity.this, SpecificCourseActivity.class);

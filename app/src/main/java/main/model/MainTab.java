@@ -1,17 +1,17 @@
 package main.model;
 
-import hello.chat.R;
-
-import main.fragment.ContactListFragment;
+import hello.login.R;
 import main.fragment.MainTabFragment;
+import main.fragment.NormalTeamFragment;
+import main.fragment.P2PFriendListFragment;
 import main.fragment.SessionListFragment;
 import main.reminder.ReminderId;
 
 public enum MainTab {
 
     RECENT_CONTACTS(0, ReminderId.SESSION, SessionListFragment.class, R.string.main_tab_session, R.layout.session_list),
-    CONTACT(1, ReminderId.CONTACT, ContactListFragment.class, R.string.main_tab_contact, R.layout.contacts_list);
-    //CHAT_ROOM(2, ReminderId.INVALID, ChatRoomListFragment.class, R.string.chat_room, R.layout.chat_room_tab);
+    NORMAL_TEAM(1, ReminderId.INVALID, NormalTeamFragment.class,  R.string.normal_team_test, R.layout.group_list_activity),
+    CHAT_ROOM(2, ReminderId.INVALID, P2PFriendListFragment.class, R.string.p2p_friend, R.layout.p2p_friend_list);
 
     public final int tabIndex;
 

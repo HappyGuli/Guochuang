@@ -18,7 +18,7 @@ public class MyAnsweredBeanList extends Base{
 
     private int count;
 
-    private List<CollectInfoBean> list = new ArrayList<CollectInfoBean>();
+    private List<MyAnsweredBean> list = new ArrayList<MyAnsweredBean>();
 
     public int getCount() {
         return count;
@@ -28,11 +28,11 @@ public class MyAnsweredBeanList extends Base{
         this.count = count;
     }
 
-    public List<CollectInfoBean> getList() {
+    public List<MyAnsweredBean> getList() {
         return list;
     }
 
-    public void setList(List<CollectInfoBean> list) {
+    public void setList(List<MyAnsweredBean> list) {
         this.list = list;
     }
 
@@ -47,7 +47,7 @@ public class MyAnsweredBeanList extends Base{
             //将json对象转换成为bean对象
             for (int i = 0; i < obj.length(); i++) {
                 JSONObject json = obj.getJSONObject(i);
-                CollectInfoBean collect = new CollectInfoBean();
+                MyAnsweredBean collect = new MyAnsweredBean();
 
                 collect.setZanNum(Integer.valueOf(json.getString("zanNum")));
                 collect.setQid(json.getInt("qid"));

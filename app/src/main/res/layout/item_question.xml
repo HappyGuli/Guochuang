@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
-                <customUI.RoundAngleImageView
+                <course.customUI.RoundAngleImageView
                     android:id="@+id/question_img"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

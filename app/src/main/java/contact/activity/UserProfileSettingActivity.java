@@ -12,10 +12,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.contact.constant.UserConstant;
-import com.netease.nim.demo.contact.helper.UserUpdateHelper;
-import com.netease.nim.demo.main.model.Extras;
+import contact.constant.UserConstant;
+import contact.helper.UserUpdateHelper;
+import hello.login.R;
+import main.model.Extras;
+
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.media.picker.PickImageHelper;

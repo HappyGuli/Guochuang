@@ -1,6 +1,6 @@
 package file;
 
-import com.netease.nim.demo.R;
+import  hello.login.R;
 import com.netease.nim.uikit.common.util.file.FileUtil;
 
 import java.util.HashMap;

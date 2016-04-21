@@ -23,11 +23,11 @@
                 android:id="@+id/tv_myanswer_question_title"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#050505"
+                android:textColor="@color/textview_selector_color"
                 android:text="健身教练有哪些内幕?"
                 />
             <View
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <ImageView
+                    <course.customUI.RoundAngleImageView
                         android:id="@+id/iv_myanswer_item_usericon"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
@@ -54,6 +54,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
+                        android:background="@color/user_icon_bg"
                         android:src="@mipmap/ic_launcher"
                         />
                     <LinearLayout
@@ -90,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="4"
                     android:text="hello"
+                    android:textColor="@color/textview_selector_color_content"
                     android:ellipsize="end"
                     />
 

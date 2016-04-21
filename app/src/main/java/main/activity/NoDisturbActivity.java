@@ -1,5 +1,7 @@
 package main.activity;
 
+
+import hello.login.R;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -15,10 +17,14 @@ import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 
+import org.cqu.preference.UserPreferences;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import main.adapter.SettingsAdapter;
 import main.model.SettingTemplate;
+import main.model.SettingType;
 
 /**
  * Created by hzxuwen on 2015/7/3.

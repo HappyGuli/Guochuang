@@ -128,7 +128,6 @@
             android:id="@+id/et_password"
             android:layout_marginLeft="30dp"
             android:hint="请输入密码"
-            android:inputType="number"
             android:password="true"
             android:textSize="14sp"
             android:textColor="#88000000"

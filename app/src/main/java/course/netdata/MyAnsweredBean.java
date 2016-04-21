@@ -2,7 +2,6 @@ package course.netdata;
 
 
 /**
- * չʾ�û� �ղص��ʴ� ��Ҫ�õ���bean
  * @author happypaul
  *
  */

@@ -23,7 +23,8 @@ public class URLs implements Serializable {
 	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
 
 
-	public final static String REGISTER = URL_API_HOST+"/IMTest/android/register.jsp";
+	//public final static String REGISTER = URL_API_HOST+"/IMTest/android/register.jsp";
+	public final static String REGISTER = URL_API_HOST+"/Experiment/android/findUserToken.jsp";
 
 
 	private int objId;

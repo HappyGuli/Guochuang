@@ -9,6 +9,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +23,7 @@ import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.security.GuardedObject;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Properties;
@@ -27,11 +32,19 @@ import java.util.UUID;
 import api.ApiClient;
 import common.StringUtils;
 import common.UIHelper;
-import netdata.AnswerToSpecQuestionBeanList;
-import netdata.CommentToSpecAnswerBeanList;
-import netdata.CourseboardBean;
-import netdata.QuesitonInSpecificCourseBeanList;
-import netdata.StudentInfoInClassBeanList;
+import course.netdata.AnswerDetailBean;
+import course.netdata.AnswerToSpecQuestionBeanList;
+import course.netdata.CollectInfoBean;
+import course.netdata.CollectInfoBeanList;
+import course.netdata.CommentToSpecAnswerBeanList;
+import course.netdata.CourseboardBean;
+import course.netdata.MyAnsweredBean;
+import course.netdata.MyAnsweredBeanList;
+import course.netdata.MyQuestionBean;
+import course.netdata.MyQuestionBeanList;
+import course.netdata.QuesitonInSpecificCourseBeanList;
+import course.netdata.StudentInfoInClassBeanList;
+import course.netdata.UserInfoBean;
 
 
 /**
@@ -44,7 +57,7 @@ public class AppContext {
 
 	private Application application;
 
-	public static final int NETTYPE_WIFI = 0x01;
+	public static final int NETTYPE_WIFI  = 0x01;
 	public static final int NETTYPE_CMWAP = 0x02;
 	public static final int NETTYPE_CMNET = 0x03;
 
@@ -523,7 +536,7 @@ public class AppContext {
 		if(isRefresh){
 			if(isNetworkConnected()){
 				try {
-					list = ApiClient.getQuestionsByCid(this,str_cid);
+					list = ApiClient.getQuestionsByCid(this, str_cid);
 				} catch (AppException e) {
 					list = (QuesitonInSpecificCourseBeanList) readObject(key);
 					if (list == null)
@@ -538,7 +551,7 @@ public class AppContext {
 		else{
 			if (isNetworkConnected() && !isReadDataCache(key)) {
 				try {
-					list = ApiClient.getQuestionsByCid(this,str_cid);
+					list = ApiClient.getQuestionsByCid(this, str_cid);
 				} catch (AppException e) {
 					list = (QuesitonInSpecificCourseBeanList) readObject(key);
 					if (list == null)
@@ -688,6 +701,541 @@ public class AppContext {
 
 		return ApiClient.findCrsBrdsBycisTnm(this,cid,tname);
 	}
+
+
+
+
+	/**
+	 * 获取用户登录之后 在云信server端获取的 token account name
+	 * @return
+	 */
+	public static String getRegisterToken(AppContext appContext,String sid)throws AppException{
+
+		try{
+			//从服务器端获取数据
+			String result = ApiClient.UserRegister(appContext, sid);
+
+			Log.e("TTTT", result);
+
+
+			String token = null;
+			String accid = null;
+			String name = null;
+
+			StringBuffer sb_result = new StringBuffer();
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if("200".equals(code)){
+
+					String inner_result = jobj.getString("result");
+					JSONObject jsonObj = new JSONObject(inner_result);
+
+					//得到token
+					token = jsonObj.getString("token");
+					name = jsonObj.getString("name");
+					accid = jsonObj.getString("accid");
+
+				}else{
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+
+				}
+
+			}catch (JSONException e){
+				e.printStackTrace();
+				return null;
+			}
+
+			sb_result.append(token+"_"+name+"_"+accid);
+			// 返回结果
+			return sb_result.toString();
+
+		}catch (Exception e){
+			e.printStackTrace();
+			throw  AppException.http(e);
+		}
+	}
+
+
+	/**
+	 * 将用户加入到对应课程中的讨论组当中
+	 * @return
+	 */
+	public static void addUserTocrsTeam(AppContext appContext,String sid)throws AppException{
+
+		try{
+			//从服务器端获取数据
+			String result = ApiClient.AddUserToCrsTeam(appContext, sid);
+
+			Log.e("TTTT", result);
+
+
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if("200".equals(code)){
+					return;
+				}else{
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			}catch (JSONException e){
+				e.printStackTrace();
+				return ;
+
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+	}
+
+
+
+	/**
+	 * 将用户收藏问答的信息保存起来
+	 * @return
+	 */
+	public static void saveUserCollect(AppContext appContext,String sid,int ansid)throws AppException{
+
+		try{
+			//从服务器端获取数据
+			String result = ApiClient.SaveUserClooectInfo(appContext, sid, ansid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if("200".equals(code)){
+					return;
+				}else{
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			}catch (JSONException e){
+				e.printStackTrace();
+				return ;
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+	}
+
+
+	/**
+	 * 根据用户id 查找其收藏的问答的信息
+	 * @return
+	 */
+	public static List<CollectInfoBean> findUserCollectList(AppContext appContext,String sid)throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.FindUserCollectInfoList(appContext, sid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					// 返回解析之后的 CollectInfoBean 的集合
+					return (CollectInfoBeanList.parse(StringUtils.toJSONArray(jobj.getString("result")))).getList();
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return null;
+	}
+
+
+	/**
+	 * 根据ansid 查找answer的详细信息
+	 * @return
+	 */
+	public static AnswerDetailBean  findAnserDetail(AppContext appContext,int ansid )throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.FindAnswerDetail(appContext, ansid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					String inner_result = jobj.getString("result");
+
+					JSONObject j =  new JSONObject(inner_result);
+
+					//将json对象转换为 AnswerDetailBean对象
+					AnswerDetailBean bean = new AnswerDetailBean();
+					bean.setQuestionTitle(j.getString("questionTitle"));
+					bean.setAnswerContent(j.getString("answerContent"));
+					bean.setZanNum(j.getInt("zanNum"));
+					bean.setCaiNum(j.getInt("caiNum"));
+					bean.setUserName(j.getString("userName"));
+
+					//返回AnswerDetailBean对象
+					return bean;
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return null;
+	}
+
+
+	/**
+	 * 根据用户id 查找其回答过的所有问题
+	 * @return
+	 */
+	public static List<MyAnsweredBean> FindUserAnswered(AppContext appContext,String sid)throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.FindUserAnswered(appContext, sid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					// 返回解析之后的 CollectInfoBean 的集合
+					return (MyAnsweredBeanList.parse(StringUtils.toJSONArray(jobj.getString("result")))).getList();
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return null;
+	}
+
+
+	/**
+	 * 查看用户对某个回答是否点赞  或者  点踩
+	 * @param appContext
+	 * @param sid
+	 * @param ansid
+	 * @return
+	 * @throws AppException
+	 */
+	public static int FindIsAnswerVoltOrVoltdown(AppContext appContext,String sid,int ansid)
+			throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.FindIsAnswerVoltedOrVoltdown(appContext, sid, ansid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					String inner_result = jobj.getString("result");
+
+					//返回 从服务器中的到的结果
+					return Integer.valueOf(inner_result);
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return 0;
+	}
+
+
+	/**
+	 *保存用户  取消 点赞 和 点踩的信息
+	 * @param appContext
+	 * @param sid
+	 * @param ansid
+	 * @param isVolt
+	 * @return
+	 * @throws AppException
+	 */
+	public static void SaveUserCancelVoltOrVoltdown(AppContext appContext,String sid,int ansid,int isVolt)
+			throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.saveUserCancelVoltOrVoltdown(appContext, sid, ansid, isVolt);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+					//返回
+					return;
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return ;
+	}
+
+
+	/**
+	 * 通过 sid 查找用户发布过的所有问题
+	 * @param appContext
+	 * @param sid
+	 * @return  返回的是 MyQuestionBean的集合
+	 * @throws AppException
+	 */
+	public static List<MyQuestionBean> FindUserQuestioned(AppContext appContext,String sid)throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.FindUserQuestioned(appContext, sid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					// 返回解析之后的 CollectInfoBean 的集合
+					return (MyQuestionBeanList.parse(StringUtils.toJSONArray(jobj.getString("result")))).getList();
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return null;
+	}
+
+
+	/**
+	 * 根据sid 查找用户的一些基本信息  比如发布了多少问题 提出了多少问题
+	 * @param appContext
+	 * @return
+	 * @throws AppException
+	 */
+	public static UserInfoBean FindUserCntInfo(AppContext appContext,String sid )throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.FindUserCntInfo(appContext, sid);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					String inner_result = jobj.getString("result");
+
+					JSONObject j =  new JSONObject(inner_result);
+
+					//将json对象转换为 AnswerDetailBean对象
+					UserInfoBean bean = new UserInfoBean();
+					bean.setUserName(j.getString("userName"));
+					bean.setSid(j.getString("sid"));
+					bean.setAbilityVlu(j.getLong("abilityVlu"));
+					bean.setAnswerCnt(j.getLong("answerCnt"));
+					bean.setAttentionCnt(j.getLong("attentionCnt"));
+					bean.setCollectCnt(j.getLong("collectCnt"));
+					bean.setQuestionedCnt(j.getLong("questionedCnt"));
+					bean.setUerLevel(j.getString("uerLevel"));
+					bean.setImgUrl(j.getString("imgUrl"));
+
+					//返回AnswerDetailBean对象
+					return bean;
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return null;
+	}
+
+
+	/**
+	 * 保存用户评论信息
+	 * @param appContext
+	 * @param commentContent
+	 * @param ansid
+	 * @param sid
+	 * @throws AppException
+	 */
+	public static void SaveUserCommentInfo(AppContext appContext,String commentContent,int ansid,String sid)throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.SaveUserCommentInfo(appContext, commentContent, ansid, sid);
+
+			JSONObject jobj = new JSONObject(result);
+
+			String code = jobj.getString("code");
+
+			//如果获取成功 直接返回
+			if ("200".equals(code)){
+				return;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+	}
+
+
+	/**
+	 * 删除用户的 评论信息
+	 * @param appContext
+	 * @throws AppException
+	 */
+	public static void DeleteUserCommentInfo(AppContext appContext,int commentid)throws AppException {
+
+		try {
+			//从服务器
+			String result = ApiClient.DeleteUserCommentInfo(appContext, commentid);
+
+			JSONObject jobj = new JSONObject(result);
+
+			String code = jobj.getString("code");
+
+			//如果获取成功 直接返回
+			if ("200".equals(code)){
+				return;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+	}
+
+
+	/**
+	 *   更新用户的头像的 imgUrl
+	 * @param appContext
+	 * @param sid
+	 * @param imgUrl
+	 * @throws AppException
+	 */
+	public static void UpdateUserHeadUrl(AppContext appContext,String sid,String imgUrl )throws AppException {
+
+		try {
+			//从服务器
+			String result = ApiClient.UploadUserHeadUrl(appContext,sid,imgUrl);
+
+			JSONObject jobj = new JSONObject(result);
+
+			String code = jobj.getString("code");
+
+			//如果获取成功 直接返回
+			if ("200".equals(code)){
+				return;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+	}
+
+
+
+
+
+
 
 
 

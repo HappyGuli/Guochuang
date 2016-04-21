@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="empty"></string>
     <string name="main_tab_session">会话</string>
-    <string name="main_tab_contact">通讯录</string>
+    <string name="main_tab_contact">讨论组</string>
     <string name="user_profile">个人名片</string>
     <string name="login">登录</string>
     <string name="logining">登录中\u2026</string>
@@ -227,4 +227,34 @@
     <string name="head_update_success">头像设置成功</string>
     <string name="head_update_failed">头像设置失败，请重试</string>
     <string name="nickname_empty">昵称不能为空</string>
+
+
+
+
+    <!-- course中的 by  GUli-->
+    <array name="menu_crstbl">
+        <item>显示课表</item>
+        <item>刷新课表</item>
+        <item>选择周数</item>
+        <item>退出</item>
+    </array>
+
+    <array name="menu_help">
+        <item>退出</item>
+    </array>
+
+    <array name="answer_help">
+        <item>收藏</item>
+        <item>评论</item>
+        <item>分享</item>
+    </array>
+
+    <string-array name="school">
+        <item>重庆大学</item>
+    </string-array>
+
+    <string-array name="role">
+        <item>教师</item>
+        <item>学生</item>
+    </string-array>
 </resources>

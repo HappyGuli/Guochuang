@@ -72,4 +72,80 @@
     <color name="color_black_ff999999">#ff999999</color>
     <color name="color_gray_bfc2c5">#bfc2c5</color>
 
+
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tool_bar_color">#ffffff</color>
+    <color name="xinqi_text_color">#ffffff</color>
+    <color name="xinqi_color">#3F51B5</color>
+    <color name="xinqi_color_test">#5e6eca</color>
+
+    <color name="course_table_bg">#565758</color>
+    <color name="course_table_2">#bef15a</color>
+    <color name="course_table_3">#00aba9</color>
+    <color name="course_table_4">#0ded3e</color>
+    <color name="course_table_5">#cccccc</color>
+    <color name="course_table_7">#305ae4</color>
+    <color name="course_table_8">#1aeabd</color>
+
+
+    <color name="drawer_layout_bg">#e1e1e0</color>
+    <color name="drawer_layout_item_selected">#d2ffffff</color>
+
+
+
+
+
+    <!--用于floating-button的-->
+    <color name="black_semi_transparent">#de738ffe</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#5677fc</color>
+    <color name="blue_semi_transparent_pressed">#738ffe</color>
+
+    <color name="text_selected">#738ffe</color>
+    <color name="text_normal">#808080</color>
+
+
+    <color name="textview_selected">#3F51B5</color>
+    <color name="textview_normal">#e1e1e0</color>
+
+
+    <color name="refresh_color1">#29b6f6</color>
+    <color name="refresh_color2">#00bcd4</color>
+    <color name="refresh_color3">#4db6ac</color>
+    <color name="refresh_color4">#12c700</color>
+    <color name="refresh_bg">#4d69ff</color>
+
+
+    <color name="user_icon_bg">#c0c0c0</color>
+
+
+    <color name="item_question_username">#89000000</color>
+    <color name="item_question_title">#de4266f4</color>
+    <color name="item_question_detail">#000000</color>
+    <color name="item_question_answer_button">#de4266f4</color>
+
+
+    <color name="item_answer_username">#de4266f4</color>
+
+    <color name="btn_add_answer_normal">#56abe4</color>
+    <color name="btn_add_answer_pressed">#569be4</color>
+
+    <color name="et_login_focused">#4d69ff</color>
+    <color name="et_login_normal">#45000000</color>
+
+
+    <color name="cursor_color">#1E90FF</color>
+
+    <!-- wifi 模块使用-->
+    <color name="class_item_bg_sel_color">#ffFFFFFF</color>
+    <color name="lightgoldenrodyellow">#FAFAD2</color>
+
 </resources>

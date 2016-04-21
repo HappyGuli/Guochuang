@@ -10,20 +10,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import hello.chat.R;
 import com.netease.nim.uikit.LoginSyncDataStatusObserver;
-import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
 import com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity;
-import com.netease.nim.uikit.team.helper.TeamHelper;
 import com.netease.nimlib.sdk.NimIntent;
 import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 
 import java.util.ArrayList;
 
-import hello.chat.LoginActivity;
+import hello.login.R;
 import main.fragment.HomeFragment;
 
 /**
@@ -47,10 +44,14 @@ public class MainActivity extends TActionBarActivity {
     public static void start(Context context, Intent extras) {
         Intent intent = new Intent();
         intent.setClass(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        //将之前的activity给删除
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
         if (extras != null) {
             intent.putExtras(extras);
         }
+
         context.startActivity(intent);
     }
 
@@ -70,7 +71,12 @@ public class MainActivity extends TActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
-        setTitle(R.string.app_name);
+
+        /**被谷力注释掉了 报错**/
+        setTitle("课堂交流");
+        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         onParseIntent();
 
         // 等待同步数据完成
@@ -93,12 +99,15 @@ public class MainActivity extends TActionBarActivity {
         // 加载主页面
         showMainFragment();
 
-        // 聊天室初始化
+    }
 
-        /**
-         *  被谷力给 注释掉了
-         */
-        //ChatRoomHelper.init();
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -109,15 +118,18 @@ public class MainActivity extends TActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        if (mainFragment != null) {
-            if (mainFragment.onBackPressed()) {
-                return;
-            } else {
-                moveTaskToBack(true);
-            }
-        } else {
-            super.onBackPressed();
-        }
+//        if (mainFragment != null) {
+//            if (mainFragment.onBackPressed()) {
+//                return;
+//            } else {
+//                moveTaskToBack(true);
+//            }
+//        } else {
+//            super.onBackPressed();
+//        }
+
+        super.onBackPressed();
+
     }
 
     @Override
@@ -133,31 +145,19 @@ public class MainActivity extends TActionBarActivity {
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
-            case R.id.create_normal_team:
-                ContactSelectActivity.Option option = TeamHelper.getCreateContactSelectOption(null, 50);
-                NimUIKit.startContactSelect(MainActivity.this, option, REQUEST_CODE_NORMAL);
-                break;
-            case R.id.create_regular_team:
-                ContactSelectActivity.Option advancedOption = TeamHelper.getCreateContactSelectOption(null, 50);
-                NimUIKit.startContactSelect(MainActivity.this, advancedOption, REQUEST_CODE_ADVANCED);
+            //设置 actionBar中的返回键的监听
+            case android.R.id.home:
+                finish();
                 break;
 
-            case R.id.search_advanced_team:
-                //AdvancedTeamSearchActivity.start(MainActivity.this);
-                break;
-
-            case R.id.add_buddy:
-                //AddFriendActivity.start(MainActivity.this);
-                break;
-            case R.id.search_btn:
-                GlobalSearchActivity.start(MainActivity.this);
-                break;
             default:
                 break;
         }
@@ -181,23 +181,8 @@ public class MainActivity extends TActionBarActivity {
                     break;
             }
         }
-        /***被谷力注释了 ***/
-//        else if (intent.hasExtra(EXTRA_APP_QUIT)) {
-//            onLogout();
-//            return;
-//        } else if (intent.hasExtra(AVChatActivity.INTENT_ACTION_AVCHAT)) {
-//            if (AVChatProfile.getInstance().isAVChatting()) {
-//                Intent localIntent = new Intent();
-//                localIntent.setClass(this, AVChatActivity.class);
-//                startActivity(localIntent);
-//            }
-//        } else if (intent.hasExtra(com.netease.nim.demo.main.model.Extras.EXTRA_JUMP_P2P)) {
-//            Intent data = intent.getParcelableExtra(com.netease.nim.demo.main.model.Extras.EXTRA_DATA);
-//            String account = data.getStringExtra(com.netease.nim.demo.main.model.Extras.EXTRA_ACCOUNT);
-//            if (!TextUtils.isEmpty(account)) {
-//                SessionHelper.startP2PSession(this, account);
-//            }
-//        }
+
+
     }
 
     private void showMainFragment() {
@@ -215,30 +200,18 @@ public class MainActivity extends TActionBarActivity {
                 final ArrayList<String> selected = data.getStringArrayListExtra(ContactSelectActivity.RESULT_DATA);
                 if (selected != null && !selected.isEmpty()) {
                     /***被谷力注释了 ***/
-                    //TeamCreateHelper.createNormalTeam(MainActivity.this, selected, false, null);
+                    //TeamCreateHelper.createNormalTeam(CourseMainActivity.this, selected, false, null);
                 } else {
                     Toast.makeText(MainActivity.this, "请选择至少一个联系人！", Toast.LENGTH_SHORT).show();
                 }
             } else if (requestCode == REQUEST_CODE_ADVANCED) {
                 final ArrayList<String> selected = data.getStringArrayListExtra(ContactSelectActivity.RESULT_DATA);
                 /***被谷力注释了 ***/
-                //TeamCreateHelper.createAdvancedTeam(MainActivity.this, selected);
+                //TeamCreateHelper.createAdvancedTeam(CourseMainActivity.this, selected);
             }
         }
 
     }
 
-    // 注销
-    private void onLogout() {
-        // 清理缓存&注销监听
-        /***被谷力注释了 ***/
 
-        //LogoutHelper.logout();
-
-        // 启动登录
-        /***被谷力注释了 ***/
-
-        //LoginActivity.start(this);
-        finish();
-    }
 }

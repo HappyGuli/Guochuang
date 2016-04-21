@@ -132,6 +132,7 @@ public class ContactsFragment extends TFragment {
             }
         };
 
+
         adapter.addViewHolder(ItemTypes.LABEL, LabelHolder.class);
         if (customization != null) {
             adapter.addViewHolder(ItemTypes.FUNC, customization.onGetFuncViewHolderClass());

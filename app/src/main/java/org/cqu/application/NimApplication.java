@@ -28,7 +28,7 @@ import org.cqu.utils.SystemUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import hello.chat_new.R;
+import hello.login.R;
 
 public class NimApplication extends Application {
 

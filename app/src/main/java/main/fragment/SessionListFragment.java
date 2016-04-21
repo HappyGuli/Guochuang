@@ -5,18 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.config.preference.Preferences;
-import com.netease.nim.demo.login.LoginActivity;
-import com.netease.nim.demo.login.LogoutHelper;
-import com.netease.nim.demo.main.activity.MultiportActivity;
-import com.netease.nim.demo.main.model.MainTab;
-import com.netease.nim.demo.main.reminder.ReminderManager;
-import com.netease.nim.demo.session.SessionHelper;
-import com.netease.nim.demo.session.extension.GuessAttachment;
-import com.netease.nim.demo.session.extension.RTSAttachment;
-import com.netease.nim.demo.session.extension.SnapChatAttachment;
-import com.netease.nim.demo.session.extension.StickerAttachment;
+import hello.login.R;
+
+
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.recent.RecentContactsCallback;
@@ -32,9 +23,16 @@ import com.netease.nimlib.sdk.msg.attachment.MsgAttachment;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 import com.netease.nimlib.sdk.msg.model.RecentContact;
 
+import org.cqu.preference.Preferences;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import main.activity.MultiportActivity;
+import main.model.MainTab;
+import main.reminder.ReminderManager;
+import session.SessionHelper;
 
 /**
  * Created by zhoujianghua on 2015/8/17.
@@ -106,6 +104,7 @@ public class SessionListFragment extends MainTabFragment {
             if (code.wontAutoLogin()) {
                 kickOut(code);
             } else {
+
                 if (code == StatusCode.NET_BROKEN) {
                     notifyBar.setVisibility(View.VISIBLE);
                     notifyBarText.setText(R.string.net_broken);
@@ -162,11 +161,16 @@ public class SessionListFragment extends MainTabFragment {
 
     // 注销
     private void onLogout() {
-        // 清理缓存&注销监听&清除状态
-        LogoutHelper.logout();
 
-        LoginActivity.start(getActivity(), true);
-        getActivity().finish();
+        // 清理缓存&注销监听&清除状态
+
+        /**被谷力 注释了*/
+
+
+//        LogoutHelper.logout();
+//
+//        CourseLoginActivity.start(getActivity(), true);
+//        getActivity().finish();
     }
 
     // 将最近联系人列表fragment动态集成进来。 开发者也可以使用在xml中配置的方式静态集成。
@@ -195,9 +199,13 @@ public class SessionListFragment extends MainTabFragment {
                 // 回调函数，以供打开会话窗口时传入定制化参数，或者做其他动作
                 switch (recent.getSessionType()) {
                     case P2P:
+                        /**被谷力 注释了*/
+
                         SessionHelper.startP2PSession(getActivity(), recent.getContactId());
                         break;
                     case Team:
+                        /**被谷力 注释了*/
+
                         SessionHelper.startTeamSession(getActivity(), recent.getContactId());
                         break;
                     default:
@@ -209,16 +217,19 @@ public class SessionListFragment extends MainTabFragment {
             public String getDigestOfAttachment(MsgAttachment attachment) {
                 // 设置自定义消息的摘要消息，展示在最近联系人列表的消息缩略栏上
                 // 当然，你也可以自定义一些内建消息的缩略语，例如图片，语音，音视频会话等，自定义的缩略语会被优先使用。
-                if (attachment instanceof GuessAttachment) {
-                    GuessAttachment guess = (GuessAttachment) attachment;
-                    return guess.getValue().getDesc();
-                } else if (attachment instanceof RTSAttachment) {
-                    return "[白板]";
-                } else if (attachment instanceof StickerAttachment) {
-                    return "[贴图]";
-                } else if (attachment instanceof SnapChatAttachment) {
-                    return "[阅后即焚]";
-                }
+
+                /**被谷力 注释了*/
+
+//                if (attachment instanceof GuessAttachment) {
+//                    GuessAttachment guess = (GuessAttachment) attachment;
+//                    return guess.getValue().getDesc();
+//                } else if (attachment instanceof RTSAttachment) {
+//                    return "[白板]";
+//                } else if (attachment instanceof StickerAttachment) {
+//                    return "[贴图]";
+//                } else if (attachment instanceof SnapChatAttachment) {
+//                    return "[阅后即焚]";
+//                }
 
                 return null;
             }

@@ -7,31 +7,30 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-import com.netease.nim.demo.DemoCache;
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.contact.activity.UserProfileActivity;
-import com.netease.nim.demo.session.action.AVChatAction;
-import com.netease.nim.demo.session.action.FileAction;
-import com.netease.nim.demo.session.action.GuessAction;
-import com.netease.nim.demo.session.action.RTSAction;
-import com.netease.nim.demo.session.action.SnapChatAction;
-import com.netease.nim.demo.session.activity.MessageHistoryActivity;
-import com.netease.nim.demo.session.activity.MessageInfoActivity;
-import com.netease.nim.demo.session.extension.CustomAttachParser;
-import com.netease.nim.demo.session.extension.CustomAttachment;
-import com.netease.nim.demo.session.extension.GuessAttachment;
-import com.netease.nim.demo.session.extension.RTSAttachment;
-import com.netease.nim.demo.session.extension.SnapChatAttachment;
-import com.netease.nim.demo.session.extension.StickerAttachment;
-import com.netease.nim.demo.session.search.SearchMessageActivity;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderAVChat;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderDefCustom;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderFile;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderGuess;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderRTS;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderSnapChat;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderSticker;
-import com.netease.nim.demo.session.viewholder.MsgViewHolderTip;
+import hello.login.R;
+import session.action.AVChatAction;
+import session.action.FileAction;
+import session.action.GuessAction;
+import session.action.RTSAction;
+import session.action.SnapChatAction;
+import session.activity.MessageHistoryActivity;
+import session.activity.MessageInfoActivity;
+import session.extension.CustomAttachParser;
+import session.extension.CustomAttachment;
+import session.extension.GuessAttachment;
+import session.extension.RTSAttachment;
+import session.extension.SnapChatAttachment;
+import session.extension.StickerAttachment;
+import session.search.SearchMessageActivity;
+import session.viewholder.MsgViewHolderAVChat;
+import session.viewholder.MsgViewHolderDefCustom;
+import session.viewholder.MsgViewHolderFile;
+import session.viewholder.MsgViewHolderGuess;
+import session.viewholder.MsgViewHolderRTS;
+import session.viewholder.MsgViewHolderSnapChat;
+import session.viewholder.MsgViewHolderSticker;
+import session.viewholder.MsgViewHolderTip;
+
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.cache.TeamDataCache;
 import com.netease.nim.uikit.common.ui.dialog.EasyAlertDialogHelper;
@@ -52,6 +51,8 @@ import com.netease.nimlib.sdk.msg.attachment.MsgAttachment;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 import com.netease.nimlib.sdk.team.model.Team;
+
+import org.cqu.DemoCache;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -251,13 +252,15 @@ public class SessionHelper {
 
             // 定制ActionBar右边的按钮，可以加多个
             ArrayList<SessionCustomization.OptionsButton> buttons = new ArrayList<>();
-            SessionCustomization.OptionsButton cloudMsgButton = new SessionCustomization.OptionsButton() {
-                @Override
-                public void onClick(Context context, View view, String sessionId) {
-                    initPopuptWindow(context, view, sessionId, SessionTypeEnum.Team);
-                }
-            };
-            cloudMsgButton.iconId = R.drawable.nim_ic_messge_history;
+
+            /**被谷力注释了 不需要查询历史记录***/
+//            SessionCustomization.OptionsButton cloudMsgButton = new SessionCustomization.OptionsButton() {
+//                @Override
+//                public void onClick(Context context, View view, String sessionId) {
+//                    initPopuptWindow(context, view, sessionId, SessionTypeEnum.Team);
+//                }
+//            };
+//            cloudMsgButton.iconId = R.drawable.nim_ic_messge_history;
 
             SessionCustomization.OptionsButton infoButton = new SessionCustomization.OptionsButton() {
                 @Override
@@ -271,7 +274,7 @@ public class SessionHelper {
                 }
             };
             infoButton.iconId = R.drawable.nim_ic_message_actionbar_team;
-            buttons.add(cloudMsgButton);
+//            buttons.add(cloudMsgButton);
             buttons.add(infoButton);
             teamCustomization.buttons = buttons;
 
@@ -298,7 +301,9 @@ public class SessionHelper {
             @Override
             public void onAvatarClicked(Context context, IMMessage message) {
                 // 一般用于打开用户资料页面
-                UserProfileActivity.start(context, message.getFromAccount());
+
+                /****被谷力 注释掉了***/
+                //UserProfileActivity.start(context, message.getFromAccount());
             }
 
             @Override

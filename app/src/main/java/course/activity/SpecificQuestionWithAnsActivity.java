@@ -1,4 +1,5 @@
 package course.activity;
+import hello.login.R;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,15 +31,13 @@ import java.util.List;
 
 import api.ApiClient;
 import api.URLs;
-import bean.SimpleAnswerBean;
+import course.bean.SimpleAnswerBean;
 import common.BitmapManager;
 import common.StringUtils;
 import common.UIHelper;
-import netdata.AnswerToSpecQuestionBean;
-import netdata.AnswerToSpecQuestionBeanList;
-import netdata.QuesitonInSpecificCourseBean;
-import netdata.QuesitonInSpecificCourseBeanList;
-import netdata.SpecificQuestionBean;
+import course.netdata.AnswerToSpecQuestionBean;
+import course.netdata.AnswerToSpecQuestionBeanList;
+import course.netdata.SpecificQuestionBean;
 import widget.AppContext;
 import widget.AppException;
 
@@ -70,6 +70,7 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
     //展示这个问题的主要内容
     private TextView tv_questiontitle;
     private TextView tv_questiondetail;
+    private TextView tv_question_time;
 
 
     //展示 当没有答案时的提示
@@ -85,12 +86,9 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
             selectorDialog.cancel();
             if (msg.what == 1) {
 
-                tv_questiondetail.setText(specQuestion.getQcontent()+
-                        "\n                      " +
-                        "                 "
-                        +specQuestion.getTime());
+                tv_questiondetail.setText(specQuestion.getQcontent());
                 tv_questiontitle.setText(specQuestion.getQtitle());
-
+                tv_question_time.setText(specQuestion.getTime());
                 testDatas = (List<AnswerToSpecQuestionBean>) msg.obj;
 
                 if(testDatas.size()!=0){
@@ -107,9 +105,10 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
                 }
 
             } else if (msg.what == -1) {
-                tv_questiondetail.setText(specQuestion.getQcontent()+
-                        "\n               "+specQuestion.getTime());
+                tv_questiondetail.setText(specQuestion.getQcontent());
                 tv_questiontitle.setText(specQuestion.getQtitle());
+                tv_question_time.setText(specQuestion.getTime());
+
                 cardview_tips.setVisibility(View.VISIBLE);
 
                 Log.e("TTTT","what=-1");
@@ -231,7 +230,7 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
 
         tv_questiondetail= (TextView) findViewById(R.id.tv_question_detail);
         tv_questiontitle= (TextView) findViewById(R.id.tv_question_title);
-
+        tv_question_time =(TextView) findViewById(R.id.tv_question_time);
         //找到提示的部分
         cardview_tips = (CardView) findViewById(R.id.cardview_tips);
     }
@@ -349,7 +348,6 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
 
         @Override
         public int getItemCount() {
-
             return datas.size();
         }
     }
@@ -381,18 +379,18 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
 
                     Intent intent = new Intent();
                     intent.setClass(SpecificQuestionWithAnsActivity.this, SpecificAnswerActivity.class);   //描述起点和目标
+
+                    intent.putExtra("NFN",true);
+
                     Bundle bundle = new Bundle();                           //创建Bundle对象
                     bundle.putString("questiontitle", specQuestion.getQtitle());     //装入数据
                     bundle.putString("username", testDatas.get(getPosition()).getUserName());     //装入数据
-                    bundle.putString("sid", testDatas.get(getPosition()).getSid());     //装入数据
                     bundle.putInt("ansid", testDatas.get(getPosition()).getAnsid());     //装入数据
                     bundle.putString("ansContent", testDatas.get(getPosition()).getAnswerContent());
                     bundle.putInt("zanNum",testDatas.get(getPosition()).getZanNum());
                     bundle.putInt("caiNum",testDatas.get(getPosition()).getCaiNum());
                     intent.putExtras(bundle);                                //把Bundle塞入Intent里面
                     startActivity(intent);
-
-
 
                 }
             });
@@ -406,24 +404,34 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
             userName.setText(bean.getUserName());
             zanNumber.setText(String.valueOf(bean.getZanNum()));
             ansContent.setText(bean.getAnswerContent());
+
+            //ansTag.setText(String.valueOf(position));
+            ansTag.setVisibility(View.INVISIBLE);
+
+            //输出测试
+            Log.e("TTTT","position="+position+"ansContent="+bean.getAnswerContent());
             //设置答案的标签
-            if(position==0){
-                Log.e("TTTT","最优答案"+position);
+            if(position == 0){
+                ansTag.setVisibility(View.VISIBLE);
+                ansTag.setGravity(Gravity.CENTER);
+                ansTag.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 ansTag.setText("最优答案");
 
-            }else if(position == 1){
-                Log.e("TTTT","备选答案"+position);
-                ansTag.setText("备选答案");
-            }else{
-                //ansTag.setText(String.valueOf(position));
-                ansTag.setVisibility(View.INVISIBLE);
             }
+            if(position == 1){
+                ansTag.setVisibility(View.VISIBLE);
+                ansTag.setGravity(Gravity.CENTER);
+                ansTag.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                ansTag.setText("备选答案");
+            }
+
+
             //设置图片
             String imgURL = bean.getUserImgUrl();
             Log.e("TTTT",imgURL);
 
             if (imgURL.endsWith("portrait.gif") || StringUtils.isEmpty(imgURL)) {
-                userImage.setImageResource(R.mipmap.ic_launcher);
+                userImage.setImageResource(R.mipmap.usericon1);
             } else {
                 if (!imgURL.contains("http")) {
                     imgURL = URLs.HTTP + URLs.HOST + "/" + imgURL;

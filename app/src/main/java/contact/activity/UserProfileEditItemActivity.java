@@ -15,9 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.contact.constant.UserConstant;
-import com.netease.nim.demo.contact.helper.UserUpdateHelper;
+import contact.constant.UserConstant;
+import contact.helper.UserUpdateHelper;
+import hello.login.R;
+
 import com.netease.nim.uikit.cache.FriendDataCache;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
@@ -43,6 +44,7 @@ import java.util.Map;
 /**
  * Created by hzxuwen on 2015/9/14.
  */
+
 public class UserProfileEditItemActivity extends TActionBarActivity implements View.OnClickListener {
 
     private static final String EXTRA_KEY = "EXTRA_KEY";

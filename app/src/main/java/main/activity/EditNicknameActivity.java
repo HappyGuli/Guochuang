@@ -8,11 +8,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-
-import hello.chat.R;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.ui.widget.ClearableEditTextWithIcon;
 import com.netease.nim.uikit.common.util.sys.ActionBarUtil;
+
+import hello.login.R;
 
 /**
  * Created by hzxuwen on 2015/8/18.

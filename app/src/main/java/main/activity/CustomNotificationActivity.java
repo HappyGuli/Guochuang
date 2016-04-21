@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
-
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.adapter.TAdapter;
@@ -37,10 +36,9 @@ import org.cqu.DemoCache;
 import java.util.ArrayList;
 import java.util.List;
 
+import hello.login.R;
 import main.helper.CustomNotificationCache;
 import main.viewholder.CustomNotificationViewHolder;
-
-import hello.chat.R;
 
 /**
  * 自定义通知

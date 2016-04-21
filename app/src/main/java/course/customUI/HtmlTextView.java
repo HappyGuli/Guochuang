@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import java.io.InputStream;
 
+import course.util.HtmlTagHandler;
+import course.util.LinkMovementMethodExt;
+import course.util.LocalImageGetter;
+import course.util.UrlImageGetter;
+
 /**
  * 当前类注释: TextView 实现图文混排
  * 项目名：FastDevTest

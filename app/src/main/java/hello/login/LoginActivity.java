@@ -21,9 +21,10 @@ import com.netease.nimlib.sdk.auth.LoginInfo;
 import org.cqu.DemoCache;
 import org.cqu.preference.Preferences;
 import org.cqu.preference.UserPreferences;
-import org.cqu.utils.AppContext;
 
 import main.activity.MainActivity;
+import widget.AppContext;
+import widget.AppException;
 
 
 /**
@@ -32,7 +33,7 @@ import main.activity.MainActivity;
 public class LoginActivity  extends Activity {
 
 
-    private static final String TAG = "LoginActivity";
+    private static final String TAG = "CourseLoginActivity";
 
     private EditText account_et;
     private EditText pass_et;
@@ -110,7 +111,7 @@ public class LoginActivity  extends Activity {
 
 //                        //跳转到主界面去
 //                        Intent intent = new Intent();
-//                        intent.setClass(LoginActivity.this, MainActivity.class);   //描述起点和目标
+//                        intent.setClass(CourseLoginActivity.this, CourseMainActivity.class);   //描述起点和目标
 //                        startActivity(intent);
 
                     }
@@ -186,7 +187,16 @@ public class LoginActivity  extends Activity {
             @Override
             public void run() {
 
-                sb_result = AppContext.getRegisterToken(appContext,account);
+                //获取token成功
+                Message msg = new Message();
+                try{
+                    sb_result = AppContext.getRegisterToken(appContext,account);
+
+                }catch (AppException e){
+                    e.printStackTrace();
+                    msg.what = -1;
+                    mHandler.sendMessage(msg);
+                }
 
                 String[] results = sb_result.split("_");
 
@@ -195,8 +205,7 @@ public class LoginActivity  extends Activity {
                 accid = results[2];
 
 
-                //获取token成功
-                Message msg = new Message();
+
                 if(token!=null) {
                     msg.what = 1;
                     mHandler.sendMessage(msg);
@@ -208,7 +217,6 @@ public class LoginActivity  extends Activity {
 
             }
         }).start();
-
 
     }
 

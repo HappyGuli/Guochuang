@@ -82,7 +82,7 @@ public class UploadUtil {
 	 * 将edittext中的spnnableString  上传string指向的图像文件
 	 */
 	public void upLoadFiles(final List<String> files, final String fileKey,
-						   final String RequestURL, final Map<String, String> param) {
+						   final String RequestURL, final Map<String, String> param ,final boolean isUploadUserImg) {
 
 		new Thread(new Runnable() {  //开启线程上传文件
 			@Override
@@ -101,11 +101,11 @@ public class UploadUtil {
 							str_file = str_file.substring(2);
 
 							//输出测试
-							Log.e("TTTT","trimmed str_file"+str_file);
+							Log.e("TTTT","trimmed str_file "+str_file);
 
 
 							file = new File(str_file);
-							String str_result = toUploadFile(file, fileKey, RequestURL, param);
+							String str_result = toUploadFile(file, fileKey, RequestURL, param,isUploadUserImg);
 
 							//将str_result放入到 list——result里面
 							list_result.add(str_result);
@@ -153,7 +153,7 @@ public class UploadUtil {
 	 * @return
 	 */
 	private String toUploadFile(File file, String fileKey, String RequestURL,
-			Map<String, String> param) {
+			Map<String, String> param,boolean isUploadUserImg) {
 		String result = null;
 		requestTime= 0;
 		
@@ -260,7 +260,14 @@ public class UploadUtil {
 
 				//sendMessage(UPLOAD_SUCCESS_CODE, result);
 
-				result = "<img src='"+result+"' />";
+				//如果上传的是头像的图片 则不要加 "<img src='"
+
+				if(isUploadUserImg){
+					result = result;
+
+				}else{
+					result = "<img src='"+result+"' />";
+				}
 
 
 				return  result;

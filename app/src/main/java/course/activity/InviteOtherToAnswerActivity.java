@@ -1,5 +1,6 @@
 package course.activity;
 
+import hello.login.R;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -20,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.InviteOtherBean;
+import course.bean.InviteOtherBean;
 
 /**
  * Created by happypaul on 16/1/25.

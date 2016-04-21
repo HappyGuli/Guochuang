@@ -6,9 +6,6 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
-
-import hello.chat.R;
-
 import com.netease.nim.uikit.common.activity.TActivity;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nimlib.sdk.NimIntent;
@@ -19,7 +16,7 @@ import org.cqu.preference.Preferences;
 
 import java.util.ArrayList;
 
-import hello.chat.LoginActivity;
+import hello.login.R;
 import util.sys.SysInfoUtil;
 
 /**
@@ -65,7 +62,7 @@ public class WelcomeActivity extends TActivity {
                     } else {
 
                         /***被谷力注释了 ***/
-                        //LoginActivity.start(WelcomeActivity.this);
+                        //CourseLoginActivity.start(WelcomeActivity.this);
                         finish();
                     }
                 }
@@ -115,7 +112,7 @@ public class WelcomeActivity extends TActivity {
             if (!SysInfoUtil.stackResumed(this)) {
 
                 /** 被谷力 给注释掉了 ***/
-                //LoginActivity.start(this);
+                //CourseLoginActivity.start(this);
             }
             finish();
         } else {

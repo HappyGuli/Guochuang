@@ -8,10 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.netease.nim.demo.DemoCache;
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.contact.activity.UserProfileActivity;
-import com.netease.nim.demo.team.TeamCreateHelper;
+import hello.login.R;
+
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
@@ -23,6 +21,8 @@ import com.netease.nim.uikit.team.helper.TeamHelper;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.friend.FriendService;
+
+import org.cqu.DemoCache;
 
 import java.util.ArrayList;
 
@@ -130,7 +130,10 @@ public class MessageInfoActivity extends TActionBarActivity {
     };
 
     private void openUserProfile() {
-        UserProfileActivity.start(this, account);
+
+        /***被  谷力 给注释掉了**/
+
+//        UserProfileActivity.start(this, account);
     }
 
     /**
@@ -150,22 +153,26 @@ public class MessageInfoActivity extends TActionBarActivity {
             if (requestCode == REQUEST_CODE_NORMAL) {
                 final ArrayList<String> selected = data.getStringArrayListExtra(ContactSelectActivity.RESULT_DATA);
                 if (selected != null && !selected.isEmpty()) {
-                    TeamCreateHelper.createNormalTeam(MessageInfoActivity.this, selected, true, new RequestCallback<Void>() {
-                        @Override
-                        public void onSuccess(Void param) {
-                            finish();
-                        }
 
-                        @Override
-                        public void onFailed(int code) {
 
-                        }
-
-                        @Override
-                        public void onException(Throwable exception) {
-
-                        }
-                    });
+                    /***被谷力 给注释掉了***/
+//
+//                    TeamCreateHelper.createNormalTeam(MessageInfoActivity.this, selected, true, new RequestCallback<Void>() {
+//                        @Override
+//                        public void onSuccess(Void param) {
+//                            finish();
+//                        }
+//
+//                        @Override
+//                        public void onFailed(int code) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onException(Throwable exception) {
+//
+//                        }
+//                    });
                 } else {
                     Toast.makeText(DemoCache.getContext(), "请选择至少一个联系人！", Toast.LENGTH_SHORT).show();
                 }

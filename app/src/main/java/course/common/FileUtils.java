@@ -1,16 +1,16 @@
 package course.common;
 
+import android.content.Context;
+import android.os.Environment;
+import android.os.StatFs;
+import android.util.Log;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import android.content.Context;
-import android.os.Environment;
-import android.os.StatFs;
-import android.util.Log;
 
 /**
  * 文件操作工具包

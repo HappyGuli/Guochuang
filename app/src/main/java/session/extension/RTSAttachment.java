@@ -1,8 +1,9 @@
 package session.extension;
 
 import com.alibaba.fastjson.JSONObject;
-import com.netease.nim.demo.DemoCache;
-import com.netease.nim.demo.R;
+import hello.login.R;
+
+import org.cqu.DemoCache;
 
 /**
  * Created by huangjun on 2015/7/28.

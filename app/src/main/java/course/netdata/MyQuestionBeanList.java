@@ -18,7 +18,7 @@ public class MyQuestionBeanList extends Base{
 
     private int count;
 
-    private List<MyAnsweredBean> list = new ArrayList<MyAnsweredBean>();
+    private List<MyQuestionBean> list = new ArrayList<MyQuestionBean>();
 
     public int getCount() {
         return count;
@@ -28,11 +28,11 @@ public class MyQuestionBeanList extends Base{
         this.count = count;
     }
 
-    public List<MyAnsweredBean> getList() {
+    public List<MyQuestionBean> getList() {
         return list;
     }
 
-    public void setList(List<MyAnsweredBean> list) {
+    public void setList(List<MyQuestionBean> list) {
         this.list = list;
     }
 
@@ -47,15 +47,14 @@ public class MyQuestionBeanList extends Base{
             //将json对象转换成为bean对象
             for (int i = 0; i < obj.length(); i++) {
                 JSONObject json = obj.getJSONObject(i);
-                MyAnsweredBean collect = new MyAnsweredBean();
+                MyQuestionBean bean = new MyQuestionBean();
 
-                collect.setZanNum(Integer.valueOf(json.getString("zanNum")));
-                collect.setQid(json.getInt("qid"));
-                collect.setAnsid(Integer.valueOf(json.getString("ansid")));
-                collect.setAnswerImgUrl(json.getString("answerImgUrl"));
-                collect.setQuestionTitle(json.getString("questionTitle"));
-                collect.setAnsContent(json.getString("ansContent"));
-                list.list.add(collect);
+                bean.setQid(json.getInt("qid"));
+                bean.setQuestionTitle(json.getString("questionTitle"));
+                bean.setQuestionContent(json.getString("questionContent"));
+                bean.setDate(json.getString("date"));
+
+                list.list.add(bean);
             }
         }
         return list;

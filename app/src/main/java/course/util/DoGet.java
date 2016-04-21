@@ -1,5 +1,10 @@
 package course.util;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,11 +16,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import bean.Course;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+
+import course.bean.Course;
 
 
 public class DoGet {
@@ -152,9 +154,54 @@ public class DoGet {
         table1=tables.get(1);
         if(tables.size()>4){
             table2=tables.get(5);
+
+
+            for(int i=2;i<table2.size();i++){
+                String a = table2.get(i);
+                String[] ss= a.split("#");
+
+                System.out.println(ss[10]);
+
+                Course cs= new Course();
+                cs.setCourseNumber(ss[1].split("]")[0].substring(1,ss[1].split("]")[0].length()-1));
+                cs.setCourseName(ss[1].split("]")[1]);
+                cs.setCourseCredit(ss[2]);
+                cs.setCourseTeacher(ss[7]);
+                cs.setCourseWeeks(ss[9]);
+                cs.setCourseTime(ss[10]);
+                cs.setCourseRoom(ss[11]);
+                courses.add(cs);
+
+                System.out.println(cs.toString());
+
+
+                cs=null;
+            }
         }
-        else{
+        else if(tables.size()>2){
             table2=tables.get(3);
+
+            for(int i=2;i<table2.size();i++){
+                String a = table2.get(i);
+                String[] ss= a.split("#");
+
+                System.out.println(ss[10]);
+
+                Course cs= new Course();
+                cs.setCourseNumber(ss[1].split("]")[0].substring(1,ss[1].split("]")[0].length()-1));
+                cs.setCourseName(ss[1].split("]")[1]);
+                cs.setCourseCredit(ss[2]);
+                cs.setCourseTeacher(ss[7]);
+                cs.setCourseWeeks(ss[9]);
+                cs.setCourseTime(ss[10]);
+                cs.setCourseRoom(ss[11]);
+                courses.add(cs);
+
+                System.out.println(cs.toString());
+
+
+                cs=null;
+            }
         }
 
         table3=tables.get(0);
@@ -185,7 +232,7 @@ public class DoGet {
             String[] ss= a.split("#");
 
             Course cs= new Course();
-            cs.setCourseNumber(ss[1].split("]")[0].substring(1,ss[1].split("]")[0].length()-1));
+            cs.setCourseNumber(ss[1].split("]")[0].substring(1, ss[1].split("]")[0].length() - 1));
             cs.setCourseName(ss[1].split("]")[1]);
             cs.setCourseCredit(ss[2]);
             cs.setCourseTeacher(ss[9]);
@@ -207,27 +254,6 @@ public class DoGet {
         }
 
 
-        for(int i=2;i<table2.size();i++){
-            String a = table2.get(i);
-            String[] ss= a.split("#");
-
-            System.out.println(ss[10]);
-
-            Course cs= new Course();
-            cs.setCourseNumber(ss[1].split("]")[0].substring(1,ss[1].split("]")[0].length()-1));
-            cs.setCourseName(ss[1].split("]")[1]);
-            cs.setCourseCredit(ss[2]);
-            cs.setCourseTeacher(ss[7]);
-            cs.setCourseWeeks(ss[9]);
-            cs.setCourseTime(ss[10]);
-            cs.setCourseRoom(ss[11]);
-            courses.add(cs);
-
-            System.out.println(cs.toString());
-
-
-            cs=null;
-        }
 
 
         return courses;

@@ -1,4 +1,5 @@
 package course.activity;
+import hello.login.R;
 
 import android.content.Context;
 import android.net.wifi.ScanResult;

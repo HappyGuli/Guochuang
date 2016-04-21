@@ -10,14 +10,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import hello.chat.R;
-
 import com.netease.nim.uikit.cache.NimUserInfoCache;
 import com.netease.nim.uikit.common.ui.imageview.HeadImageView;
 import com.netease.nim.uikit.common.ui.widget.SwitchButton;
 
+import org.cqu.DemoCache;
+
 import java.util.List;
+
+import hello.login.R;
+import main.model.SettingTemplate;
+import main.model.SettingType;
 
 /**
  * Created by hzxuwen on 2015/6/30.

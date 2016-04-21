@@ -1,7 +1,8 @@
 package session.viewholder;
 
-import com.netease.nim.demo.session.extension.DefaultCustomAttachment;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderText;
+
+import session.extension.DefaultCustomAttachment;
 
 /**
  * Created by zhoujianghua on 2015/8/4.

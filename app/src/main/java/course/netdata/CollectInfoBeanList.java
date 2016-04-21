@@ -18,7 +18,7 @@ public class CollectInfoBeanList extends Base{
 
     private int count;
 
-    private List<AnswerToSpecQuestionBean> list = new ArrayList<AnswerToSpecQuestionBean>();
+    private List<CollectInfoBean> list = new ArrayList<CollectInfoBean>();
 
     public int getCount() {
         return count;
@@ -28,40 +28,37 @@ public class CollectInfoBeanList extends Base{
         this.count = count;
     }
 
-    public List<AnswerToSpecQuestionBean> getList() {
+    public List<CollectInfoBean> getList() {
         return list;
     }
 
-    public void setList(List<AnswerToSpecQuestionBean> list) {
+    public void setList(List<CollectInfoBean> list) {
         this.list = list;
     }
 
     public static CollectInfoBeanList parse(JSONArray obj) throws IOException,
             AppException, JSONException {
 
-        CollectInfoBeanList answerlist = new CollectInfoBeanList();
+        CollectInfoBeanList list = new CollectInfoBeanList();
 
         if (null != obj) {
-            answerlist.count = obj.length();
+            list.count = obj.length();
 
             //将json对象转换成为bean对象
             for (int i = 0; i < obj.length(); i++) {
-                JSONObject answerJson = obj.getJSONObject(i);
-                AnswerToSpecQuestionBean answer = new AnswerToSpecQuestionBean();
+                JSONObject json = obj.getJSONObject(i);
+                CollectInfoBean collect = new CollectInfoBean();
 
-                answer.setZanNum(Integer.valueOf(answerJson.getString("zanNum")));
-                answer.setAnswerContent(answerJson.getString("answerContent"));
-                answer.setQid(answerJson.getInt("qid"));
-                answer.setSid(answerJson.getString("sid"));
-                answer.setUserName(answerJson.getString("userName"));
-                answer.setUserImgUrl(answerJson.getString("userImgUrl"));
-                answer.setAnsid(Integer.valueOf(answerJson.getString("ansid")));
-                answer.setCaiNum(Integer.valueOf(answerJson.getString("caiNum")));
-
-                answerlist.list.add(answer);
+                collect.setZanNum(Integer.valueOf(json.getString("zanNum")));
+                collect.setQid(json.getInt("qid"));
+                collect.setAnsid(Integer.valueOf(json.getString("ansid")));
+                collect.setAnswerImgUrl(json.getString("answerImgUrl"));
+                collect.setQuestionTitle(json.getString("questionTitle"));
+                collect.setAnsContent(json.getString("ansContent"));
+                list.list.add(collect);
             }
         }
-        return answerlist;
+        return list;
     }
 
 

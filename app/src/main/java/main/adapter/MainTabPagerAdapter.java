@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 
 import java.util.List;
 
-import common.viewpager.SlidingTabPagerAdapter;
+import viewpager.SlidingTabPagerAdapter;
 import main.fragment.MainTabFragment;
 import main.model.MainTab;
 

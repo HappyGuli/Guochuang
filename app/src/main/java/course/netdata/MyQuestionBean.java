@@ -2,18 +2,18 @@ package course.netdata;
 
 
 /**
- * ���������û��� �ҵ����� ��item
+ * 用来保存用户的 我的提问 的item
  * @author happypaul
  *
  */
 public class MyQuestionBean {
-	
-	private String questionTitle;  
+
+	private String questionTitle;
 	private String questionContent;
-	private String date; //���ʵ�ʱ��
-	private int qid; //�����id  �ڵ����ʱ����Ҫ�õ�
-	
-	
+	private String date; //提问的时间
+	private int qid; //问题的id  在点击的时候需要用到
+
+
 	public String getQuestionTitle() {
 		return questionTitle;
 	}
@@ -38,5 +38,5 @@ public class MyQuestionBean {
 	public void setQid(int qid) {
 		this.qid = qid;
 	}
-	
+
 }

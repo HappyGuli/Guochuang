@@ -2,15 +2,15 @@ package course.netdata;
 
 
 /**
- * ���������û��� һЩ����Ϣ��
+ * 用来保存用户的 一些基本信息的
  * @author happypaul
  *
  */
 public class UserInfoBean {
-	
+
 	private String sid;
 	private String userName;
-	
+	private String imgUrl;
 	private String uerLevel;
 	private long attentionCnt;
 	private long collectCnt;
@@ -65,7 +65,12 @@ public class UserInfoBean {
 	public void setAnswerCnt(long answerCnt) {
 		this.answerCnt = answerCnt;
 	}
-	
-	
 
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 }

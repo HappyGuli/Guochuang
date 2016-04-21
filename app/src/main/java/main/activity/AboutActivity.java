@@ -3,9 +3,9 @@ package main.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import hello.chat.R;
-
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
+
+import hello.login.R;
 
 public class AboutActivity extends TActionBarActivity {
 	

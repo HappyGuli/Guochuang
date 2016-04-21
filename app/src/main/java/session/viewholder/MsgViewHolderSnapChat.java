@@ -6,9 +6,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.session.activity.WatchSnapChatPictureActivity;
-import com.netease.nim.demo.session.extension.SnapChatAttachment;
+import hello.login.R;
+import session.activity.WatchSnapChatPictureActivity;
+import session.extension.SnapChatAttachment;
+
 import com.netease.nim.uikit.common.util.file.AttachmentStore;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderBase;

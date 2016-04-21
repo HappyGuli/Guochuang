@@ -18,7 +18,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import helloworld.guli.com.guochuang.R;
+import hello.login.R;
 
 class RoundImageViewInMain extends ImageView {
 

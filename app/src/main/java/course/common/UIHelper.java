@@ -1,7 +1,5 @@
 package course.common;
 
-import java.util.regex.Pattern;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,9 +14,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Toast;
 
-
-import helloworld.guli.com.guochuang.MainActivity;
-import widget.AppContext;
+import java.util.regex.Pattern;
 import widget.AppManager;
 
 /**
@@ -60,16 +56,6 @@ public class UIHelper {
             + "pre {font-size:9pt;line-height:12pt;font-family:Courier New,Arial;border:1px solid #ddd;border-left:5px solid #6CE26C;background:#f6f6f6;padding:5px;} "
             + "a.tag {font-size:15px;text-decoration:none;background-color:#bbd6f3;border-bottom:2px solid #3E6D8E;border-right:2px solid #7F9FB6;color:#284a7b;margin:2px 2px 2px 0;padding:2px 4px;white-space:nowrap;}</style>";
 
-    /**
-     * 显示首页
-     *
-     * @param activity
-     */
-    public static void showHome(Activity activity) {
-        Intent intent = new Intent(activity, MainActivity.class);
-        activity.startActivity(intent);
-        activity.finish();
-    }
 
     /**
      * 调用系统安装了的应用分享
@@ -199,32 +185,8 @@ public class UIHelper {
         };
     }
 
-    /**
-     * 主界面
-     *
-     * @param context
-     */
-    public static void showMain(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        context.startActivity(intent);
-    }
 
-    public static void showActivity(Context context, Class cls) {
-        // TODO Auto-generated method stub
-        Intent intent = new Intent(context, cls);
-        context.startActivity(intent);
 
-    }
-
-    /**
-     * 跳转首页
-     *
-     * @param
-     */
-    public static void showIndex(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        context.startActivity(intent);
-    }
 
     /**
      * 清除app缓存

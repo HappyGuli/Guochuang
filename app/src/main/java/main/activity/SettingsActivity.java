@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import hello.chat.R;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.session.audio.MessageAudioControl;
 import com.netease.nimlib.sdk.NIMClient;
@@ -18,12 +17,15 @@ import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.msg.MsgService;
 
+import org.cqu.DemoCache;
 import org.cqu.preference.Preferences;
 import org.cqu.preference.UserPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import contact.activity.UserProfileSettingActivity;
+import hello.login.R;
 import main.adapter.SettingsAdapter;
 import main.model.SettingTemplate;
 import main.model.SettingType;
@@ -121,8 +123,6 @@ public class SettingsActivity extends TActionBarActivity implements SettingsAdap
         items.add(SettingTemplate.makeSeperator());
         items.add(new SettingTemplate(TAG_CLEAR, getString(R.string.about_clear_msg_history)));
         items.add(SettingTemplate.addLine());
-        items.add(new SettingTemplate(TAG_CUSTOM_NOTIFY, getString(R.string.custom_notification)));
-        items.add(SettingTemplate.addLine());
         items.add(new SettingTemplate(TAG_ABOUT, getString(R.string.setting_about)));
     }
 
@@ -132,15 +132,12 @@ public class SettingsActivity extends TActionBarActivity implements SettingsAdap
         switch (item.getId()) {
             case TAG_HEAD:
                 /***被谷力注释了 ***/
-
-                //UserProfileSettingActivity.start(this, DemoCache.getAccount());
+                UserProfileSettingActivity.start(this, DemoCache.getAccount());
                 break;
             case TAG_NO_DISTURBE:
                 startNoDisturb();
                 break;
-            case TAG_CUSTOM_NOTIFY:
-                CustomNotificationActivity.start(SettingsActivity.this);
-                break;
+
             case TAG_ABOUT:
                 startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
                 break;

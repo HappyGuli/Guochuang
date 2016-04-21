@@ -3,6 +3,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!-->-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <customUI.RoundAngleImageView
+            <course.customUI.RoundAngleImageView
                 android:id="@+id/iv_comment_user_img"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -34,8 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
-
+            android:layout_marginTop="8dp"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -68,19 +72,16 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 >
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/tv_comment_content"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:textSize="14sp"
-                    android:maxLines="4"
-                    android:ellipsize="end"
                     android:text="完全有必要在一个完全陌生，尤其是沟通还有障碍的国家学习和生活，还是会遇到蛮多问题的。除了日常生活中偶尔生病，在学校、住处、旅游的目的地可能遇到的人身意外和财产损失，
                         还有些是由于学生自己的责任造成第三方损失（比如损毁房东的家具）、不熟悉海外驾驶习
                         惯和交通规则撞伤他人等。为了减少这些风险所造成的损失，在到达留学目的地之前最好是能够买一份保险。
@@ -90,11 +91,29 @@
                         文化和法律，而且可以提供24小时的中文服务。"
                     />
 
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/tv_comment_delete_tag"
+                    android:layout_height="16dp"
+                    android:layout_width="25dp"
+                    android:text="删除"
+                    android:textSize="8sp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:layout_alignBottom="@+id/tv_comment_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/tv_comment_delete_tag"
+                ></TextView>
+
+
             </RelativeLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <!--</android.support.v7.widget.CardView>-->
 
 
 </LinearLayout>

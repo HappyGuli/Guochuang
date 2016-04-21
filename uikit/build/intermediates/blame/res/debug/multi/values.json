@@ -8245,12 +8245,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 150,
+                        "startLine": 154,
                         "startColumn": 4,
-                        "startOffset": 7839,
-                        "endLine": 153,
+                        "startOffset": 7847,
+                        "endLine": 157,
                         "endColumn": 12,
-                        "endOffset": 8070
+                        "endOffset": 8078
                     }
                 }
             },
@@ -8266,12 +8266,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 139,
+                        "startLine": 143,
                         "startColumn": 4,
-                        "startOffset": 7173,
-                        "endLine": 148,
+                        "startOffset": 7181,
+                        "endLine": 152,
                         "endColumn": 12,
-                        "endOffset": 7831
+                        "endOffset": 7839
                     }
                 }
             },
@@ -8287,12 +8287,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 126,
+                        "startLine": 130,
                         "startColumn": 4,
-                        "startOffset": 6495,
-                        "endLine": 131,
+                        "startOffset": 6503,
+                        "endLine": 135,
                         "endColumn": 12,
-                        "endOffset": 6905
+                        "endOffset": 6913
                     }
                 }
             },
@@ -8308,12 +8308,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 134,
+                        "startLine": 138,
                         "startColumn": 4,
-                        "startOffset": 6950,
-                        "endLine": 137,
+                        "startOffset": 6958,
+                        "endLine": 141,
                         "endColumn": 12,
-                        "endOffset": 7165
+                        "endOffset": 7173
                     }
                 }
             },
@@ -11040,12 +11040,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 115,
+                        "startLine": 119,
                         "startColumn": 4,
-                        "startOffset": 5940,
-                        "endLine": 123,
+                        "startOffset": 5948,
+                        "endLine": 127,
                         "endColumn": 12,
-                        "endOffset": 6458
+                        "endOffset": 6466
                     }
                 }
             },
@@ -11061,12 +11061,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 23,
                         "startColumn": 4,
-                        "startOffset": 897,
-                        "endLine": 27,
+                        "startOffset": 905,
+                        "endLine": 31,
                         "endColumn": 12,
-                        "endOffset": 1530
+                        "endOffset": 1538
                     }
                 }
             },
@@ -11082,12 +11082,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 57,
+                        "startLine": 61,
                         "startColumn": 4,
-                        "startOffset": 3129,
-                        "endLine": 63,
+                        "startOffset": 3137,
+                        "endLine": 67,
                         "endColumn": 12,
-                        "endOffset": 3565
+                        "endOffset": 3573
                     }
                 }
             },
@@ -11103,12 +11103,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 48,
+                        "startLine": 52,
                         "startColumn": 4,
-                        "startOffset": 2667,
-                        "endLine": 55,
+                        "startOffset": 2675,
+                        "endLine": 59,
                         "endColumn": 12,
-                        "endOffset": 3121
+                        "endOffset": 3129
                     }
                 }
             },
@@ -11124,12 +11124,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 39,
+                        "startLine": 43,
                         "startColumn": 4,
-                        "startOffset": 2128,
-                        "endLine": 46,
+                        "startOffset": 2136,
+                        "endLine": 50,
                         "endColumn": 12,
-                        "endOffset": 2659
+                        "endOffset": 2667
                     }
                 }
             },
@@ -11145,12 +11145,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 29,
+                        "startLine": 33,
                         "startColumn": 4,
-                        "startOffset": 1538,
-                        "endLine": 37,
+                        "startOffset": 1546,
+                        "endLine": 41,
                         "endColumn": 12,
-                        "endOffset": 2120
+                        "endOffset": 2128
                     }
                 }
             },
@@ -11166,12 +11166,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 66,
+                        "startLine": 70,
                         "startColumn": 4,
-                        "startOffset": 3606,
-                        "endLine": 72,
+                        "startOffset": 3614,
+                        "endLine": 76,
                         "endColumn": 12,
-                        "endOffset": 4014
+                        "endOffset": 4022
                     }
                 }
             },
@@ -11187,12 +11187,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 95,
+                        "startLine": 99,
                         "startColumn": 4,
-                        "startOffset": 5033,
-                        "endLine": 108,
+                        "startOffset": 5041,
+                        "endLine": 112,
                         "endColumn": 12,
-                        "endOffset": 5638
+                        "endOffset": 5646
                     }
                 }
             },
@@ -11208,12 +11208,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 83,
+                        "startLine": 87,
                         "startColumn": 4,
-                        "startOffset": 4489,
-                        "endLine": 84,
+                        "startOffset": 4497,
+                        "endLine": 88,
                         "endColumn": 12,
-                        "endOffset": 4567
+                        "endOffset": 4575
                     }
                 }
             },
@@ -11229,12 +11229,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 624,
-                        "endLine": 17,
+                        "startOffset": 632,
+                        "endLine": 21,
                         "endColumn": 12,
-                        "endOffset": 889
+                        "endOffset": 897
                     }
                 }
             },
@@ -11250,12 +11250,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 368,
-                        "endLine": 11,
+                        "startOffset": 376,
+                        "endLine": 15,
                         "endColumn": 12,
-                        "endOffset": 616
+                        "endOffset": 624
                     }
                 }
             },
@@ -11271,12 +11271,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 78,
-                        "endLine": 5,
+                        "startOffset": 86,
+                        "endLine": 9,
                         "endColumn": 12,
-                        "endOffset": 360
+                        "endOffset": 368
                     }
                 }
             },
@@ -11292,12 +11292,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 110,
+                        "startLine": 114,
                         "startColumn": 4,
-                        "startOffset": 5646,
-                        "endLine": 113,
+                        "startOffset": 5654,
+                        "endLine": 117,
                         "endColumn": 12,
-                        "endOffset": 5932
+                        "endOffset": 5940
                     }
                 }
             },
@@ -11313,12 +11313,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 86,
+                        "startLine": 90,
                         "startColumn": 4,
-                        "startOffset": 4575,
-                        "endLine": 93,
+                        "startOffset": 4583,
+                        "endLine": 97,
                         "endColumn": 12,
-                        "endOffset": 5025
+                        "endOffset": 5033
                     }
                 }
             },
@@ -11334,12 +11334,12 @@
                 "from": {
                     "file": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/values/styles.xml",
                     "position": {
-                        "startLine": 74,
+                        "startLine": 78,
                         "startColumn": 4,
-                        "startOffset": 4022,
-                        "endLine": 81,
+                        "startOffset": 4030,
+                        "endLine": 85,
                         "endColumn": 12,
-                        "endOffset": 4481
+                        "endOffset": 4489
                     }
                 }
             }

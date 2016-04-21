@@ -1,5 +1,7 @@
 package course.activity;
 
+import hello.login.R;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,20 +28,17 @@ import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
-import api.ApiClient;
+import java.util.ArrayList;
+import java.util.List;
+
 import api.URLs;
-import bean.QuestionBean;
 import common.BitmapManager;
 import common.StringUtils;
 import common.UIHelper;
-import netdata.QuesitonInSpecificCourseBean;
-import netdata.QuesitonInSpecificCourseBeanList;
-import netdata.QuestionFromServerBean;
-import netdata.QuestionFromServerBeanList;
+import course.netdata.QuesitonInSpecificCourseBean;
+import course.netdata.QuesitonInSpecificCourseBeanList;
 import widget.AppContext;
 import widget.AppException;
-
-import java.util.*;
 
 /**
  * Created by happypaul on 16/1/21.
@@ -386,7 +385,6 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     //将打开的menu给关掉
                     floatingActionsMenu.collapse();
-
                     //测试
                     Toast.makeText(SpecificCourseHelpActivity.this,"你想回答question:"+
                             testDatas.get(getPosition()).getQuestionId(),Toast.LENGTH_SHORT).show();
@@ -438,7 +436,7 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
             Log.e("TTTT",imgURL);
 
             if (imgURL.endsWith("portrait.gif") || StringUtils.isEmpty(imgURL)) {
-                userImage.setImageResource(R.mipmap.ic_launcher);
+                userImage.setImageResource(R.mipmap.usericon1);
             } else {
                 if (!imgURL.contains("http")) {
                     imgURL = URLs.HTTP + URLs.HOST + "/" + imgURL;

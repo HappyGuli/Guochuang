@@ -14,7 +14,7 @@ public class URLs implements Serializable {
 
 	//public final static String HOST = "10.0.2.2:8080";
 
-	//public final static String HOST = "172.24.3.18:8080";
+	//public final static String HOST = "172.24.2.171:8080";
 	public final static String HOST = "123.57.146.81:8080";
 	public final static String HTTP = "http://";
 	private final static String URL_SPLITTER = "/";
@@ -34,18 +34,22 @@ public class URLs implements Serializable {
 	public final static String SAVE_USER_COURSETABLE= URL_API_HOST+"Experiment/android/SaveUsrCrsTable.jsp";
 	public final static String SAVEUSERINFO= URL_API_HOST+"Experiment/android/SaveUsrInfo.jsp";
 	public final static String COURSEBOARD_LIST= URL_API_HOST+"Experiment/android/FindCourseBoards.jsp";
+	public final static String REGISTER = URL_API_HOST+"/Experiment/android/findUserToken.jsp";
+	public final static String ADDEDTOTEAM = URL_API_HOST+"/Experiment/android/addToCrspTeam.jsp";
+	public final static String SAVEUSERCOLLECT = URL_API_HOST+"/Experiment/android/saveUserCollect.jsp";
+	public final static String FINDUSERCOLLECT = URL_API_HOST+"/Experiment/android/findUserCollect.jsp";
+	public final static String FINDANSWERDETAIL = URL_API_HOST+"/Experiment/android/findAnswerDetail.jsp";
+	public final static String FINDMYANSWED = URL_API_HOST+"/Experiment/android/findUserAnswered.jsp";
+	public final static String FINDISANSWERVOLTED = URL_API_HOST+"/Experiment/android/isVoltOrVoltdown.jsp";
+	public final static String SAVECANCELVOLTORVOLTDOWN = URL_API_HOST+"/Experiment/android/cancelVltOrVltDown.jsp";
+	public final static String FINDMYQUESTIONS = URL_API_HOST+"/Experiment/android/findMyQuesitons.jsp";
+	public final static String FINDUSERCNTINFO = URL_API_HOST+"/Experiment/android/findUserntInfo.jsp";
+	public final static String SAVEUSERCOMMENT = URL_API_HOST+"/Experiment/android/saveUserComment.jsp";
+	public final static String DELETEUSERCOMMENT = URL_API_HOST+"/Experiment/android/deleteUserComment.jsp";
+	public final static String UPLOADANSWERPIC = URL_API_HOST+"/Experiment/android/UploadHandleServlet";
+	public final static String UPLOADHEADPIC = URL_API_HOST+"/Experiment/android/UploadHandleProfileServlet";
+	public final static String UPDATEUSERHEADURL = URL_API_HOST+"/Experiment/android/UpDateUsrImg";
 
-
-
-
-	public final static int URL_OBJ_TYPE_OTHER = 0x000;
-	public final static int URL_OBJ_TYPE_NEWS = 0x001;
-	public final static int URL_OBJ_TYPE_SOFTWARE = 0x002;
-	public final static int URL_OBJ_TYPE_QUESTION = 0x003;
-	public final static int URL_OBJ_TYPE_ZONE = 0x004;
-	public final static int URL_OBJ_TYPE_BLOG = 0x005;
-	public final static int URL_OBJ_TYPE_TWEET = 0x006;
-	public final static int URL_OBJ_TYPE_QUESTION_TAG = 0x007;
 
 	private int objId;
 	private String objKey = "";

@@ -48,13 +48,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="课堂信息"
-                        android:textColor="#6bacfa"
+                        android:textColor="@color/xinqi_color"
                         android:layout_marginLeft="8dp"
                         />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="#6bacfa"
+                        android:background="@color/xinqi_color"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         ></View>
@@ -65,8 +65,8 @@
                         >
                         <ImageView
                             android:id="@+id/course_name_iv"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:src="@mipmap/course_name"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
@@ -92,7 +92,7 @@
                             android:layout_toRightOf="@+id/course_name_hint_tv"
                             android:layout_marginLeft="25dp"
                             android:textSize="16dp"
-                            android:textColor="#6bacfa"
+                            android:textColor="@color/xinqi_color"
                             android:text="课程"
                             />
 
@@ -103,12 +103,12 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="3dp"
                         >
                         <ImageView
                             android:id="@+id/classroom_iv"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:src="@mipmap/course_class_room"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
@@ -134,7 +134,7 @@
                             android:layout_toRightOf="@+id/class_room_hint_tv"
                             android:layout_marginLeft="25dp"
                             android:textSize="16dp"
-                            android:textColor="#6bacfa"
+                            android:textColor="@color/xinqi_color"
                             android:text="教室"
                             />
 
@@ -145,12 +145,12 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="3dp"
                         >
                         <ImageView
                             android:id="@+id/teacher_name_iv"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:src="@mipmap/course_teacher"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
@@ -176,7 +176,7 @@
                             android:layout_toRightOf="@+id/teacher_name_hint_tv"
                             android:layout_marginLeft="25dp"
                             android:textSize="16dp"
-                            android:textColor="#6bacfa"
+                            android:textColor="@color/xinqi_color"
                             android:text="老师"
                             />
 
@@ -187,12 +187,12 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="3dp"
                         >
                         <ImageView
                             android:id="@+id/class_num_iv"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:src="@mipmap/course_class_num"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
@@ -218,7 +218,7 @@
                             android:layout_toRightOf="@+id/class_num_hint_tv"
                             android:layout_marginLeft="25dp"
                             android:textSize="16dp"
-                            android:textColor="#6bacfa"
+                            android:textColor="@color/xinqi_color"
                             android:text="节数"
                             />
 
@@ -229,13 +229,13 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="3dp"
                         android:layout_marginBottom="5dp"
                         >
                         <ImageView
                             android:id="@+id/week_num_iv"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:src="@mipmap/course_week_num"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="10dp"
@@ -261,7 +261,7 @@
                             android:layout_toRightOf="@+id/week_num_hint_tv"
                             android:layout_marginLeft="25dp"
                             android:textSize="16dp"
-                            android:textColor="#6bacfa"
+                            android:textColor="@color/xinqi_color"
                             android:text="周数"
                             />
 
@@ -304,10 +304,10 @@
                     >
                     <ImageView
                         android:id="@+id/iv_course_comunication"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
                         android:layout_margin="15dp"
-                        android:src="@mipmap/course_comunication"
+                        android:src="@mipmap/course_communication"
                         />
 
                     <LinearLayout
@@ -367,8 +367,8 @@
                     >
                     <ImageView
                         android:id="@+id/iv_course_sign"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
                         android:layout_margin="15dp"
                         android:src="@mipmap/course_sign"
                         />
@@ -431,8 +431,8 @@
                     >
                     <ImageView
                         android:id="@+id/iv_course_board"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
                         android:layout_margin="15dp"
                         android:src="@mipmap/course_board"
                         />

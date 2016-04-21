@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="hello.chat_new">
+    package="hello.login">
+
+    <!--course中需要使用的权限-->
+    <!--解决权限问题-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
 
 
     <!-- 权限声明 -->
@@ -42,6 +52,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
+        <!--android:theme="@style/LightBaseActionBarTheme">-->
+
 
         <!-- APP key, 可以在这里设置，也可以在 SDKOptions 中提供。
        如果 SDKOptions 中提供了，取 SDKOptions 中的值。 -->
@@ -74,16 +86,16 @@
         <receiver android:name="com.netease.nimlib.service.ResponseReceiver"/>
 
         <!-- 安卓保活配置 -->
-        <service
-            android:name="com.netease.cosine.core.CosineService"
-            android:process=":cosine">
-        </service>
+        <!--<service-->
+            <!--android:name="com.netease.cosine.core.CosineService"-->
+            <!--android:process=":cosine">-->
+        <!--</service>-->
 
-        <receiver
-            android:name="com.netease.cosine.target.CosineReceiver"
-            android:exported="true"
-            android:process=":cosine">
-        </receiver>
+        <!--<receiver-->
+            <!--android:name="com.netease.cosine.target.CosineReceiver"-->
+            <!--android:exported="true"-->
+            <!--android:process=":cosine">-->
+        <!--</receiver>-->
 
         <meta-data
             android:name="com.netease.cosine.target"
@@ -94,11 +106,136 @@
 
 
 
+        <!-- 主界面 -->
+        <activity
+            android:name="main.activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:configChanges="keyboardHidden|orientation"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 多端登录管理 -->
+        <activity
+            android:name="main.activity.MultiportActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/LightBaseActionBarTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
+
+
+
+        <!-- 关于 -->
+        <activity
+            android:name="main.activity.AboutActivity"
+            android:configChanges="orientation"
+            android:label="@string/about"
+            android:screenOrientation="portrait"
+            android:theme="@style/OverlayBaseActionBarTheme"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+        <activityt
+            android:name="main.activity.SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/LightBaseActionBarTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name="main.activity.NoDisturbActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/LightBaseActionBarTheme"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+
+        <activity
+            android:name="main.activity.EditNicknameActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/LightBaseActionBarTheme"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+        <activity
+            android:name="main.activity.SystemMessageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+        <activity
+            android:name="main.activity.CustomNotificationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+
+
+        <activity
+            android:name="main.activity.TeamListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/LightBaseActionBarTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <!-- 全局搜索 -->
+        <activity
+            android:name="main.activity.GlobalSearchActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/global_search_bg"
+            android:windowSoftInputMode="stateUnspecified"/>
+
+
+        <!-- 添加好友-->
+        <activity
+            android:name="contact.activity.AddFriendActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+'
+        <!-- 设置-->
+        <activity
+            android:name="main.activity.SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
+        <!-- 用户的信息-->
+        <activity
+            android:name="contact.activity.UserProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+        <activity
+            android:name="contact.activity.UserProfileSettingActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+        <activity
+            android:name="contact.activity.UserProfileEditItemActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+
+
+        <!-- 登录界面-->
+        <activity
+            android:name="course.activity.CourseLoginActivity"
+            >
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -107,9 +244,60 @@
         </activity>
 
 
-        <activity android:name=".MainActivity"></activity>
+
+        <activity android:name="course.activity.SpecificCourseHelpActivity"></activity>
+
+        <activity android:name="course.activity.CourseMainActivity"></activity>
+
+        <activity android:name="course.activity.QuestionSearchActivity"></activity>
+
+        <activity android:name="course.activity.AddQuestionActivity"></activity>
+
+        <activity android:name="course.activity.SpecificCourseActivity"></activity>
+
+        <activity android:name="course.activity.CourseBoardActivity"></activity>
+
+        <activity android:name="course.activity.CourseSignActivity"></activity>
+
+        <activity android:name="course.activity.SpecificQuestionWithAnsActivity"></activity>
+
+        <activity android:name="course.activity.SpecificAnswerActivity"></activity>
+
+        <activity android:name="course.activity.AddAnswerActivity"></activity>
+
+        <activity android:name="course.activity.AddAnswerCommentActivity"></activity>
+
+        <activity
+            android:name="course.activity.RelateToMeActivity"></activity>
+
+        <activity android:name="course.activity.InviteOtherToAnswerActivity"></activity>
+
+        <activity android:name="course.activity.MyCollectedActivity"></activity>
+
+        <activity android:name="course.activity.MyAnswerActivity"></activity>
+
+        <activity android:name="course.activity.MyQuestionActivity"></activity>
+
+        <activity android:name="course.activity.SettingActivity"></activity>
+
+        <activity android:name="course.activity.CourseSignTeacherActivity"></activity>
+
+        <activity android:name="course.activity.CourseSignStudentActivity"></activity>
 
 
+
+
+
+
+
+
+        <!-- cosine target SDK integrated -->
+        <meta-data
+            android:name="com.netease.cosine.target"
+            android:value=""/>
+        <meta-data
+            android:name="com.netease.cosine.target.receiver"
+            android:value="com.netease.nimlib.service.NimReceiver"/>
 
 
     </application>

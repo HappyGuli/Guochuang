@@ -24,41 +24,49 @@
             android:name="com.netease.nim.uikit.session.activity.P2PMessageActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.session.activity.TeamMessageActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" /> <!-- 群聊 -->
         <activity
             android:name="com.netease.nim.uikit.team.activity.NormalTeamInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.team.activity.AdvancedTeamInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.team.activity.AdvancedTeamMemberActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.team.activity.AdvancedTeamAnnounceActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.team.activity.AdvancedTeamMemberInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.team.activity.AdvancedTeamNicknameActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.netease.nim.uikit.team.activity.AdvancedTeamCreateActivity"
@@ -74,6 +82,7 @@
             android:name="com.netease.nim.uikit.team.activity.TeamPropertySettingActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="stateHidden|adjustResize" /> <!-- 联系人选择器 -->
         <activity
             android:name="com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity"

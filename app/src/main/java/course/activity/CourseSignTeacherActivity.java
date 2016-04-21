@@ -1,5 +1,7 @@
 package course.activity;
 
+import hello.login.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiConfiguration;
@@ -25,12 +27,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import api.ApiClient;
-import bean.InviteOtherBean;
 import common.UIHelper;
-import netdata.StudentInfoInClassBean;
-import netdata.StudentInfoInClassBeanList;
-import util.WifiHotUtil;
+import course.netdata.StudentInfoInClassBean;
+import course.netdata.StudentInfoInClassBeanList;
+import course.util.WifiHotUtil;
 import widget.AppContext;
 import widget.AppException;
 

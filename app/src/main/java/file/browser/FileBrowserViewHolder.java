@@ -5,10 +5,10 @@ import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.netease.nim.demo.DemoCache;
-import com.netease.nim.demo.R;
+import hello.login.R;
 import com.netease.nim.uikit.common.adapter.TViewHolder;
-import com.netease.nim.demo.file.browser.FileBrowserAdapter.FileManagerItem;
+
+import org.cqu.DemoCache;
 
 import java.io.File;
 
@@ -18,7 +18,7 @@ import java.io.File;
 public class FileBrowserViewHolder extends TViewHolder {
     private ImageView fileImage;
     private TextView fileName;
-    private FileManagerItem fileItem;
+    private FileBrowserAdapter.FileManagerItem fileItem;
 
     private Bitmap directoryBitmap;
     private Bitmap fileBitmap;
@@ -38,7 +38,7 @@ public class FileBrowserViewHolder extends TViewHolder {
 
     @Override
     protected void refresh(Object item) {
-        fileItem = (FileManagerItem) item;
+        fileItem = (FileBrowserAdapter.FileManagerItem) item;
 
         File f = new File(fileItem.getPath());
         if(fileItem.getName().equals("@1")) {

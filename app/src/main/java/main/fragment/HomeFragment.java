@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import com.netease.nim.uikit.common.fragment.TFragment;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
@@ -16,9 +15,9 @@ import com.netease.nimlib.sdk.msg.SystemMessageObserver;
 import com.netease.nimlib.sdk.msg.SystemMessageService;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 
-import common.viewpager.FadeInOutPageTransformer;
-import common.viewpager.PagerSlidingTabStrip;
-import hello.chat.R;
+import viewpager.FadeInOutPageTransformer;
+import viewpager.PagerSlidingTabStrip;
+import hello.login.R;
 import main.adapter.MainTabPagerAdapter;
 import main.helper.SystemMessageUnreadManager;
 import main.model.MainTab;

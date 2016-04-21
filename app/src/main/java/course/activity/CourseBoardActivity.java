@@ -1,4 +1,5 @@
 package course.activity;
+import hello.login.R;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,11 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import api.ApiClient;
-import bean.QuestionBean;
 import common.UIHelper;
-import netdata.CourseboardBean;
-import netdata.QuesitonInSpecificCourseBean;
-import util.IsConnectedToNet;
+import course.netdata.CourseboardBean;
 import widget.AppContext;
 
 /**
@@ -93,7 +91,7 @@ public class CourseBoardActivity extends ActionBarActivity {
                 ll.removeAllViews();
                 // 将TextView 加入到LinearLayout 中
                 TextView tv = new TextView(CourseBoardActivity.this);
-                tv.setHeight((int) 240);
+                tv.setHeight((int) 60);
                 tv.setTextSize(16);
                 tv.setTextColor(CourseBoardActivity.this.getResources()
                         .getColor(R.color.course_table_bg));

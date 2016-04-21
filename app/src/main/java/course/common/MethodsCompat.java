@@ -1,7 +1,5 @@
 package course.common;
 
-import java.io.File;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -9,6 +7,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.provider.MediaStore;
+
+import java.io.File;
 
 /**
  * Android各版本的兼容方法

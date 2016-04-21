@@ -1,8 +1,7 @@
 package main.fragment;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -10,8 +9,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.netease.nim.uikit.cache.TeamDataCache;
-import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.contact.core.item.AbsContactItem;
+import com.netease.nim.uikit.contact.core.item.ContactItem;
 import com.netease.nim.uikit.contact.core.item.ItemTypes;
 import com.netease.nim.uikit.contact.core.model.ContactDataAdapter;
 import com.netease.nim.uikit.contact.core.model.ContactGroupStrategy;
@@ -26,14 +25,16 @@ import com.netease.nimlib.sdk.team.model.Team;
 
 import java.util.List;
 
-import hello.chat_new.R;
+import hello.login.R;
+import main.model.MainTab;
+import session.SessionHelper;
 
 /**
  * 群列表(通讯录)
  * <p/>
  * Created by huangjun on 2015/4/21.
  */
-public class NormalTeamFragment extends TActionBarActivity implements AdapterView.OnItemClickListener {
+public class NormalTeamFragment extends MainTabFragment implements AdapterView.OnItemClickListener {
 
     private static final String EXTRA_DATA_ITEM_TYPES = "EXTRA_DATA_ITEM_TYPES";
 
@@ -41,31 +42,52 @@ public class NormalTeamFragment extends TActionBarActivity implements AdapterVie
 
     private ListView lvContacts;
 
-    private int itemType;
-
-    public static final void start(Context context, int teamItemTypes) {
-        Intent intent = new Intent();
-        intent.setClass(context, NormalTeamFragment.class);
-        intent.putExtra(EXTRA_DATA_ITEM_TYPES, teamItemTypes);
-
-        context.startActivity(intent);
+    public NormalTeamFragment() {
+        setContainerId(MainTab.NORMAL_TEAM.fragmentId);
     }
 
+    private int itemType;
+
+
+
+    /**
+     * ******************************** 生命周期 ***********************************
+     */
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        itemType = getIntent().getIntExtra(EXTRA_DATA_ITEM_TYPES, ItemTypes.TEAMS.ADVANCED_TEAM);
+        onCurrent(); // 触发onInit，提前加载
+    }
 
-        setContentView(R.layout.group_list_activity);
-        setTitle(itemType == ItemTypes.TEAMS.ADVANCED_TEAM ? R.string.advanced_team : R.string.normal_team);
 
-        lvContacts = (ListView) findViewById(R.id.group_list);
+    @Override
+    protected void onInit() {
+
+        //初始化 界面
+        findViews();
+
+    }
+
+
+
+    private void findViews(){
+
+
+
+
+        //区别 高级群 和 normal team
+        itemType = ItemTypes.TEAMS.ADVANCED_TEAM;
+
+        //找到展示的listview
+        lvContacts = (ListView) getView().findViewById(R.id.group_list);
 
         GroupStrategy groupStrategy = new GroupStrategy();
         IContactDataProvider dataProvider = new ContactDataProvider(itemType);
 
-        adapter = new ContactDataAdapter(this, groupStrategy, dataProvider) {
+        //这个是否有问题
+        adapter = new ContactDataAdapter(getActivity(), groupStrategy, dataProvider) {
             @Override
             protected List<AbsContactItem> onNonDataItems() {
                 return null;
@@ -102,22 +124,38 @@ public class NormalTeamFragment extends TActionBarActivity implements AdapterVie
 
         if (count == 0) {
             if (itemType == ItemTypes.TEAMS.ADVANCED_TEAM) {
-                Toast.makeText(NormalTeamFragment.this, R.string.no_team, Toast.LENGTH_SHORT).show();
+
+                //给出提示
+
+                Toast.makeText(getActivity(),"你还没有高级群了",Toast.LENGTH_SHORT).show();
+
+                Log.e("TTTT"," 你还没有高级群了");
+
             } else if (itemType == ItemTypes.TEAMS.NORMAL_TEAM) {
-                Toast.makeText(NormalTeamFragment.this, R.string.no_normal_team, Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getActivity(),"你还没有讨论组呢",Toast.LENGTH_SHORT).show();
+
+                //给出提示
+                Log.e("TTTT"," 你还没有讨论组呢");
+
             }
         }
+
+
 
         adapter.load(true);
 
         registerTeamUpdateObserver(true);
+
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
+    //在销毁的时候  解除监听
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
         registerTeamUpdateObserver(false);
+
     }
 
     @Override
@@ -127,12 +165,13 @@ public class NormalTeamFragment extends TActionBarActivity implements AdapterVie
             case ItemTypes.TEAM:
 
                 /***被谷力注释了 ***/
-
-                //SessionHelper.startTeamSession(this, ((ContactItem) item).getContact().getContactId());
+                //进入 特定的群 进行聊天
+                SessionHelper.startTeamSession(getActivity(), ((ContactItem) item).getContact().getContactId());
                 break;
         }
     }
 
+    //注册监听
     private void registerTeamUpdateObserver(boolean register) {
         if (register) {
             TeamDataCache.getInstance().registerTeamDataChangedObserver(teamDataChangedObserver);
@@ -140,6 +179,8 @@ public class NormalTeamFragment extends TActionBarActivity implements AdapterVie
             TeamDataCache.getInstance().unregisterTeamDataChangedObserver(teamDataChangedObserver);
         }
     }
+
+
 
     TeamDataCache.TeamDataChangedObserver teamDataChangedObserver = new TeamDataCache.TeamDataChangedObserver() {
         @Override
@@ -152,6 +193,7 @@ public class NormalTeamFragment extends TActionBarActivity implements AdapterVie
             adapter.load(true);
         }
     };
+
 
     private static class GroupStrategy extends ContactGroupStrategy {
         GroupStrategy() {

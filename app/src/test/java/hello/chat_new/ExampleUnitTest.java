@@ -1,4 +1,4 @@
-package hello.chat_new;
+package hello.login;
 
 import org.junit.Test;
 

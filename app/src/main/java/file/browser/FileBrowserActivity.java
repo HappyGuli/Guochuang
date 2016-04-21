@@ -10,11 +10,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.netease.nim.demo.R;
+import hello.login.R;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.adapter.TAdapterDelegate;
 import com.netease.nim.uikit.common.adapter.TViewHolder;
-import com.netease.nim.demo.file.browser.FileBrowserAdapter.FileManagerItem;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class FileBrowserActivity extends TActionBarActivity implements TAdapterD
 
     // view
     private ListView fileListView;
-    private List<FileManagerItem> fileListItems = new ArrayList<>();
+    private List<FileBrowserAdapter.FileManagerItem> fileListItems = new ArrayList<>();
 
     public static void startActivityForResult(Activity activity, int reqCode) {
         Intent intent = new Intent();
@@ -81,7 +80,7 @@ public class FileBrowserActivity extends TActionBarActivity implements TAdapterD
 
         fileListItems.clear();
         for (int i = 0; i < names.size(); i++) {
-            fileListItems.add(new FileManagerItem(names.get(i), paths.get(i)));
+            fileListItems.add(new FileBrowserAdapter.FileManagerItem(names.get(i), paths.get(i)));
         }
 
 

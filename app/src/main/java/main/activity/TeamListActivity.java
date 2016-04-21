@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import hello.chat.R;
 import com.netease.nim.uikit.cache.TeamDataCache;
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.contact.core.item.AbsContactItem;
@@ -26,6 +25,8 @@ import com.netease.nimlib.sdk.team.constant.TeamTypeEnum;
 import com.netease.nimlib.sdk.team.model.Team;
 
 import java.util.List;
+
+import hello.login.R;
 
 /**
  * 群列表(通讯录)
@@ -98,6 +99,7 @@ public class TeamListActivity extends TActionBarActivity implements AdapterView.
         // load data
         int count = NIMClient.getService(TeamService.class).queryTeamCountByTypeBlock(itemType == ItemTypes.TEAMS
                 .ADVANCED_TEAM ? TeamTypeEnum.Advanced : TeamTypeEnum.Normal);
+
         if (count == 0) {
             if (itemType == ItemTypes.TEAMS.ADVANCED_TEAM) {
                 Toast.makeText(TeamListActivity.this, R.string.no_team, Toast.LENGTH_SHORT).show();

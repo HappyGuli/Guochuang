@@ -8,6 +8,7 @@
 
 
     <android.support.v7.widget.CardView
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_width="match_parent"
@@ -27,7 +28,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <course.customUI.RoundAngleImageView
+                    android:id="@+id/iv_user_icon"
+                    android:background="@color/user_icon_bg"
                     android:layout_marginTop="10dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -42,12 +45,14 @@
                     >
 
                     <TextView
+                        android:id="@+id/tv_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="张三"
                         />
 
                     <ImageView
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
@@ -66,6 +71,7 @@
                 android:layout_marginLeft="20dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/tv_user_id"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,15 +98,18 @@
                         android:orientation="vertical"
                         >
                         <TextView
+                            android:id="@+id/tv_my_attention_cnt"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="2"
                             />
 
                         <TextView
+                            android:id="@+id/tv_my_attention"
                             android:layout_marginTop="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:textColor="@color/textview_selector_color_content"
                             android:text="我的关注"
                             />
 
@@ -114,12 +123,15 @@
                         android:orientation="vertical"
                         >
                         <TextView
+                            android:id="@+id/tv_my_collect_cnt"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="6"
                             />
 
                         <TextView
+                            android:id="@+id/tv_my_collect"
+                            android:textColor="@color/textview_selector_color_content"
                             android:layout_marginTop="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -154,18 +166,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/rl_user_my_ability"
                 >
                 <TextView
+                    android:textColor="@color/textview_selector_color"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="我的能力值"
                     />
 
                 <TextView
+                    android:id="@+id/tv_user_ability_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -175,27 +190,31 @@
                     />
 
             </RelativeLayout>
+
             <View
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                 android:layout_height="1dp"
+                android:layout_height="1dp"
                 android:background="#dedede"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/rl_user_my_level"
+
                 >
                 <TextView
+                    android:textColor="@color/textview_selector_color"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="我的等级"
                     />
 
                 <TextView
+                    android:id="@+id/tv_user_level"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -206,7 +225,6 @@
 
             </RelativeLayout>
             <View
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#dedede"></View>
@@ -214,18 +232,21 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/rl_user_my_question"
                 >
                 <TextView
+                    android:textColor="@color/textview_selector_color"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="我的提问"
                     />
 
                 <TextView
+                    android:id="@+id/tv_my_question_cnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -236,25 +257,27 @@
 
             </RelativeLayout>
             <View
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                  android:layout_height="1dp"
                 android:background="#dedede"></View>
             <RelativeLayout
+                android:id="@+id/rl_my_user_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
                 <TextView
+                    android:textColor="@color/textview_selector_color"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="我的回答"
                     />
 
                 <TextView
+                    android:id="@+id/tv_my_answer_cnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -284,26 +307,29 @@
             >
 
             <TextView
+                android:textColor="@color/textview_selector_color"
+                android:id="@+id/tv_about_us"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="关于我们"
                 />
 
             <View
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#dedede"></View>
 
             <TextView
+                android:textColor="@color/textview_selector_color"
+                android:id="@+id/tv_about_soft_ware"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="关于软件"

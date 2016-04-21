@@ -15,15 +15,15 @@ import android.os.Environment;
 
 public class FileUtil {
 
-    
-    /**
-     * ��Bitmap ͼƬ���浽����·����������·��
-     * @param c
-     * @param mType ��Դ���ͣ�����  MultimediaContentType ö�٣���ݴ����ͣ�����ʱ���Զ�����
-     * @param fileName �ļ����
-     * @param bitmap ͼƬ
-     * @return
-     */
+
+	/**
+	 * 保存图片 并且 将图片在手机中的地址给返回
+	 * @param c
+	 * @param fileName
+	 * @param bitmap
+	 * @return
+	 */
+
 	public static String saveFile(Context c, String fileName, Bitmap bitmap) {
 		return saveFile(c, "", fileName, bitmap);
 	}
@@ -47,7 +47,7 @@ public class FileUtil {
 		try {
 			String suffix = "";
 			if (filePath == null || filePath.trim().length() == 0) {
-				filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + dateFolder + "/";
+				filePath = Environment.getExternalStorageDirectory() + "/Guochuang/" + dateFolder + "/";
 			}
 			File file = new File(filePath);
 			if (!file.exists()) {

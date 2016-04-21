@@ -5,9 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.main.model.MainTab;
+import hello.login.R;
 import com.netease.nim.uikit.common.fragment.TabFragment;
+
+import main.model.MainTab;
 
 
 public abstract class MainTabFragment extends TabFragment {

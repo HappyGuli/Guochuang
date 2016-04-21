@@ -1,7 +1,14 @@
 package course.activity;
-
+import common.UIHelper;
+import course.netdata.CollectInfoBean;
+import course.netdata.MyQuestionBean;
+import hello.login.R;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +25,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import bean.CollectItemBean;
-import bean.MyQuestionItemBean;
+import course.bean.MyQuestionItemBean;
+import widget.AppContext;
 
 /**
  * Created by happypaul on 16/1/26.
@@ -27,8 +35,55 @@ public class MyQuestionActivity extends ActionBarActivity {
 
     private Toolbar mToolbar;
 
-    private List<MyQuestionItemBean> datas;
+    private List<MyQuestionBean> datas;
     private RecyclerView recyclerView;
+
+    //在请求服务器数据时 需要使用到
+    private AppContext appContext;
+
+    //从sharedPreference中获取 用户的账户信息
+    private String self_sid;
+    private SharedPreferences sharedPreferences;
+
+
+
+    private Handler mHandler = new android.os.Handler() {
+
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                Toast.makeText(MyQuestionActivity.this, "查看我的提问成功", Toast.LENGTH_SHORT).show();
+
+                // 获取到从服务器中获取到的数据
+                datas = ( List<MyQuestionBean>) msg.obj;
+
+                if(datas!=null&&datas.size()>0){
+                    // 将数据给展示出来
+                    initListAdapterV();
+                }else{
+                    //没有数据的情况
+
+                    //当没有数据时，给出提示
+                    LinearLayout ll = (LinearLayout)MyQuestionActivity.this.findViewById(R.id.ll_tip);
+                    ll.removeAllViews();
+                    // 将TextView 加入到LinearLayout 中
+                    TextView tv = new TextView(MyQuestionActivity.this);
+                    tv.setHeight((int) 60);
+                    tv.setTextSize(16);
+                    tv.setTextColor(MyQuestionActivity.this.getResources()
+                            .getColor(R.color.course_table_bg));
+                    tv.setText("您还没有发布过任何问题！");
+
+                    ll. addView(tv);
+
+                    UIHelper.ToastMessage(MyQuestionActivity.this, "没有数据");
+
+                }
+
+            } else  if(msg.what == -1){
+                Toast.makeText(MyQuestionActivity.this, "服务器出错", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
 
     @Override
@@ -49,11 +104,26 @@ public class MyQuestionActivity extends ActionBarActivity {
         getSupportActionBar().setTitle("我的提问");
 
 
-        initDdata();
-        initListAdapterV();
+        //初始化 appContext
+        appContext = new AppContext(getApplication());
 
+        //从sharedPreference中获取 用户的账户信息
+        getSidFromSharedPreference();
+
+
+        //从服务器获取到初始化数据
+        initDdata();
 
     }
+
+    /******从sharedPreference中获取 用户的账户信息*****/
+    public  void getSidFromSharedPreference(){
+        sharedPreferences = getSharedPreferences("info", MODE_WORLD_READABLE);
+        /*******从sharedPreferences中获得 用户的学号信息********/
+        self_sid = sharedPreferences.getString("str_sid","20134942");
+
+    }
+
 
     //设置 actionBar中的返回键的监听
     @Override
@@ -77,24 +147,29 @@ public class MyQuestionActivity extends ActionBarActivity {
 
     private void initDdata() {
 
-        datas = new ArrayList<MyQuestionItemBean>();
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
 
-        for(int i=0;i<1;i++){
+               Message msg = new Message();
+               try{
 
-            MyQuestionItemBean tem= new MyQuestionItemBean();
+                   //从服务器中 获取到 用户发布过的所有的问题
+                   List<MyQuestionBean> list = AppContext.FindUserQuestioned(appContext,self_sid);
+                   msg.what = 1;
+                   msg.obj = list;
 
-            tem.setQuestionTitle("有没有办法关掉用户新建话题的权限呢?");
-            tem.setQuetionContent("建立了Excel表格，有没有一种权限设置了之后，别人将无法将整个文档删除？\" +" +
-                    "                    \"是不是需要靠软件来实现？请知道的帮帮忙，谢谢拉！");
+               }catch (Exception e){
+                   //打印出错误详情
+                   e.printStackTrace();
+                   msg.what = -1;
+               }
 
-            //获取当前时间
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-            Date currDate = new Date(System.currentTimeMillis());
-            String curD = simpleDateFormat.format(currDate);
-            tem.setDate(curD);
+               //将获取到的数据 发送给 UI
+               mHandler.sendMessage(msg);
 
-            datas.add(tem);
-        }
+           }
+       }).start();
 
     }
 
@@ -114,10 +189,10 @@ public class MyQuestionActivity extends ActionBarActivity {
     private class MyQuestionRecyclerViewAdapter extends RecyclerView.Adapter<MyQuestionHolder> {
 
         private Context context;
-        private List<MyQuestionItemBean> datas;
+        private List<MyQuestionBean> datas;
 
         //构造函数
-        public MyQuestionRecyclerViewAdapter(Context context, List<MyQuestionItemBean> datas) {
+        public MyQuestionRecyclerViewAdapter(Context context, List<MyQuestionBean> datas) {
             super();
             this.context = context;
             this.datas = datas;
@@ -162,17 +237,23 @@ public class MyQuestionActivity extends ActionBarActivity {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //测试
-                    Toast.makeText(MyQuestionActivity.this, "你点击的收藏是" +
-                            datas.get(getPosition()), Toast.LENGTH_SHORT).show();
+
+                    //设置监听事件  点击item跳转到相应的问题当中去
+                    Intent intent = new Intent();
+                    intent.setClass(MyQuestionActivity.this, SpecificQuestionWithAnsActivity.class);   //描述起点和目标
+                    Bundle bundle = new Bundle();                            //创建Bundle对象
+                    bundle.putInt("questionid", datas.get(getPosition()).getQid());       //装入数据
+                    intent.putExtras(bundle);//把Bundle塞入Intent里面
+                    startActivity(intent);
+
                 }
             });
 
         }
 
-        public void SetDataAndRefreshUI(MyQuestionItemBean bean){
+        public void SetDataAndRefreshUI(MyQuestionBean bean){
 
-            questionContent.setText(bean.getQuetionContent());
+            questionContent.setText(bean.getQuestionContent());
             questionTitle.setText(bean.getQuestionTitle());
             questionDate.setText(bean.getDate());
 

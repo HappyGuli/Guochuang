@@ -1,5 +1,5 @@
 package course.activity;
-
+import hello.login.R;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -27,10 +27,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import bean.QuestionBean;
-import bean.RelateToMeCommentsBean;
-import bean.RelateToMeInvitedBean;
-import bean.RelateToMeThankedBean;
+import course.bean.RelateToMeCommentsBean;
+import course.bean.RelateToMeInvitedBean;
+import course.bean.RelateToMeThankedBean;
 
 /**
  * Created by happypaul on 16/1/24.
@@ -75,6 +74,8 @@ public class RelateToMeActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("与我相关");
+
 
 
         InitViewPager();

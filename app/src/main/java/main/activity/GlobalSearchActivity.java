@@ -16,8 +16,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import hello.chat.R;
-
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nim.uikit.common.util.string.StringUtil;
 import com.netease.nim.uikit.contact.core.item.AbsContactItem;
@@ -28,6 +26,8 @@ import com.netease.nim.uikit.contact.core.provider.ContactDataProvider;
 import com.netease.nim.uikit.contact.core.query.IContactDataProvider;
 import com.netease.nim.uikit.contact.core.viewholder.ContactHolder;
 import com.netease.nim.uikit.contact.core.viewholder.LabelHolder;
+
+import hello.login.R;
 
 /**
  * 全局搜索页面(目前仅支持通讯录搜索)

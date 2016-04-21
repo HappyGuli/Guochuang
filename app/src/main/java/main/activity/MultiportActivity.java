@@ -1,12 +1,12 @@
 package main.activity;
 
+import hello.login.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import com.netease.nim.uikit.common.activity.TActionBarActivity;
 import com.netease.nimlib.sdk.NIMClient;

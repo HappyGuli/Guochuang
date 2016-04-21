@@ -5,8 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
 
-
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.SoftReference;

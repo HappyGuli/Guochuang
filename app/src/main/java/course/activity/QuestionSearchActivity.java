@@ -1,4 +1,5 @@
 package course.activity;
+import hello.login.R;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

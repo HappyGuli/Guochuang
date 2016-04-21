@@ -80,6 +80,7 @@ public abstract class TActionBarActivity extends ActionBarActivity {
 
     public void setTitle(CharSequence title) {
         getSupportActionBar().setTitle(title);
+
     }
 
     public void setTitle(int titleResId) {

@@ -14,10 +14,8 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 
-import hello.htmltextview.R;
+import hello.login.R;
 
 
 /**
@@ -86,7 +84,7 @@ public class UrlImageGetter implements Html.ImageGetter {
 
 
         //异步加载图片
-        ImageLoader.getInstance().loadImage(c, source ,new SimpleImageLoadingListener() {
+       /* ImageLoader.getInstance().loadImage(c, source ,new SimpleImageLoadingListener() {
 
             @Override
             public void onLoadingComplete(Bitmap loadedImage) {
@@ -173,7 +171,10 @@ public class UrlImageGetter implements Html.ImageGetter {
             }
 
 
-        });
+
+
+
+        });*/
 
         return urlDrawable;
     }

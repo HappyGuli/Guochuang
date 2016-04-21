@@ -11,8 +11,6 @@ import android.os.StatFs;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
 
-import com.netease.nim.demo.common.util.sys.InstallUtil;
-import com.netease.nim.demo.common.util.sys.SysInfoUtil;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.util.sys.NetworkUtil;
 
@@ -25,6 +23,9 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import util.sys.InstallUtil;
+import util.sys.SysInfoUtil;
 
 
 public class CrashSnapshot {

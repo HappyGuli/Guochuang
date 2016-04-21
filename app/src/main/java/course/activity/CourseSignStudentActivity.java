@@ -1,4 +1,5 @@
 package course.activity;
+import hello.login.R;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -42,11 +43,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import bean.Course;
-import bean.WifiBean;
-import util.ComparatorWifi;
-import util.GPRSUnit;
-import util.WifiUtil;
+import course.bean.WifiBean;
+import course.util.ComparatorWifi;
+import course.util.GPRSUnit;
+import course.util.WifiUtil;
 
 /**
  * Created by happypaul on 16/1/23.
@@ -93,6 +93,8 @@ public class CourseSignStudentActivity extends ActionBarActivity {
     final String isSave[] = new String[] { "connect", "forget", "cancel" };//
 
 
+    //监听wifi状态
+    private WifiBroad wifiReceiver;
 
 
 
@@ -279,7 +281,7 @@ public class CourseSignStudentActivity extends ActionBarActivity {
 
     public void showTitle() {
         /** 添加wifi状态广播 */
-        WifiBroad wifiReceiver = new WifiBroad();
+        wifiReceiver = new WifiBroad();
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.RSSI_CHANGED_ACTION);
         filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
@@ -688,5 +690,14 @@ public class CourseSignStudentActivity extends ActionBarActivity {
             result = "较弱";
         }
         return result;
+    }
+
+
+
+    // 解除掉 对wifiReceiver的监听 否则会有 intentleak
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.unregisterReceiver(wifiReceiver);
     }
 }

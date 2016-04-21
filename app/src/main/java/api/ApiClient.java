@@ -21,12 +21,13 @@ import java.io.InputStream;
 import java.util.List;
 
 import common.StringUtils;
-import netdata.AnswerToSpecQuestionBeanList;
-import netdata.CommentToSpecAnswerBeanList;
-import netdata.CourseboardBean;
-import netdata.CourseboardBeanList;
-import netdata.QuesitonInSpecificCourseBeanList;
-import netdata.StudentInfoInClassBeanList;
+import course.netdata.AnswerToSpecQuestionBeanList;
+import course.netdata.CollectInfoBeanList;
+import course.netdata.CommentToSpecAnswerBeanList;
+import course.netdata.CourseboardBean;
+import course.netdata.CourseboardBeanList;
+import course.netdata.QuesitonInSpecificCourseBeanList;
+import course.netdata.StudentInfoInClassBeanList;
 import widget.AppContext;
 import widget.AppException;
 
@@ -319,6 +320,7 @@ public class ApiClient {
     }
 
 
+
     /**
      * 签到是需要的到老师对应的学生信息列表
      * @param appContext
@@ -343,68 +345,6 @@ public class ApiClient {
             throw AppException.network(e);
         }
 
-//        String finalUrl = URLs.TEACHER_STUDENT_INFO;
-//        String cookie = getCookie(appContext);
-//        String userAgent = getUserAgent(appContext);
-//        HttpClient httpClient = null;
-//        PostMethod httpPost = null;
-//        String responseBody = "";
-//        int time = 0;
-//        do {
-//            try {
-//                httpClient = getHttpClient();
-//                httpPost = getHttpPost(finalUrl, cookie, userAgent);
-//
-//                //添加参数
-//                httpPost.addParameter("cid",cid);
-//                httpPost.addParameter("tname",tname);
-//                int statusCode = httpClient.executeMethod(httpPost);
-//                //代表没有成功的返回
-//                if (statusCode != 200) {
-//                    throw AppException.http(statusCode);
-//                }
-//
-//                responseBody = httpPost.getResponseBodyAsString();
-//                break;
-//            } catch (HttpException e) {
-//                time++;
-//                if (time < RETRY_TIME) {
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e1) {
-//                    }
-//                    continue;
-//                }
-//                // 发生致命的异常，可能是协议不对或者返回的内容有问题
-//                e.printStackTrace();
-//                throw AppException.http(e);
-//            } catch (IOException e) {
-//                time++;
-//                if (time < RETRY_TIME) {
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e1) {
-//                    }
-//                    continue;
-//                }
-//                // 发生网络异常
-//                // e.printStackTrace();
-//                throw AppException.network(e);
-//            } finally {
-//                // 释放连接
-//                httpPost.releaseConnection();
-//                httpClient = null;
-//            }
-//        } while (time < RETRY_TIME);
-//
-//        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
-//        try{
-//            return StudentInfoInClassBeanList.parse(StringUtils.toJSONArray(responseBody));
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }finally {
-//            return null;
-//        }
 
     }
 
@@ -434,6 +374,7 @@ public class ApiClient {
         }
     }
 
+
     /**
      * 保存用户的评论信息
      * @param appContext
@@ -460,6 +401,7 @@ public class ApiClient {
         }
 
     }
+
 
     /**
      * 保存用户基本信息
@@ -701,6 +643,8 @@ public class ApiClient {
 
     }
 
+
+
     /**
      * 通过qid查找改问题对应的信息
      * @param appContext
@@ -885,5 +829,716 @@ public class ApiClient {
     }
 
 
+    /**
+     * 保存用户提交的提问信息
+     */
+    public static String UserRegister(AppContext appContext,String accid) throws AppException {
 
+        // 访问的地址
+        String finalUrl = URLs.REGISTER;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",accid);
+
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+
+    }
+
+
+    /**
+     * 将用户保存到 对应的讨论组当中去
+     */
+    public static String AddUserToCrsTeam(AppContext appContext,String sid) throws AppException {
+
+        // 访问的地址
+        String finalUrl = URLs.ADDEDTOTEAM;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+
+    }
+
+
+    /**
+     * 将用户收藏问答的信息 保存到服务器端去
+     */
+    public static String SaveUserClooectInfo(AppContext appContext,String sid,int ans_id) throws AppException {
+
+        // 访问的地址
+        String finalUrl = URLs.SAVEUSERCOLLECT;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+            httpPost.addParameter("ansid",String.valueOf(ans_id));
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+
+    }
+
+
+    /**
+     * 通过qid 返回对应的答案列表
+     * @param appContext
+     * @return
+     * @throws AppException
+     */
+    public static String FindUserCollectInfoList(AppContext appContext,String sid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.FINDUSERCOLLECT;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+    /**
+     * 通过qid 返回对应的答案列表
+     * @param appContext
+     * @return
+     * @throws AppException
+     */
+    public static String FindAnswerDetail(AppContext appContext,int  ansid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.FINDANSWERDETAIL;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("ansid",String.valueOf(ansid));
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+
+    /**
+     * 通过sid 返回 用户回答过的所有问题
+     * @param appContext
+     * @return
+     * @throws AppException
+     */
+    public static String FindUserAnswered(AppContext appContext,String sid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.FINDMYANSWED;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+     /**
+     * 查看用户对某个答案是否 点过赞 或者点过踩
+     * @param appContext
+     * @param sid
+     * @param ansid
+     * @return
+     * @throws AppException
+     */
+    public static String FindIsAnswerVoltedOrVoltdown(AppContext appContext,String sid,int ansid )
+            throws AppException {
+
+
+        // 访问的地址
+        String url = URLs.FINDISANSWERVOLTED;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(url, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+            httpPost.addParameter("ansid",String.valueOf(ansid));
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+    /**
+     * 保存用户的 取消点赞 和 点踩信息
+     *
+     * @param appContext
+     * @param sid
+     * @param ansid
+     * @return
+     * @throws AppException
+     */
+    public static String saveUserCancelVoltOrVoltdown(AppContext appContext,String sid,int ansid,int isVolt )
+            throws AppException {
+
+
+        // 访问的地址
+        String url = URLs.SAVECANCELVOLTORVOLTDOWN;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(url, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+            httpPost.addParameter("ansid",String.valueOf(ansid));
+            httpPost.addParameter("isVolt",String.valueOf(isVolt));
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+    /**
+     * 通过用户id 查找用户 发布过的所有问题
+     * @param appContext
+     * @param sid
+     * @return
+     * @throws AppException
+     */
+    public static String FindUserQuestioned(AppContext appContext,String sid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.FINDMYQUESTIONS;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+    /**
+     * 根据sid 查找用户的一些基本信息  比如发布了多少问题 提出了多少问题
+     * @param appContext
+     * @param sid
+     * @return
+     * @throws AppException
+     */
+    public static String FindUserCntInfo(AppContext appContext,String sid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.FINDUSERCNTINFO;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+    /**
+     *  保存用户的 评论答案信息
+     * @param appContext
+     * @param sid
+     * @return
+     * @throws AppException
+     */
+    public static String SaveUserCommentInfo(AppContext appContext,String commentContent,int ansid,String sid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.SAVEUSERCOMMENT;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",sid);
+            httpPost.addParameter("ansid",String.valueOf(ansid));
+            httpPost.addParameter("commentContent",commentContent);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+
+    /**
+     *  删除用户的 评论答案信息
+     * @param appContext
+     * @return
+     * @throws AppException
+     */
+    public static String DeleteUserCommentInfo(AppContext appContext,int commentid )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.DELETEUSERCOMMENT;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("commentid",String .valueOf(commentid));
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
+
+
+    /**
+     * 更新用户的 imgUrl
+     * @param appContext
+     * @param sid  用户id
+     * @param imgUrl  用户imgUrl
+     * @return
+     * @throws AppException
+     */
+    public static String UploadUserHeadUrl(AppContext appContext,String  sid,String imgUrl )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.UPDATEUSERHEADURL;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("sid",(sid));
+            httpPost.addParameter("imgurl",imgUrl);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
 }

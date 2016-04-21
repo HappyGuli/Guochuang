@@ -11,8 +11,8 @@ import com.netease.nim.uikit.common.util.sys.TimeUtil;
 import com.netease.nimlib.sdk.msg.constant.SystemMessageStatus;
 import com.netease.nimlib.sdk.msg.model.SystemMessage;
 
+import hello.login.R;
 import main.helper.MessageHelper;
-import hello.chat.R;
 
 /**
  * Created by huangjun on 2015/3/18.

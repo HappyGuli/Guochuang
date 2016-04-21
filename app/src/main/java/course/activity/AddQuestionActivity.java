@@ -1,5 +1,6 @@
 package course.activity;
 
+import hello.login.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
@@ -27,10 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import api.ApiClient;
-import common.StringUtils;
 import common.UIHelper;
-import netdata.QuesitonInSpecificCourseBean;
-import netdata.QuesitonInSpecificCourseBeanList;
 import widget.AppContext;
 import widget.AppException;
 

@@ -2,10 +2,10 @@ package session.action;
 
 import android.content.Intent;
 
-import com.netease.nim.demo.R;
-import com.netease.nim.demo.file.browser.FileBrowserActivity;
-import com.netease.nim.uikit.session.constant.RequestCode;
+import file.browser.FileBrowserActivity;
+import hello.login.R;
 import com.netease.nim.uikit.session.actions.BaseAction;
+import com.netease.nim.uikit.session.constant.RequestCode;
 import com.netease.nimlib.sdk.msg.MessageBuilder;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 
@@ -24,6 +24,8 @@ public class FileAction extends BaseAction {
      * **********************文件************************
      */
     private void chooseFile() {
+
+        /******被谷力****/
         FileBrowserActivity.startActivityForResult(getActivity(), makeRequestCode(RequestCode.GET_LOCAL_FILE));
     }
 

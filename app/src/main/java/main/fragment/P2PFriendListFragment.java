@@ -19,7 +19,8 @@ import com.netease.nim.uikit.contact.core.viewholder.AbsContactViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import hello.chat_new.R;
+import contact.activity.AddFriendActivity;
+import hello.login.R;
 import main.activity.SystemMessageActivity;
 import main.activity.TeamListActivity;
 import main.helper.SystemMessageUnreadManager;
@@ -39,7 +40,7 @@ public class P2PFriendListFragment extends MainTabFragment {
     private ContactsFragment fragment;
 
     public P2PFriendListFragment() {
-        setContainerId(MainTab.CONTACT.fragmentId);
+        setContainerId(MainTab.CHAT_ROOM.fragmentId);
     }
 
     /**
@@ -48,9 +49,7 @@ public class P2PFriendListFragment extends MainTabFragment {
     public final static class FuncItem extends AbsContactItem {
         static final FuncItem VERIFY = new FuncItem();
         static final FuncItem NORMAL_TEAM = new FuncItem();
-        static final FuncItem ADVANCED_TEAM = new FuncItem();
-        static final FuncItem BLACK_LIST = new FuncItem();
-        static final FuncItem MY_COMPUTER = new FuncItem();
+
 
         @Override
         public int getItemType() {
@@ -95,20 +94,12 @@ public class P2PFriendListFragment extends MainTabFragment {
                             updateUnreadNum(item.getUnread());
                         }
                     });
-                } else if (item == NORMAL_TEAM) {
-                    funcName.setText("讨论组");
+                }
+                else if (item == NORMAL_TEAM) {
+                    funcName.setText("添加好友");
                     image.setImageResource(R.drawable.ic_secretary);
                 }
-//                else if (item == ADVANCED_TEAM) {
-//                    funcName.setText("高级群");
-//                    image.setImageResource(R.drawable.ic_advanced_team);
-//                } else if (item == BLACK_LIST) {
-//                    funcName.setText("黑名单");
-//                    image.setImageResource(R.drawable.ic_black_list);
-//                } else if (item == MY_COMPUTER) {
-//                    funcName.setText("我的电脑");
-//                    image.setImageResource(R.drawable.ic_my_computer);
-//                }
+
 
                 if (item != VERIFY) {
                     image.setScaleType(ScaleType.FIT_XY);
@@ -131,9 +122,6 @@ public class P2PFriendListFragment extends MainTabFragment {
             List<AbsContactItem> items = new ArrayList<AbsContactItem>();
             items.add(VERIFY);
             items.add(NORMAL_TEAM);
-//            items.add(ADVANCED_TEAM);
-//            items.add(BLACK_LIST);
-//            items.add(MY_COMPUTER);
 
             return items;
         }
@@ -146,16 +134,15 @@ public class P2PFriendListFragment extends MainTabFragment {
         static void handle(Context context, AbsContactItem item) {
             if (item == VERIFY) {
                 SystemMessageActivity.start(context);
-            } else if (item == NORMAL_TEAM) {
-                TeamListActivity.start(context, ItemTypes.TEAMS.NORMAL_TEAM);
             }
-//            else if (item == ADVANCED_TEAM) {
-//                TeamListActivity.start(context, ItemTypes.TEAMS.ADVANCED_TEAM);
-//            } else if (item == MY_COMPUTER) {
-//               // SessionHelper.startP2PSession(context, DemoCache.getAccount());
-//            } else if (item == BLACK_LIST) {
-//                //BlackListActivity.start(context);
-//            }
+
+            //添加好友
+            else if (item == NORMAL_TEAM) {
+                AddFriendActivity.start(context);
+            }
+
+
+
         }
     }
 
@@ -176,10 +163,11 @@ public class P2PFriendListFragment extends MainTabFragment {
         addContactFragment();  // 集成通讯录页面
     }
 
+
     // 将通讯录列表fragment动态集成进来。 开发者也可以使用在xml中配置的方式静态集成。
     private void addContactFragment() {
         fragment = new ContactsFragment();
-        fragment.setContainerId(R.id.contact_fragment);
+        fragment.setContainerId(R.id.p2p_friend_fragment);
 
         TActionBarActivity activity = (TActionBarActivity) getActivity();
 

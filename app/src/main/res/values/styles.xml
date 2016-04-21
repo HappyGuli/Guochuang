@@ -12,9 +12,11 @@
         <!-- 返回箭头icon的样式 -->
         <item name="homeAsUpIndicator">@drawable/actionbar_dark_back_icon</item>
         <!-- 搜索框背景样式替换 -->
-        <item name="searchViewTextField">@drawable/actionbar_search_view_bg</item>
+        <!--<item name="searchViewTextField">@drawable/actionbar_search_view_bg</item>-->
         <!-- 搜索框的icon图标替换 -->
-        <item name="searchViewSearchIcon">@drawable/action_bar_search_view_icon</item>
+        <!--<item name="searchViewSearchIcon">@drawable/action_bar_search_view_icon</item>-->
+
+
         <item name="android:actionBarStyle">@style/LightBaseActionBarStyle</item>
         <item name="android:actionButtonStyle">@style/ActionButtonStyle</item>
         <item name="android:popupMenuStyle">@style/PopMenuStyle</item>
@@ -216,4 +218,24 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
+
+
+<!--course 中的style by GUli-->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="normalText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#444</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
 </resources>

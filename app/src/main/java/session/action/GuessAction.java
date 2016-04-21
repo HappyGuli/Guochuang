@@ -1,8 +1,9 @@
 package session.action;
 
-import com.netease.nim.demo.R;
+import hello.login.R;
+import session.extension.GuessAttachment;
+
 import com.netease.nim.uikit.session.actions.BaseAction;
-import com.netease.nim.demo.session.extension.GuessAttachment;
 import com.netease.nimlib.sdk.chatroom.ChatRoomMessageBuilder;
 import com.netease.nimlib.sdk.msg.MessageBuilder;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;

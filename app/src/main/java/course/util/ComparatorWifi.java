@@ -2,7 +2,7 @@ package course.util;
 
 import java.util.Comparator;
 
-import bean.WifiBean;
+import course.bean.WifiBean;
 
 
 /**排序 热点*/
