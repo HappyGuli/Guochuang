@@ -43,6 +43,8 @@ import course.netdata.MyAnsweredBeanList;
 import course.netdata.MyQuestionBean;
 import course.netdata.MyQuestionBeanList;
 import course.netdata.QuesitonInSpecificCourseBeanList;
+import course.netdata.QuestionSearchedBean;
+import course.netdata.QuestionSearchedBeanList;
 import course.netdata.StudentInfoInClassBeanList;
 import course.netdata.UserInfoBean;
 
@@ -1213,7 +1215,7 @@ public class AppContext {
 
 		try {
 			//从服务器
-			String result = ApiClient.UploadUserHeadUrl(appContext,sid,imgUrl);
+			String result = ApiClient.UploadUserHeadUrl(appContext, sid, imgUrl);
 
 			JSONObject jobj = new JSONObject(result);
 
@@ -1231,6 +1233,47 @@ public class AppContext {
 
 	}
 
+
+	/**
+	 *  查询用户的
+	 * @param appContext
+	 * @param cid
+	 * @param key
+	 * @return
+	 * @throws AppException
+	 */
+	public static List<QuestionSearchedBean> SearchInQuestions(AppContext appContext,String cid,String key)throws AppException {
+
+		try {
+			//从服务器端获取数据
+			String result = ApiClient.SearchInQuestion(appContext, cid, key);
+			try {
+
+				JSONObject jobj = new JSONObject(result);
+				String code = jobj.getString("code");
+				//如果获取成功
+				if ("200".equals(code)) {
+
+					// 返回解析之后的 CollectInfoBean 的集合
+					return (QuestionSearchedBeanList.parse(StringUtils.toJSONArray(jobj.getString("result")))).getList();
+
+				} else {
+					String inner_result = jobj.getString("msg");
+					UIHelper.ToastMessage(appContext.application, inner_result, 0);
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				throw new Exception("解析出错");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw AppException.http(e);
+		}
+
+		//如果出错了 返回null
+		return null;
+	}
 
 
 

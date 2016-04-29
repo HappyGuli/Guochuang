@@ -1541,4 +1541,60 @@ public class ApiClient {
         responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
         return responseBody;
     }
+
+
+    /**
+     * 通过 关键词来查找 question
+     * @param appContext
+     * @param sid
+     * @return
+     * @throws AppException
+     */
+    public static String SearchInQuestion(AppContext appContext,String cid ,String keyWord )
+            throws AppException {
+
+
+        // 访问的地址
+        String finalUrl = URLs.SEARCHINQUESTION;
+
+        String cookie = getCookie(appContext);
+        String userAgent = getUserAgent(appContext);
+        HttpClient httpClient = null;
+        PostMethod httpPost = null;
+        String responseBody = "";
+
+        try {
+            httpClient = getHttpClient();
+            httpPost = getHttpPost(finalUrl, cookie, userAgent);
+
+            //添加参数
+            httpPost.addParameter("cid",cid);
+            httpPost.addParameter("key",keyWord);
+
+            int statusCode = httpClient.executeMethod(httpPost);
+            //代表没有成功的返回
+            if (statusCode != 200) {
+                throw AppException.http(statusCode);
+            }
+
+            responseBody = httpPost.getResponseBodyAsString();
+        } catch (HttpException e) {
+
+            // 发生致命的异常，可能是协议不对或者返回的内容有问题
+            e.printStackTrace();
+            throw AppException.http(e);
+        } catch (IOException e) {
+
+            // 发生网络异常
+            e.printStackTrace();
+            throw AppException.network(e);
+        } finally {
+            // 释放连接
+            httpPost.releaseConnection();
+            httpClient = null;
+        }
+
+        responseBody = responseBody.replaceAll("\\p{Cntrl}", "");
+        return responseBody;
+    }
 }

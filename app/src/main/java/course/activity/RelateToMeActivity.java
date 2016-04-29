@@ -109,7 +109,7 @@ public class RelateToMeActivity extends ActionBarActivity {
         invitedDatas = new ArrayList<RelateToMeInvitedBean>();
         thankedDatas = new ArrayList<RelateToMeThankedBean>();
 
-        for(int i=0;i<10;i++){
+        for(int i=0;i<1;i++){
             RelateToMeCommentsBean temC = new RelateToMeCommentsBean();
             RelateToMeThankedBean  temT = new RelateToMeThankedBean();
             RelateToMeInvitedBean temI = new RelateToMeInvitedBean();
@@ -119,19 +119,19 @@ public class RelateToMeActivity extends ActionBarActivity {
             Date currDate = new Date(System.currentTimeMillis());
             String curD = simpleDateFormat.format(currDate);
 
-            temC.setUserName("张三i");
+            temC.setUserName("刘凯");
             temC.setDate(curD);
             temC.setAnswerId(i);
             temC.setUserIcon(R.mipmap.usericon1);
 
 
-            temT.setUserName("张三i");
+            temT.setUserName("张建国");
             temT.setDate(curD);
             temT.setAnswerId(i);
             temT.setUserIcon(R.mipmap.usericon1);
 
 
-            temI.setUserName("张三i");
+            temI.setUserName("谭阳军");
             temI.setDate(curD);
             temI.setQuestionId(i);
             temI.setUserIcon(R.mipmap.usericon1);
@@ -424,7 +424,7 @@ public class RelateToMeActivity extends ActionBarActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenW = dm.widthPixels;// 获取分辨率宽度
-        offset = 30;// 计算偏移量
+        offset = 15;// 计算偏移量
         Matrix matrix = new Matrix();
         matrix.postTranslate(offset, 0);
         imageView.setImageMatrix(matrix);// 设置动画初始位置
@@ -482,7 +482,7 @@ public class RelateToMeActivity extends ActionBarActivity {
     //设计动画
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
-        int one = 80+bmpW;// 页卡1 -> 页卡2 偏移量
+        int one = 2*(85+bmpW);// 页卡1 -> 页卡2 偏移量
         public void onPageScrollStateChanged(int arg0) {
 
 
@@ -503,6 +503,7 @@ public class RelateToMeActivity extends ActionBarActivity {
         }
 
     }
+
     //ViewPager相关的东西  结束
     //////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////

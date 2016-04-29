@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <include android:id="@+id/main_toolbar"
-        layout="@layout/include_relate_to_me_toolbar"></include>
+        layout="@layout/include_relate_to_me_toolbar"
+        ></include>
 
-    <RelativeLayout
-        android:background="@color/xinqi_color"
+    <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
         <ImageView
             android:id="@+id/iv_relate_thanked"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="7dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/iv_relate_to_me_thanked"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha=".7"
+            android:src="@drawable/ic_favorite_black_36dp" />
         <ImageView
             android:layout_toRightOf="@+id/iv_relate_thanked"
             android:id="@+id/iv_relate_comments"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="7dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/iv_relate_to_me_comment"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_comment_black_36dp"
+            android:alpha=".7"
+            android:layout_centerInParent="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false" />
 
         <ImageView
             android:layout_toRightOf="@+id/iv_relate_comments"
@@ -35,11 +42,13 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="7dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/iv_relate_to_me_invite"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha=".7"
+            android:src="@drawable/ic_group_black_36dp"
+            android:layout_alignParentEnd="true" />
 
-    </RelativeLayout>
+    </LinearLayout>
     <ImageView
         android:id="@+id/cursor"
         android:layout_width="fill_parent"
@@ -50,7 +59,9 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/relate_to_me_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/background">
 
 
     </android.support.v4.view.ViewPager>

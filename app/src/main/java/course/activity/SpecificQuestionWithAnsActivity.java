@@ -55,6 +55,11 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
     private ProgressDialog selectorDialog;
 
 
+    //用来保存 课程名字的
+    private String str_coursename;
+    private TextView tv_coursename;
+
+
     private List<SimpleAnswerBean> datas;
 
     private List<AnswerToSpecQuestionBean> testDatas;
@@ -231,6 +236,10 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
         tv_questiondetail= (TextView) findViewById(R.id.tv_question_detail);
         tv_questiontitle= (TextView) findViewById(R.id.tv_question_title);
         tv_question_time =(TextView) findViewById(R.id.tv_question_time);
+
+        //展示来之那个课程
+        tv_coursename = (TextView) findViewById(R.id.tv_coursename);
+
         //找到提示的部分
         cardview_tips = (CardView) findViewById(R.id.cardview_tips);
     }
@@ -290,6 +299,10 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
 
             Bundle bundle = intent.getExtras();    //获取intent里面的bundle对象
             qid = bundle.getInt("questionid", 100);
+            str_coursename = bundle.getString("course_name");
+
+            //展示到界面当中
+            tv_coursename.setText("来自"+str_coursename+"课程");
 
         }else{
             //给出提示

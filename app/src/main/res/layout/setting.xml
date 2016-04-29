@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <include android:id="@+id/main_toolbar"
         layout="@layout/include_normal_toolbar"></include>
 
 
     <android.support.v7.widget.CardView
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,56 +25,33 @@
             android:orientation="horizontal"
             >
 
-
-            <LinearLayout
-                android:layout_marginLeft="20dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/iv_user_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/usericon1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                />
 
-                <course.customUI.RoundAngleImageView
-                    android:id="@+id/iv_user_icon"
-                    android:background="@color/user_icon_bg"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@mipmap/usericon1"
-                    />
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal"
-                    >
-
-                    <TextView
-                        android:id="@+id/tv_user_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="张三"
-                        />
-
-                    <ImageView
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@mipmap/setting"
-                        />
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="张三"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_primary" />
+
                 <TextView
                     android:id="@+id/tv_user_id"
                     android:layout_marginTop="10dp"
@@ -78,73 +60,10 @@
                     android:text="学号: 20134942"
                     />
 
-                <View
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#dedede"></View>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
-                    <LinearLayout
-                        android:layout_marginTop="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
-                        <TextView
-                            android:id="@+id/tv_my_attention_cnt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="2"
-                            />
-
-                        <TextView
-                            android:id="@+id/tv_my_attention"
-                            android:layout_marginTop="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/textview_selector_color_content"
-                            android:text="我的关注"
-                            />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
-                        <TextView
-                            android:id="@+id/tv_my_collect_cnt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="6"
-                            />
-
-                        <TextView
-                            android:id="@+id/tv_my_collect"
-                            android:textColor="@color/textview_selector_color_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="我的收藏"
-                            />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
 
             </LinearLayout>
+
+
 
 
         </LinearLayout>
@@ -152,11 +71,14 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -166,10 +88,74 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rl_user_my_ability"
+
                 >
                 <TextView
-                    android:textColor="@color/textview_selector_color"
+                    android:id="@+id/tv_my_attention"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="我的关注"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_my_attention_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="100"
+                    android:layout_marginRight="30dp"
+                    />
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_my_collect"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="我的收藏"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_my_collect_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="100"
+                    android:layout_marginRight="30dp"
+                    />
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_user_my_ability">
+                <TextView
+                    android:textColor="@color/text_primary"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,11 +176,11 @@
                     />
 
             </RelativeLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#dedede"></View>
+                android:background="@color/line"></View>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -203,7 +189,7 @@
 
                 >
                 <TextView
-                    android:textColor="@color/textview_selector_color"
+                    android:textColor="@color/text_primary"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -227,7 +213,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#dedede"></View>
+                android:background="@color/line"></View>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -235,14 +221,14 @@
                 android:id="@+id/rl_user_my_question"
                 >
                 <TextView
-                    android:textColor="@color/textview_selector_color"
+                    android:textColor="@color/text_primary"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="我的提问"
+                    android:text="问过"
                     />
 
                 <TextView
@@ -258,22 +244,23 @@
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
-                 android:layout_height="1dp"
-                android:background="#dedede"></View>
+                android:layout_height="1dp"
+                android:background="@color/line"></View>
+
             <RelativeLayout
                 android:id="@+id/rl_my_user_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
                 <TextView
-                    android:textColor="@color/textview_selector_color"
+                    android:textColor="@color/text_primary"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="我的回答"
+                    android:text="答过"
                     />
 
                 <TextView
@@ -294,11 +281,13 @@
 
 
     <android.support.v7.widget.CardView
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -321,7 +310,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#dedede"></View>
+                android:background="@color/line"></View>
 
             <TextView
                 android:textColor="@color/textview_selector_color"

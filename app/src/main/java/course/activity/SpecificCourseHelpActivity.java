@@ -416,8 +416,13 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
                     intent.setClass(SpecificCourseHelpActivity.this, SpecificQuestionWithAnsActivity.class);   //描述起点和目标
                     Bundle bundle = new Bundle();                            //创建Bundle对象
                     bundle.putInt("questionid", questionid);                 //装入数据
+                    bundle.putString("course_name", str_coursename);
+
                     intent.putExtras(bundle);                                //把Bundle塞入Intent里面
                     startActivity(intent);
+
+
+
 
                 }
             });

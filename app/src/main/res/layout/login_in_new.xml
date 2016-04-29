@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_material_light">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="角色"/>
         <AutoCompleteTextView
-             android:id="@+id/et_add_role"
+            android:id="@+id/et_add_role"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
             android:hint="教师 or 学生"
@@ -136,14 +138,6 @@
             android:layout_weight="1"
             android:background="@null"
             android:layout_height="30dp" />
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:id="@+id/iv_see_pasword"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:background="@mipmap/see_pass_word"
-            android:layout_marginRight="5dp"
-            />
 
 
     </LinearLayout>
@@ -166,33 +160,9 @@
         android:text="登录"
         android:textColor="#ffffff"
         android:background="@drawable/btn_add_answer_bg"
+        android:textSize="16sp"
         />
 
-    <RelativeLayout
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="新用户？请注册"
-            android:textColor="@color/xinqi_color"
-            android:layout_alignParentLeft="true"
-            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/xinqi_color"
-            android:text="忘记密码"
-            android:layout_alignParentRight="true"
-            />
-
-
-    </RelativeLayout>
 
 </LinearLayout>

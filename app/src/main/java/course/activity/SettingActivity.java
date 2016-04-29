@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -65,6 +66,8 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
 
     //用户图片
     private ImageView iv_user_icon ;
+
+
 
     //可以点击的
     private TextView tv_attentio,tv_collect;
@@ -432,6 +435,16 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
         });
 
 
+        sharedPreferences = getSharedPreferences("info", MODE_WORLD_READABLE);
+        /*******从sharedPreferences中获得 用户的头像在手机中的位置信息********/
+        String tem_pic = sharedPreferences.getString("picpath","0000");
+        if(tem_pic!="0000"){
+            //设置用户头像
+            Bitmap bm = BitmapFactory.decodeFile(tem_pic);
+            iv_user_icon.setImageBitmap(bm);
+        }
+
+
         //初始化 用来加载用户头像的 bitmapManager
         bitmapManager = new BitmapManager();
 
@@ -465,6 +478,21 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
         self_sid = sharedPreferences.getString("str_sid","20134942");
 
     }
+
+
+    /******从sharedPreference中获取 用户的账户信息*****/
+    public  void saveUserImgPathToSharedPreference(String picPath){
+        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("picpath", picPath);
+        //提交数据
+        editor.commit();
+
+    }
+
+
+
 
 
 
@@ -548,6 +576,7 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
         intent.putExtra("outputX", 150);
         intent.putExtra("outputY", 150);
         intent.putExtra("return-data", true);
+
         startActivityForResult(intent, SELECTED_PHOTO_ZOOM);
 
      }
@@ -569,6 +598,11 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
 
             //输出测试
             Log.e("TTTT", "picPath" + picPath);
+
+
+            // 保存到sharedPreference  用户头像在手机中的位子
+            saveUserImgPathToSharedPreference(picPath);
+
 
             //设置用户头像为用户自己选择的头像
             iv_user_icon.setImageBitmap(photo);

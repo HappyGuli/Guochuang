@@ -135,8 +135,8 @@
 
     <color name="item_answer_username">#de4266f4</color>
 
-    <color name="btn_add_answer_normal">#56abe4</color>
-    <color name="btn_add_answer_pressed">#569be4</color>
+    <color name="btn_add_answer_normal">#4d69ff</color>
+    <color name="btn_add_answer_pressed">#6c83f5</color>
 
     <color name="et_login_focused">#4d69ff</color>
     <color name="et_login_normal">#45000000</color>
@@ -147,5 +147,36 @@
     <!-- wifi 模块使用-->
     <color name="class_item_bg_sel_color">#ffFFFFFF</color>
     <color name="lightgoldenrodyellow">#FAFAD2</color>
+
+
+
+    <!--add by xiognxianren-->
+    <!--color scheme-->
+    <color name="primary">#03A9F4</color>
+    <color name="primary_dark">#0288D1</color>
+    <color name="accent">#FF5722</color>
+    <color name="background_gray">#f3f3f3</color>
+
+    <color name="text_primary">#222222</color>
+    <color name="text_light">#ffffff</color>
+    <color name="text_gray">#666666</color>
+
+    <color name="btn_primary">#039BE5</color>
+    <color name="btn_active">#0277BD</color>
+
+    <color name="line">#f0f0f0</color>
+    <color name="card_shadow">#bbb</color>
+
+    <color name="green">#43A047</color>
+    <color name="red">#F44336</color>
+    <color name="purple">#9C27B0</color>
+    <color name="blue">#2196F3</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="orange">#FF5722</color>
+    <color name="yellow">#FF9800</color>
+
+    <color name="card_bg">#ddd</color>
+
+
 
 </resources>

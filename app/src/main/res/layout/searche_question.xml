@@ -7,11 +7,12 @@
         android:id="@+id/main_toolbar"
         layout="@layout/include_search_toolbar"></include>
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
+        android:layout_marginTop="10dp"
         android:id="@+id/searched_questions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+    </ListView>
 
 
 

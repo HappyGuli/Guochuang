@@ -14,8 +14,8 @@ public class URLs implements Serializable {
 
 	//public final static String HOST = "10.0.2.2:8080";
 
-	//public final static String HOST = "172.24.2.171:8080";
-	public final static String HOST = "123.57.146.81:8080";
+	public final static String HOST = "172.24.3.42:8080";
+	//public final static String HOST = "123.57.146.81:8080";
 	public final static String HTTP = "http://";
 	private final static String URL_SPLITTER = "/";
 
@@ -46,9 +46,10 @@ public class URLs implements Serializable {
 	public final static String FINDUSERCNTINFO = URL_API_HOST+"/Experiment/android/findUserntInfo.jsp";
 	public final static String SAVEUSERCOMMENT = URL_API_HOST+"/Experiment/android/saveUserComment.jsp";
 	public final static String DELETEUSERCOMMENT = URL_API_HOST+"/Experiment/android/deleteUserComment.jsp";
-	public final static String UPLOADANSWERPIC = URL_API_HOST+"/Experiment/android/UploadHandleServlet";
-	public final static String UPLOADHEADPIC = URL_API_HOST+"/Experiment/android/UploadHandleProfileServlet";
-	public final static String UPDATEUSERHEADURL = URL_API_HOST+"/Experiment/android/UpDateUsrImg";
+	public final static String UPLOADANSWERPIC = URL_API_HOST+"/Experiment/android/UploadHandleServlet.jsp";
+	public final static String UPLOADHEADPIC = URL_API_HOST+"/Experiment/android/UploadHandleProfileServlet.jsp";
+	public final static String UPDATEUSERHEADURL = URL_API_HOST+"/Experiment/android/UpDateUsrImg.jsp";
+	public final static String SEARCHINQUESTION = URL_API_HOST+"/Experiment/android/searcheQuesiton.jsp";
 
 
 	private int objId;

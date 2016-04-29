@@ -309,7 +309,7 @@ public class SpecificAnswerActivity extends ActionBarActivity {
         tv_user_name= (TextView)findViewById(R.id.tv_answer_author);
         tv_question_title = (TextView)findViewById(R.id.tv_question_title);
 
-        tv_user_name.setText(userName);
+        tv_user_name.setText(userName+" 的答案");
         tv_question_title.setText(questionTitle);
 
 

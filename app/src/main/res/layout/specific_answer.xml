@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -7,210 +7,257 @@
     android:layout_height="match_parent">
 
     <include android:id="@+id/main_toolbar"
-        layout="@layout/include_normal_toolbar">
+        layout="@layout/include_normal_toolbar_answer">
     </include>
 
 
 
-    <android.support.v7.widget.CardView
+
+
+    <LinearLayout
+        android:id="@+id/ll_question_title"
+        android:layout_below="@id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="4dp"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/primary"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_question_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="6dp"
+            android:text="去法国留学有没有必要买保险呢?"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/ll_question_title"
+        android:id="@+id/view_baseline"
+        android:layout_width="match_parent"
+        android:background="@color/primary"
+        android:layout_height="20dp">
+
+    </View>
+
+
+
+    <!--android:layout_alignStart="@id/view_baseline"-->
+
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/ll_question_title"
+        android:id="@+id/card_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="5dp"
+        android:clickable="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
             >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:textColor="@color/item_question_title"
-                android:text="问题"
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_answer_user"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/usericon1"
+                android:gravity="center_vertical"
                 />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#d7d7d7"
-                ></View>
+
             <TextView
-                android:id="@+id/tv_question_title"
-                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@+id/iv_answer_user"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_answer_author"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/item_question_detail"
-                android:textSize="17sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="6dp"
-                android:text="去法国留学有没有必要买保险呢?"
+                android:layout_marginRight="5dp"
+                android:text="张三"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="14sp"
+                android:textColor="@color/black"
                 />
+
+
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
 
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="4dp"
-        android:clickable="true"
-        >
-        <RelativeLayout
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:id="@+id/tv_answer_author_hint"
-                android:layout_margin="8dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="答者"
-                android:textColor="@color/item_question_title"
-                />
-
-            <TextView
-                android:id="@+id/tv_answer_author"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/tv_answer_author_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="张三"
-                />
-
-            <LinearLayout
-                android:layout_alignParentEnd="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:clickable="true"
-                    android:background="@drawable/volt_selector"
-                    android:id="@+id/iv_volt"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/ic_thanked"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_specific_answer_thanked_num"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:layout_marginRight="5dp"
-                    />
-
-                <ImageView
-                    android:clickable="true"
-                    android:background="@drawable/volt_down_selector"
-                    android:id="@+id/iv_volt_down"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/ic_vote_down_normal"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="80dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_specific_answer_disliked_num"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="0"
-                    />
-
-
-            </LinearLayout>
-
-
-
-
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
     <ScrollView
+        android:layout_below="@+id/card_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.CardView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
-            <LinearLayout
+            android:orientation="vertical"
+            >
+
+            <course.customUI.HtmlTextView
+                android:id="@+id/tv_answer_content"
+                android:lineSpacingMultiplier="1.3"
+                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/item_question_title"
-                    android:text="回答内容"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#d7d7d7"
-                    ></View>
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:lineSpacingExtra="8dp"
+                android:textColor="@color/black"
+                android:text="test"
+                />
 
-                <course.customUI.HtmlTextView
-                    android:id="@+id/tv_answer_content"
-                    android:textSize="15sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:lineSpacingExtra="8dp"
-                    android:textColor="@color/item_question_username"
+        </LinearLayout>
 
-                    />
-
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
 
     </ScrollView>
 
 
+    <LinearLayout
+        android:background="@color/card_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        >
 
-</LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:clickable="true"
+                android:layout_gravity="center"
+                android:background="@drawable/volt_selector"
+                android:id="@+id/iv_volt"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="5dp"
+                android:src="@mipmap/ic_thanked"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                />
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/tv_specific_answer_thanked_num"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:background="@drawable/volt_down_selector"
+                android:id="@+id/iv_volt_down"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="5dp"
+                android:src="@mipmap/ic_vote_down_normal"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/tv_specific_answer_disliked_num"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:id="@+id/iv_favorite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_favorite_white_36dp"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/tv_favorite"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收藏"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:id="@+id/iv_comment"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_comment_white_36dp"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/tv_comment"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评论"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

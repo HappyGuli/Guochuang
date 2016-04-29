@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -338,6 +339,7 @@ public class CourseMainActivity extends ActionBarActivity {
         initView();
         initDrawerLayout();
 
+
         //设置初始化移动的image的地址
         InitImageView();
         InitTextView();
@@ -398,6 +400,16 @@ public class CourseMainActivity extends ActionBarActivity {
         ll_my_questions.setOnClickListener(new MyOnDraweritemListener());
         ll_my_answers.setOnClickListener(new MyOnDraweritemListener());
         ll_setting.setOnClickListener(new MyOnDraweritemListener());
+
+
+        sharedPreferences = getSharedPreferences("info", MODE_WORLD_READABLE);
+        /*******从sharedPreferences中获得 用户的头像在手机中的位置信息********/
+        String tem_pic = sharedPreferences.getString("picpath","0000");
+        if(tem_pic!="0000"){
+            //设置用户头像
+            Bitmap bm = BitmapFactory.decodeFile(tem_pic);
+            ((ImageView)mDrawerLayout.findViewById(R.id.iv_user_img)).setImageBitmap(bm);
+        }
 
     }
 

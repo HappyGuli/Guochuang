@@ -10,16 +10,17 @@
         android:id="@+id/card_view_help"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp">
+            android:paddingBottom="5dp">
 
             <ImageView
                 android:id="@+id/iv_icon"
@@ -35,6 +36,7 @@
                 android:src="@mipmap/ic_launcher"/>
 
             <TextView
+                android:layout_marginLeft="8dp"
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
