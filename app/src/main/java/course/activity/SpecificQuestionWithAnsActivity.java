@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -21,8 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.lzp.floatingactionbuttonplus.FabTagLayout;
+import com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -83,7 +84,7 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
 
 
     //悬浮按钮
-    private FloatingActionsMenu menu;
+    private FloatingActionButtonPlus mActionButtonPlus;
 
     //handler 的使用
     public Handler mHandler = new Handler() {
@@ -190,47 +191,46 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
     //设置按钮的功能
     public void initButtonAndView(){
         //设置按钮监听事件
-        final FloatingActionButton actionA = (FloatingActionButton) findViewById(R.id.btn_answer_action_a);
-        final FloatingActionButton actionB = (FloatingActionButton) findViewById(R.id.btn_answer_action_b);
-        final FloatingActionButton actionC = (FloatingActionButton) findViewById(R.id.btn_answer_action_c);
 
-        menu = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
+        mActionButtonPlus = (FloatingActionButtonPlus) findViewById(R.id.FabPlus);
 
-        actionA.setOnClickListener(new View.OnClickListener() {
+
+        mActionButtonPlus.setOnItemClickListener(new FloatingActionButtonPlus.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                menu.collapse();
+            public void onItemClick(FabTagLayout tagView, int position) {
 
+                switch (tagView.getId()){
+                    case  R.id.btn_answer_action_a:
+                        Intent intent = new Intent();
+                        intent.setClass(SpecificQuestionWithAnsActivity.this, AddAnswerActivity.class);   //描述起点和目标
+                        Bundle bundle = new Bundle();                           //创建Bundle对象
+                        bundle.putInt("qid", qid);     //装入数据
+                        intent.putExtras(bundle);                                //把Bundle塞入Intent里面
+                        startActivity(intent);
 
-                Intent intent = new Intent();
-                intent.setClass(SpecificQuestionWithAnsActivity.this, AddAnswerActivity.class);   //描述起点和目标
-                Bundle bundle = new Bundle();                           //创建Bundle对象
-                bundle.putInt("qid", qid);     //装入数据
-                intent.putExtras(bundle);                                //把Bundle塞入Intent里面
-                startActivity(intent);
+                        break;
+
+                    case  R.id.btn_answer_action_b:
+
+                        Intent i = new Intent(SpecificQuestionWithAnsActivity.this, InviteOtherToAnswerActivity.class);
+                        SpecificQuestionWithAnsActivity.this.startActivity(i);
+
+                        break;
+
+                    case  R.id.btn_answer_action_c:
+
+                        Toast.makeText(SpecificQuestionWithAnsActivity.this,"关注成功",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    default:
+                        break;
+                }
+
 
 
             }
         });
 
-        actionB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menu.collapse();
-                Intent i = new Intent(SpecificQuestionWithAnsActivity.this, InviteOtherToAnswerActivity.class);
-                SpecificQuestionWithAnsActivity.this.startActivity(i);
-
-            }
-        });
-
-
-        actionC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menu.collapse();
-                Toast.makeText(SpecificQuestionWithAnsActivity.this,"关注成功",Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
         tv_questiondetail= (TextView) findViewById(R.id.tv_question_detail);
@@ -301,8 +301,16 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
             qid = bundle.getInt("questionid", 100);
             str_coursename = bundle.getString("course_name");
 
-            //展示到界面当中
-            tv_coursename.setText("来自"+str_coursename+"课程");
+            if(str_coursename==null||str_coursename.isEmpty()){
+
+                //展示到界面当中
+                tv_coursename.setText("来自"+"课程");
+            }else{
+
+                //展示到界面当中
+                tv_coursename.setText("来自课程"+str_coursename);
+            }
+
 
         }else{
             //给出提示
@@ -387,8 +395,6 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
 
-                    //将悬浮按钮 菜单给关掉
-                    menu.collapse();
 
                     Intent intent = new Intent();
                     intent.setClass(SpecificQuestionWithAnsActivity.this, SpecificAnswerActivity.class);   //描述起点和目标
@@ -416,7 +422,16 @@ public class SpecificQuestionWithAnsActivity extends ActionBarActivity {
 
             userName.setText(bean.getUserName());
             zanNumber.setText(String.valueOf(bean.getZanNum()));
-            ansContent.setText(bean.getAnswerContent());
+
+            //对这个进行处理
+            String str_tem = bean.getAnswerContent();
+            str_tem = str_tem.replaceAll("<br />", "");
+            str_tem = str_tem.replaceAll("&nbsp;","");
+            str_tem = str_tem.replaceAll("<img src=.*/>","［图片］");
+
+            Log.e("TTTT", "被替换之后的ans" + str_tem);
+
+            ansContent.setText(str_tem);
 
             //ansTag.setText(String.valueOf(position));
             ansTag.setVisibility(View.INVISIBLE);

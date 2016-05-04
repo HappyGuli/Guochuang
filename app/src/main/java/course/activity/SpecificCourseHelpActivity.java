@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,8 +26,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import com.lzp.floatingactionbuttonplus.FabTagLayout;
+import com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,15 +53,16 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
 
     private boolean isRefresh = false;
 
+    //悬浮按钮
+    private FloatingActionButtonPlus mActionButtonPlus;
+
+
     //数据
     private List<QuesitonInSpecificCourseBean> testDatas;
     private Toolbar mToolbar;
 
     private ProgressDialog selectorDialog;
     private AppContext appContext;// 全局Context
-
-    //悬浮按钮
-    private FloatingActionsMenu floatingActionsMenu;
 
 
     //测试sharedPreference 读取数据
@@ -203,39 +206,46 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
     ///////////////////////////////////////////////////////////////////////////////////////
 
     public void initButton(){
-        //
-        floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
 
-        //设置按钮监听事件
-        final FloatingActionButton actionA = (FloatingActionButton) findViewById(R.id.action_a);
-        final FloatingActionButton actionB = (FloatingActionButton) findViewById(R.id.action_b);
-        actionA.setOnClickListener(new View.OnClickListener() {
+        mActionButtonPlus = (FloatingActionButtonPlus) findViewById(R.id.FabPlus);
+
+        mActionButtonPlus.setOnItemClickListener(new FloatingActionButtonPlus.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                floatingActionsMenu.collapse();
-                //结束这个页面
-                finish();
+            public void onItemClick(FabTagLayout tagView, int position) {
 
-                Intent i = new Intent(SpecificCourseHelpActivity.this,AddQuestionActivity.class);
-                Bundle b = new Bundle();
-                b.putString("cid",str_cid);
-                b.putString("course_name",str_coursename);
-                i.putExtras(b);
-                SpecificCourseHelpActivity.this.startActivity(i);
+                switch (tagView.getId()) {
+                    case R.id.action_a:
+
+                        //添加问题
+                        Intent i = new Intent(SpecificCourseHelpActivity.this, AddQuestionActivity.class);
+                        Bundle b = new Bundle();
+                        b.putString("cid", str_cid);
+                        b.putString("course_name", str_coursename);
+                        i.putExtras(b);
+                        SpecificCourseHelpActivity.this.startActivity(i);
+
+                        break;
+
+                    case R.id.action_b:
+
+                        //搜索问题
+                        Intent i1 = new Intent(SpecificCourseHelpActivity.this, QuestionSearchActivity.class);
+                        Bundle b1 = new Bundle();
+                        b1.putString("cid", str_cid);
+                        i1.putExtras(b1);
+                        SpecificCourseHelpActivity.this.startActivity(i1);
+
+                        break;
+
+                    default:
+                        break;
+                }
+
 
             }
         });
-        actionB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                floatingActionsMenu.collapse();
-                Intent i = new Intent(SpecificCourseHelpActivity.this,QuestionSearchActivity.class);
-                Bundle b = new Bundle();
-                b.putString("cid",str_cid);
-                i.putExtras(b);
-                SpecificCourseHelpActivity.this.startActivity(i);
-            }
-        });
+
+
     }
 
 
@@ -299,7 +309,8 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
                 R.color.refresh_color2,
                 R.color.refresh_color3,
                 R.color.refresh_color4);
-        swipeRefreshLayout.setProgressBackgroundColor(R.color.refresh_bg);
+
+        swipeRefreshLayout.setProgressBackgroundColor(R.color.white);
 
         questions = (RecyclerView) this.findViewById(R.id.specific_question_recyclerview);
 
@@ -383,11 +394,10 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
             answerQuestion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //将打开的menu给关掉
-                    floatingActionsMenu.collapse();
+
                     //测试
-                    Toast.makeText(SpecificCourseHelpActivity.this,"你想回答question:"+
-                            testDatas.get(getPosition()).getQuestionId(),Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(SpecificCourseHelpActivity.this,"你想回答question:"+
+                           // testDatas.get(getPosition()).getQuestionId(),Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -395,11 +405,10 @@ public class SpecificCourseHelpActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
 
-                    //将打开的menu给关掉
-                    floatingActionsMenu.collapse();
 
-                    Toast.makeText(SpecificCourseHelpActivity.this,"你点击了item"
-                            +getPosition(),Toast.LENGTH_SHORT).show();
+
+                   // Toast.makeText(SpecificCourseHelpActivity.this,"你点击了item"
+                          //  +getPosition(),Toast.LENGTH_SHORT).show();
 
 
 

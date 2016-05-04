@@ -9,8 +9,8 @@ import main.reminder.ReminderId;
 
 public enum MainTab {
 
-    RECENT_CONTACTS(0, ReminderId.SESSION, SessionListFragment.class, R.string.main_tab_session, R.layout.session_list),
-    NORMAL_TEAM(1, ReminderId.INVALID, NormalTeamFragment.class,  R.string.normal_team_test, R.layout.group_list_activity),
+    NORMAL_TEAM(0, ReminderId.SESSION, NormalTeamFragment.class,  R.string.normal_team_test, R.layout.group_list_activity),
+    RECENT_CONTACTS(1, ReminderId.INVALID, SessionListFragment.class, R.string.main_tab_session, R.layout.session_list),
     CHAT_ROOM(2, ReminderId.INVALID, P2PFriendListFragment.class, R.string.p2p_friend, R.layout.p2p_friend_list);
 
     public final int tabIndex;

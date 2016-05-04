@@ -45,6 +45,7 @@ public class RelateToMeActivity extends ActionBarActivity {
     private int offset = 0;// 动画图片偏移量
     private int currIndex = 0;// 当前页卡编号
     private int bmpW;         // 动画图片宽度
+
     private View view1,view2,view3;  //各个页卡
     private List<ImageView> imageViews;// 保存代表每个view的textview
 
@@ -74,7 +75,7 @@ public class RelateToMeActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("与我相关");
+        getSupportActionBar().setTitle("通知");
 
 
 
@@ -420,14 +421,19 @@ public class RelateToMeActivity extends ActionBarActivity {
 
     private void InitImageView() {
         imageView= (ImageView) findViewById(R.id.cursor);
-        bmpW = BitmapFactory.decodeResource(getResources(), R.mipmap.cursor).getWidth();// 获取图片宽度
+        bmpW = BitmapFactory.decodeResource(getResources(), R.mipmap.add_answer_cursor).getWidth();// 获取图片宽度
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenW = dm.widthPixels;// 获取分辨率宽度
-        offset = 15;// 计算偏移量
+        offset = screenW/3;// 计算偏移量
+
+        //打印数据输出
+        Log.e("TTTT","screenW = "+String.valueOf(offset)+" screenW ="+String.valueOf(screenW));
+
         Matrix matrix = new Matrix();
-        matrix.postTranslate(offset, 0);
+        matrix.postTranslate(offset/2-bmpW/2, 0);
         imageView.setImageMatrix(matrix);// 设置动画初始位置
+
     }
 
 
@@ -482,7 +488,6 @@ public class RelateToMeActivity extends ActionBarActivity {
     //设计动画
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
-        int one = 2*(85+bmpW);// 页卡1 -> 页卡2 偏移量
         public void onPageScrollStateChanged(int arg0) {
 
 
@@ -494,8 +499,13 @@ public class RelateToMeActivity extends ActionBarActivity {
         }
 
         public void onPageSelected(int arg0) {
-            Toast.makeText(RelateToMeActivity.this,"page changed",Toast.LENGTH_SHORT).show();
-            Animation animation = new TranslateAnimation(one*currIndex, one*arg0, 0, 0);//显然这个比较简洁，只有一行代码。
+
+
+            //打印数据输出
+            Log.e("TTTT","one*currIndex = "+String.valueOf(bmpW*currIndex/3)+" one*arg0 ="+String.valueOf(bmpW*arg0/3));
+
+            //Toast.makeText(RelateToMeActivity.this,"page changed",Toast.LENGTH_SHORT).show();
+            Animation animation = new TranslateAnimation(360*currIndex, 360*arg0, 0, 0);//显然这个比较简洁，只有一行代码。
             currIndex = arg0;
             animation.setFillAfter(true);// True:图片停在动画结束位置
             animation.setDuration(300);
@@ -507,11 +517,5 @@ public class RelateToMeActivity extends ActionBarActivity {
     //ViewPager相关的东西  结束
     //////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////
-
-
-
-
-
-
 
 }

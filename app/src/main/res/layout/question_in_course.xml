@@ -36,37 +36,49 @@
 
     </LinearLayout>
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_actions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        fab:fab_addButtonColorNormal="@color/blue_semi_transparent"
-        fab:fab_addButtonColorPressed="@color/blue_semi_transparent_pressed"
-        fab:fab_addButtonPlusIconColor="@color/white"
-        fab:fab_labelStyle="@style/menu_labels_style"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp">
+        android:id="@+id/FabPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:switchFabColor="@color/primary"
+        app:switchFabIcon="@drawable/ic_add_white_48dp"
+        app:layout_behavior="com.lzp.floatingactionbuttonplus.FabBehavior">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
+
+        <com.lzp.floatingactionbuttonplus.FabTagLayout
             android:id="@+id/action_a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="@color/blue_semi_transparent"
-            fab:fab_title="提问"
-            fab:fab_colorPressed="@color/blue_semi_transparent_pressed"/>
+            app:tagText="提问">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_b"
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_send_white_48dp"
+                app:backgroundTint="#4BB7A7"
+                app:fabSize="mini" />
+        </com.lzp.floatingactionbuttonplus.FabTagLayout>
+
+
+
+        <com.lzp.floatingactionbuttonplus.FabTagLayout
             android:layout_width="wrap_content"
+            android:id="@+id/action_b"
             android:layout_height="wrap_content"
-            fab:fab_colorNormal="@color/blue_semi_transparent"
-            fab:fab_title="搜索"
-            fab:fab_colorPressed="@color/blue_semi_transparent_pressed"/>
+            app:tagText="搜索">
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search_white_48dp"
+                app:backgroundTint="#4284E4"
+                app:fabSize="mini" />
+        </com.lzp.floatingactionbuttonplus.FabTagLayout>
+
+    </com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus>
 
 </RelativeLayout>

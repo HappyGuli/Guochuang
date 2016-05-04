@@ -698,6 +698,14 @@ public class CourseSignStudentActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        this.unregisterReceiver(wifiReceiver);
+
+        //可能会出异常
+        try{
+            this.unregisterReceiver(wifiReceiver);
+
+        }catch (Exception e){
+            Log.e("TTTT",e.getMessage());
+        }
+
     }
 }

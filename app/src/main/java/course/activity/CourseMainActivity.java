@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -95,12 +94,12 @@ public class CourseMainActivity extends ActionBarActivity {
 
     //和获取课表相关的东西
     private int colors[] = {
-            Color.rgb(0x84, 0xD1, 0xCC),
-            Color.rgb(0xEE, 0x82, 0x62),
-            Color.rgb(0xEE, 0xC5, 0x91),
-            Color.rgb(0x2F, 0x4F, 0x4F),
-            Color.rgb(0x1E, 0x90, 0xFF),
-            Color.rgb(0x54, 0xFF, 0x9F),
+            Color.rgb(0x81, 0xC7, 0x84),
+            Color.rgb(0xE5, 0x73, 0x73),
+            Color.rgb(0x4F, 0xC3, 0xF7),
+            Color.rgb(0xFF, 0xCA, 0x28),
+            Color.rgb(0x00, 0xBC, 0xD4),
+            Color.rgb(0xFF, 0x8A, 0x65),
 
     };
 
@@ -221,7 +220,7 @@ public class CourseMainActivity extends ActionBarActivity {
                                 }
 
                                 //上传到服务器
-                                //ApiClient.saveUserCourseTable(appContext, json.toString());
+                                ApiClient.saveUserCourseTable(appContext, json.toString());
 
 
                             } catch (JSONException e) {
@@ -230,11 +229,11 @@ public class CourseMainActivity extends ActionBarActivity {
 
 
                             }
-//                            catch (AppException e){
-//                                e.printStackTrace();
-//                                Toast.makeText(CourseMainActivity.this, "服务器出错", Toast.LENGTH_SHORT).show();
-//
-//                            }
+                            catch (AppException e){
+                                e.printStackTrace();
+                                Toast.makeText(CourseMainActivity.this, "服务器出错", Toast.LENGTH_SHORT).show();
+
+                            }
                             catch (Exception e) {
                                 e.printStackTrace();
                                 Toast.makeText(CourseMainActivity.this, "服务器出错", Toast.LENGTH_SHORT).show();
@@ -254,7 +253,7 @@ public class CourseMainActivity extends ActionBarActivity {
 
     /*************************处理登录线程完成之后的事情***********************/
 
-    android.os.Handler loginHandler = new android.os.Handler() {
+    Handler loginHandler = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
 
@@ -339,7 +338,6 @@ public class CourseMainActivity extends ActionBarActivity {
         initView();
         initDrawerLayout();
 
-
         //设置初始化移动的image的地址
         InitImageView();
         InitTextView();
@@ -400,16 +398,6 @@ public class CourseMainActivity extends ActionBarActivity {
         ll_my_questions.setOnClickListener(new MyOnDraweritemListener());
         ll_my_answers.setOnClickListener(new MyOnDraweritemListener());
         ll_setting.setOnClickListener(new MyOnDraweritemListener());
-
-
-        sharedPreferences = getSharedPreferences("info", MODE_WORLD_READABLE);
-        /*******从sharedPreferences中获得 用户的头像在手机中的位置信息********/
-        String tem_pic = sharedPreferences.getString("picpath","0000");
-        if(tem_pic!="0000"){
-            //设置用户头像
-            Bitmap bm = BitmapFactory.decodeFile(tem_pic);
-            ((ImageView)mDrawerLayout.findViewById(R.id.iv_user_img)).setImageBitmap(bm);
-        }
 
     }
 
@@ -487,19 +475,19 @@ public class CourseMainActivity extends ActionBarActivity {
 
     /*************获取用户手机的mac地址***************************************/
     public String getPhoneMac(){
-//
-//        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-//        WifiInfo info = wifi.getConnectionInfo();
-//        String mac =  info.getMacAddress();
-//
-//        StringBuffer stringBuffer = new StringBuffer();
-//        String[] macs = mac.split(":");
-//        for(int i=0;i<macs.length;i++){
-//            stringBuffer.append(macs[i]);
-//        }
 
-        return "test";
-       // return stringBuffer.toString();
+        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = wifi.getConnectionInfo();
+        String mac =  info.getMacAddress();
+
+        StringBuffer stringBuffer = new StringBuffer();
+        String[] macs = mac.split(":");
+        for(int i=0;i<macs.length;i++){
+            stringBuffer.append(macs[i]);
+        }
+
+        //return "test";
+       return stringBuffer.toString();
     }
 
 
@@ -507,6 +495,9 @@ public class CourseMainActivity extends ActionBarActivity {
     //////////////////////////////////////////////////////////////////
     //和recyclerView相关的东西
     private void initListAdapterV() {
+        //// TODO: 16/5/2
+
+
         //设置layoutManager
         LinearLayoutManager layoutManger = new LinearLayoutManager(CourseMainActivity.this);
         recyclerView.setLayoutManager(layoutManger);
@@ -1090,67 +1081,52 @@ public class CourseMainActivity extends ActionBarActivity {
     public void setClassByWeek(int week) {
         TextView view1 = new TextView(this);
         view1.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view1.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view1.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view1.setTextSize(6);
         view1.setGravity(Gravity.CENTER);
         view1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view1.setText("MON");
+        view1.setTextSize(10);
+        view1.setText("周一");
 
         TextView view2 = new TextView(this);
         view2.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view2.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view2.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view2.setTextSize(6);
         view2.setGravity(Gravity.CENTER);
         view2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view2.setText("TUE");
+        view2.setTextSize(10);
+        view2.setText("周二");
 
         TextView view3 = new TextView(this);
         view3.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view3.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view3.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view3.setTextSize(6);
         view3.setGravity(Gravity.CENTER);
         view3.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view3.setText("WED");
+        view3.setTextSize(10);
+        view3.setText("周三");
 
         TextView view4 = new TextView(this);
         view4.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view4.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view4.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view4.setTextSize(6);
-//        view4.setGravity(Gravity.CENTER_VERTICAL);
         view4.setGravity(Gravity.CENTER);
         view4.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view4.setText("THU");
+        view4.setTextSize(10);
+        view4.setText("周四");
 
         TextView view5 = new TextView(this);
         view5.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view5.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view5.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view5.setTextSize(6);
         view5.setGravity(Gravity.CENTER);
         view5.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view5.setText("FRI");
+        view5.setTextSize(10);
+        view5.setText("周五");
 
         TextView view6 = new TextView(this);
         view6.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view6.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view6.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view6.setTextSize(6);
         view6.setGravity(Gravity.CENTER);
         view6.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view6.setText("SAT");
+        view6.setTextSize(10);
+        view6.setText("周六");
 
         TextView view7 = new TextView(this);
         view7.setHeight((int) this.getResources().getDimension(R.dimen.xinqi_height));
-        view7.setTextColor(this.getResources().getColor(R.color.xinqi_text_color));
-        view7.setBackgroundColor(this.getResources().getColor(R.color.xinqi_color));
-        view7.setTextSize(6);
         view7.setGravity(Gravity.CENTER);
         view7.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        view7.setText("SUN");
+        view7.setTextSize(10);
+        view7.setText("周日");
 
         ll1.removeAllViews();
         ll2.removeAllViews();

@@ -12,12 +12,12 @@
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/drawable-xhdpi/nim_team_member_delete_pressed.png"
     },
     {
-        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/nim_team_admin_icon.png",
-        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/drawable-xhdpi/nim_team_admin_icon.png"
-    },
-    {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_spinner_ab_default_holo_light.9.png",
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_spinner_ab_default_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/nim_team_admin_icon.png",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/drawable-xhdpi/nim_team_admin_icon.png"
     },
     {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/nim_contact_checkbox_checked_green.png",
@@ -112,12 +112,12 @@
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_ic_commit_search_api_holo_light.png"
     },
     {
-        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_menu_dropdown_panel_holo_dark.9.png",
-        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_menu_dropdown_panel_holo_dark.9.png"
-    },
-    {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/nim_message_input_emotion.png",
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/drawable-xhdpi/nim_message_input_emotion.png"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_menu_dropdown_panel_holo_dark.9.png",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_menu_dropdown_panel_holo_dark.9.png"
     },
     {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_ab_bottom_transparent_dark_holo.9.png",
@@ -148,12 +148,12 @@
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_textfield_search_selected_holo_light.9.png",
-        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_textfield_search_selected_holo_light.9.png"
-    },
-    {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/nim_picker_preview_unselected.png",
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/drawable-xhdpi/nim_picker_preview_unselected.png"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_textfield_search_selected_holo_light.9.png",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/drawable-xhdpi/abc_textfield_search_selected_holo_light.9.png"
     },
     {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/drawable-xhdpi-v4/nim_video_play_icon_pressed.png",

@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <include android:id="@+id/main_toolbar"
-        layout="@layout/include_add_answer_toolbar"></include>
+        layout="@layout/include_add_question_toolbar"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,11 +38,11 @@
 
     </LinearLayout>
     <ImageView
-        android:id="@+id/cursor"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:scaleType="matrix"
-        android:src="@mipmap/add_answer_cursor" />
+    android:id="@+id/cursor"
+    android:layout_width="fill_parent"
+    android:layout_height="3dp"
+    android:scaleType="matrix"
+    android:src="@mipmap/add_answer_cursor" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vPager"

@@ -51,8 +51,8 @@ public class AddQuestionActivity extends ActionBarActivity {
 
     //和toolbar相关的东西
     private Toolbar mToolbar;
-    private Button btn_add_picture;
-    private Button btn_add_question;
+    //private Button btn_add_picture;
+    private ImageView iv_add_question;
     private EditText et_question_title,et_question_detail;
     private String str_question_title,str_question_detail;
 
@@ -105,8 +105,8 @@ public class AddQuestionActivity extends ActionBarActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btn_add_question= (Button) mToolbar.findViewById(R.id.btn_add_answer);
-        btn_add_picture= (Button) mToolbar.findViewById(R.id.btn_add_picture);
+        iv_add_question= (ImageView) mToolbar.findViewById(R.id.btn_add_answer);
+        //btn_add_picture= (Button) mToolbar.findViewById(R.id.btn_add_picture);
 
         appContext = new AppContext(getApplication());
 
@@ -117,35 +117,41 @@ public class AddQuestionActivity extends ActionBarActivity {
 
 
         //设置提交问题按钮
-        btn_add_question.setOnClickListener(new View.OnClickListener() {
+        iv_add_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //获取提问题的内容
                 str_question_title = et_question_title.getText().toString();
                 str_question_detail = et_question_detail.getText().toString();
 
-                if(str_question_title==""||str_question_title==null){
+                if(str_question_title.equals("")||str_question_title==null){
                     Toast.makeText(AddQuestionActivity.this,"请填写question详细描述",Toast.LENGTH_SHORT).show();
-                }else if(str_question_detail==""||str_question_detail==null){
+                }else if(str_question_detail.equals("")||str_question_detail==null){
                     Toast.makeText(AddQuestionActivity.this,"请填写question描述",Toast.LENGTH_SHORT).show();
-                }
-                //按钮不可点
-                btn_add_question.setEnabled(false);
+                }else{
 
-                //selectorDialog.show();
-                new Thread() {
-                    public void run() {
-                        Message msg = new Message();
-                        try {
-                            ApiClient.saveUserQuestion(appContext,str_sid,str_cid,str_question_detail,str_question_title);
-                            msg.what=1;
+                    //问题title 和 问题 content都不为空的时候 才上传
 
-                        } catch (AppException e){
-                            msg.what=0;
+                    //按钮不可点
+                    iv_add_question.setEnabled(false);
+
+                    //selectorDialog.show();
+                    new Thread() {
+                        public void run() {
+                            Message msg = new Message();
+                            try {
+                                ApiClient.saveUserQuestion(appContext,str_sid,str_cid,str_question_detail,str_question_title);
+                                msg.what=1;
+
+                            } catch (AppException e){
+                                msg.what=0;
+                            }
+                            mHandler.sendMessage(msg);
                         }
-                        mHandler.sendMessage(msg);
-                    }
-                }.start();
+                    }.start();
+
+
+                }
 
 
             }
@@ -313,12 +319,7 @@ public class AddQuestionActivity extends ActionBarActivity {
 
         public void onPageSelected(int arg0) {
 
-            //设置添加图片按钮的可点击否
-            if(currIndex%2==0){
-                btn_add_picture.setEnabled(false);
-            }else{
-                btn_add_picture.setEnabled(true);
-            }
+
 
             //设置字体灰度值
             textviews.get(arg0).setAlpha(1);

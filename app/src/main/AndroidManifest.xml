@@ -106,10 +106,12 @@
 
 
 
+
+
         <!-- 主界面 -->
         <activity
             android:name="main.activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:configChanges="keyboardHidden|orientation"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"
@@ -143,6 +145,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/LightBaseActionBarTheme"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+
 
         <activity
             android:name="main.activity.NoDisturbActivity"
@@ -231,17 +234,39 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
 
 
+
+        <!-- 导航页 -->
+        <activity
+            android:name="course.activity.WelcomeActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:hardwareAccelerated="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/WelcomeEntranceActionBarTheme"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+
         <!-- 登录界面-->
         <activity
             android:name="course.activity.CourseLoginActivity"
             >
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
 
 
 

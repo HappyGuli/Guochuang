@@ -109,7 +109,16 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:text="100"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_go_to_next"
+                    android:layout_marginRight="10dp"
                     />
 
             </RelativeLayout>
@@ -141,7 +150,16 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:text="100"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_go_to_next"
+                    android:layout_marginRight="10dp"
                     />
 
             </RelativeLayout>
@@ -172,7 +190,16 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:text="100"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_go_to_next"
+                    android:layout_marginRight="10dp"
                     />
 
             </RelativeLayout>
@@ -206,7 +233,17 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:text="初级"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
+                    />
+
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_go_to_next"
+                    android:layout_marginRight="10dp"
                     />
 
             </RelativeLayout>
@@ -238,9 +275,17 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:text="31"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
                     />
 
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_go_to_next"
+                    android:layout_marginRight="10dp"
+                    />
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -270,7 +315,16 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:text="18"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="40dp"
+                    />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_go_to_next"
+                    android:layout_marginRight="10dp"
                     />
 
             </RelativeLayout>

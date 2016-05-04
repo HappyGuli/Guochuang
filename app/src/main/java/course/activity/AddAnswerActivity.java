@@ -26,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -59,8 +60,8 @@ public class AddAnswerActivity extends ActionBarActivity implements UploadUtil.O
 
 
     //button
-    private Button btn_add_image;
-    private Button btn_add_answer;
+    private ImageView iv_add_image;
+    private ImageView iv_add_answer;
     private PhotoEdittext et_add_answer;
 
 
@@ -164,8 +165,8 @@ public class AddAnswerActivity extends ActionBarActivity implements UploadUtil.O
 
         appContext = new AppContext(getApplication());
 
-        btn_add_image= (Button)mToolbar.findViewById(R.id.btn_add_picture);
-        btn_add_answer= (Button)mToolbar.findViewById(R.id.btn_add_answer);
+        iv_add_image= (ImageView)mToolbar.findViewById(R.id.btn_add_picture);
+        iv_add_answer= (ImageView)mToolbar.findViewById(R.id.btn_add_answer);
 
 
 
@@ -214,7 +215,7 @@ public class AddAnswerActivity extends ActionBarActivity implements UploadUtil.O
 
         et_add_answer = (PhotoEdittext)findViewById(R.id.et_answer_detail);
         //设置监听事件
-        btn_add_image.setOnClickListener(new View.OnClickListener() {
+        iv_add_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -246,7 +247,7 @@ public class AddAnswerActivity extends ActionBarActivity implements UploadUtil.O
 
 
         //设置回答按钮 点击事件
-        btn_add_answer.setOnClickListener(new View.OnClickListener() {
+        iv_add_answer.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -258,7 +259,7 @@ public class AddAnswerActivity extends ActionBarActivity implements UploadUtil.O
 
                 } else {
                     //先禁用按钮 防止重复条件申请
-                    btn_add_answer.setEnabled(false);
+                    iv_add_answer.setEnabled(false);
 
                     Log.e("TTTT", et_add_answer.getmContentList().toString());
 
@@ -266,7 +267,6 @@ public class AddAnswerActivity extends ActionBarActivity implements UploadUtil.O
 
                     //提示handler可以上传图片了
                     handler.sendEmptyMessage(TO_UPLOAD_FILE);
-
 
                 }
 

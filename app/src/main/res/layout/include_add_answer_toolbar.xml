@@ -3,43 +3,43 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/tool_bar_color"
-    android:elevation="5dp"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:navigationIcon="@drawable/ic_keyboard_backspace_white_24dp"
+    android:background="@color/primary">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <!--<TextView-->
-            <!--android:layout_alignParentLeft="true"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textSize="18sp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:textAlignment="center"-->
-            <!--android:text="添加回答"-->
-            <!--/>-->
+        <TextView
+            android:textColor="@color/white"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:text="添加回答"
+        />
 
-        <Button
+        <ImageView
             android:id="@+id/btn_add_picture"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/btn_add_answer"
-            android:layout_marginRight="20dp"
-            android:background="@mipmap/add_picture_icon"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/add_photo_selector"
             />
 
-        <Button
+        <ImageView
             android:id="@+id/btn_add_answer"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:text="发布"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/btn_add_answer_bg"
+            android:src="@drawable/done_selector"
             />
 
 

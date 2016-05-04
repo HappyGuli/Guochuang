@@ -16,17 +16,7 @@ import course.util.LinkMovementMethodExt;
 import course.util.LocalImageGetter;
 import course.util.UrlImageGetter;
 
-/**
- * 当前类注释: TextView 实现图文混排
- * 项目名：FastDevTest
- * 包名：com.jwenfeng.fastdev.view.htmltextview
- * 作者：jinwenfeng on 16/1/27 11:15
- * 邮箱：823546371@qq.com
- * QQ： 823546371
- * 公司：南京穆尊信息科技有限公司
- * © 2016 jinwenfeng
- * ©版权所有，未经允许不得传播
- */
+
 public class HtmlTextView extends TextView {
 
 
@@ -62,6 +52,7 @@ public class HtmlTextView extends TextView {
      * @param html String containing HTML, for example: "<b>Hello world!</b>"
      */
     public void setHtmlFromString(String html, boolean useLocalDrawables) {
+
         Html.ImageGetter imgGetter;
         if (useLocalDrawables) {
             imgGetter = new LocalImageGetter(getContext());
@@ -76,23 +67,23 @@ public class HtmlTextView extends TextView {
 
 
         // make links and image work
-        Handler handler = new Handler() {
-            public void handleMessage(Message msg) {
-                int what = msg.what;
-                if (what == 200) {
-                    LinkMovementMethodExt.MessageSpan ms = (LinkMovementMethodExt.MessageSpan) msg.obj;
-                    Object[] spans = (Object[]) ms.getObj();
-                    for (Object span : spans) {
-                        if (span instanceof ImageSpan) {
-                            Log.d("TTTT", "点击了图片" + ((ImageSpan) span).getSource());
-                            //处理自己的逻辑
-                        }
-                    }
-                }
-            }
-        };
+//        Handler handler = new Handler() {
+//            public void handleMessage(Message msg) {
+//                int what = msg.what;
+//                if (what == 200) {
+//                    LinkMovementMethodExt.MessageSpan ms = (LinkMovementMethodExt.MessageSpan) msg.obj;
+//                    Object[] spans = (Object[]) ms.getObj();
+//                    for (Object span : spans) {
+//                        if (span instanceof ImageSpan) {
+//                            Log.d("TTTT", "点击了图片" + ((ImageSpan) span).getSource());
+//                            //处理自己的逻辑
+//                        }
+//                    }
+//                }
+//            }
+//        };
 
-        setMovementMethod(LinkMovementMethodExt.getInstance(handler, ImageSpan.class));
+        //setMovementMethod(LinkMovementMethodExt.getInstance(handler, ImageSpan.class));
 
 
 

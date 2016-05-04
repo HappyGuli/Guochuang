@@ -8,12 +8,12 @@
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/nim_contacts_select.xml",
-        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/layout/nim_contacts_select.xml"
-    },
-    {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/nim_advanced_team_announce_list_item.xml",
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/layout/nim_advanced_team_announce_list_item.xml"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/nim_contacts_select.xml",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/layout/nim_contacts_select.xml"
     },
     {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/nim_easy_progress_dialog.xml",
@@ -44,12 +44,12 @@
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/layout/nim_emoji_item.xml"
     },
     {
-        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/nim_popup_menu_black_layout.xml",
-        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/layout/nim_popup_menu_black_layout.xml"
-    },
-    {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/abc_action_menu_layout.xml",
         "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/nim_popup_menu_black_layout.xml",
+        "source": "/Users/happypaul/Desktop/CHAT_NEW/uikit/res/layout/nim_popup_menu_black_layout.xml"
     },
     {
         "merged": "/Users/happypaul/Desktop/CHAT_NEW/uikit/build/intermediates/res/merged/release/layout/abc_simple_decor.xml",

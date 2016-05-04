@@ -172,6 +172,9 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
                     bitmapManager.loadBitmap(imgURL,iv_user_icon);
                 }
 
+                //将数据保存到 sharedPreference中
+                saveUserBeanToSharedPreference(bean);
+
                 // 将从服务器中获取的数据给展示出来
                 showDataFromServer();
 
@@ -275,7 +278,76 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
 
         //初始化 控件
         InitUI();
+
+
+        //将缓存在sharedPreference中的数据给展示出来
+        InitData();
+
     }
+
+
+    /**
+     * 将sharedPreFerence中的数据展示出来
+     */
+    private void InitData(){
+
+        //从sharedPreference中获取到 useinfoBean的数据
+        bean = getUserBeanToSharedPreference();
+
+        //将bean中的数据给展示出来
+        showDataFromServer();
+
+    }
+
+    /**
+     * 将用户信息 缓存在 sharedPreference
+     * @param bean
+     */
+    private void saveUserBeanToSharedPreference(UserInfoBean bean){
+
+
+        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("bean_sid",bean.getSid());
+        editor.putString("bean_user_level", bean.getUerLevel());
+        editor.putString("bean_user_name", bean.getUserName());
+
+        editor.putLong("btn_favorite_cnt", bean.getCollectCnt());
+        editor.putLong("btn_answered_cnt", bean.getAnswerCnt());
+        editor.putLong("btn_ability", bean.getAbilityVlu());
+        editor.putLong("btn_attention_cnt", bean.getAttentionCnt());
+        editor.putLong("btn_questioned_cnt", bean.getQuestionedCnt());
+        //提交数据
+        editor.commit();
+
+
+    }
+
+
+    /**
+     * 将 缓存在 sharedPreference的用户信息   取出来
+     *
+     * */
+    private UserInfoBean getUserBeanToSharedPreference(){
+
+        UserInfoBean inner_bean = new UserInfoBean();
+
+        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+
+        inner_bean.setSid(sharedPreferences.getString("bean_sid",""));
+        inner_bean.setUerLevel(sharedPreferences.getString("bean_user_level", ""));
+        inner_bean.setUserName(sharedPreferences.getString("bean_user_name", ""));
+
+        inner_bean.setCollectCnt(sharedPreferences.getLong("btn_favorite_cnt", 0));
+        inner_bean.setAnswerCnt(sharedPreferences.getLong("btn_answered_cnt",0));
+        inner_bean.setAbilityVlu(sharedPreferences.getLong("btn_ability",0));
+        inner_bean.setAttentionCnt(sharedPreferences.getLong("btn_attention_cnt", 0));
+        inner_bean.setQuestionedCnt(sharedPreferences.getLong("btn_questioned_cnt",0));
+
+        return inner_bean;
+    }
+
 
 
     /**
@@ -456,17 +528,23 @@ public class SettingActivity extends ActionBarActivity implements UploadUtil.OnU
      */
     private  void  showDataFromServer(){
 
-        //展示 一些数量
-        tv_attention_cnt.setText(String.valueOf(bean.getAttentionCnt()));
-        tv_collect_cnt.setText(String.valueOf(bean.getCollectCnt()));
-        tv_answer_cnt.setText(String.valueOf(bean.getAnswerCnt()));
-        tv_question_cnt.setText(String.valueOf(bean.getQuestionedCnt()));
+        //防止在sharedPreference中初次去除数据是的错误
+        if(bean!=null){
+            //展示 一些数量
+            tv_attention_cnt.setText(String.valueOf(bean.getAttentionCnt()));
+            tv_collect_cnt.setText(String.valueOf(bean.getCollectCnt()));
+            tv_answer_cnt.setText(String.valueOf(bean.getAnswerCnt()));
+            tv_question_cnt.setText(String.valueOf(bean.getQuestionedCnt()));
 
-        //展示用户一些基本信息
-        tv_user_name.setText(String.valueOf(bean.getUserName()));
-        tv_user_id.setText("学号：" + String.valueOf(bean.getSid()));
-        tv_user_level.setText(String.valueOf(bean.getUerLevel()));
-        tv_ability_vlu.setText(String.valueOf(bean.getAbilityVlu()));
+            //展示用户一些基本信息
+            tv_user_name.setText(String.valueOf(bean.getUserName()));
+            tv_user_id.setText("学号：" + String.valueOf(bean.getSid()));
+            tv_user_level.setText(String.valueOf(bean.getUerLevel()));
+            tv_ability_vlu.setText(String.valueOf(bean.getAbilityVlu()));
+
+        }
+
+
 
     }
 

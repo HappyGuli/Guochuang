@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +33,11 @@ import main.fragment.HomeFragment;
  * Created by huangjun on 2015/3/25.
  */
 public class MainActivity extends TActionBarActivity {
+
+
+    //add by GULI
+    private Toolbar mToolbar;
+    private ImageView iv_back;
 
     private static final String EXTRA_APP_QUIT = "APP_QUIT";
     private static final int REQUEST_CODE_NORMAL = 1;
@@ -72,10 +81,26 @@ public class MainActivity extends TActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
 
+        //自定义 actionBar
+        //setActionBar(mToolbar);
+        //设置toolbar
+        iv_back = (ImageView)this.findViewById(R.id.iv_back);
+
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 返回
+                onBackPressed();
+            }
+        });
+
         /**被谷力注释掉了 报错**/
-        setTitle("课堂交流");
-        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        setTitle("课堂交流");
+//        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
 
         onParseIntent();
 
@@ -144,7 +169,6 @@ public class MainActivity extends TActionBarActivity {
         super.onCreateOptionsMenu(menu);
         return true;
     }
-
 
 
     @Override

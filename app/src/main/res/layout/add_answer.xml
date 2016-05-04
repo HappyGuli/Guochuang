@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:lineSpacingExtra="6dp"
         android:layout_marginTop="10dp"
-        android:hint="请在这里编辑你的答案,你可通过右上角的图标是用来添加图片"
+        android:hint="请在这里编辑你的答案,你可通过右上角的图标来用来添加图片"
         />
 
 </LinearLayout>

@@ -35,6 +35,7 @@ public abstract class TActionBarActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         LogUtil.ui("activity: " + getClass().getSimpleName() + " onCreate()");
+
     }
 
     @Override

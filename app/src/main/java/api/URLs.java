@@ -14,12 +14,12 @@ public class URLs implements Serializable {
 
 	//public final static String HOST = "10.0.2.2:8080";
 
-	public final static String HOST = "172.24.3.42:8080";
-	//public final static String HOST = "123.57.146.81:8080";
+	//public final static String HOST = "172.24.3.42:8080";
+	public final static String HOST = "123.57.146.81:8080";
 	public final static String HTTP = "http://";
 	private final static String URL_SPLITTER = "/";
 
-	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
+	public final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
 
 
 	public final static String QUESTIONS_LIST = URL_API_HOST+"/Experiment/android/findqsbycid.jsp?cid=";

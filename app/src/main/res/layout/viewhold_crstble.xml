@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     >
 
 
@@ -19,7 +20,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scrollbars="none"
-        android:background="#ffffff"
+        android:background="@drawable/home_img"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,10 +47,7 @@
                     android:gravity="center"
                     android:text=""
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -59,10 +57,7 @@
                     android:text="1"
                     android:textColor="#666666"
                     android:textSize="12sp" />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -73,10 +68,7 @@
                     android:text="2"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -87,10 +79,7 @@
                     android:text="3"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -101,10 +90,7 @@
                     android:text="4"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -115,10 +101,7 @@
                     android:text="5"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -129,10 +112,7 @@
                     android:text="6"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -143,10 +123,7 @@
                     android:text="7"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -157,10 +134,7 @@
                     android:text="8"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -171,10 +145,7 @@
                     android:text="9"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -185,10 +156,7 @@
                     android:text="10"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -199,10 +167,7 @@
                     android:text="11"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
                 <TextView
                     android:layout_width="fill_parent"
@@ -213,10 +178,7 @@
                     android:text="12"
                     android:background="#0f000000"
                     />
-                <View
-                    android:layout_height="1dp"
-                    android:layout_width="fill_parent"
-                    android:background="#5f666666"
+
                     />
 
             </LinearLayout>
@@ -233,7 +195,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:textSize="5sp"
@@ -258,7 +220,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:textSize="5sp"
@@ -283,7 +245,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:textSize="5sp"
@@ -308,7 +270,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:textSize="5sp"
@@ -333,7 +295,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:textSize="5sp"
@@ -358,7 +320,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:padding="5dp"
                     android:textColor="#ffffff"
                     android:textSize="5sp"
@@ -384,7 +346,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/xinqi_height"
-                    android:background="@color/xinqi_color"
+                    android:background="@color/primary"
                     android:textColor="#ffffff"
                     android:padding="5dp"
                     android:textSize="5sp"

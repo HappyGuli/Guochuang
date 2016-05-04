@@ -1,168 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material_light">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    android:background="@drawable/login_bg">
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        >
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="50dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="学校"/>
-        <AutoCompleteTextView
-            android:id="@+id/et_school"
-            android:hint="请输入学校"
-            android:layout_marginLeft="30dp"
-            android:layout_width="match_parent"
-            android:textSize="14sp"
-            android:textColor="#88000000"
-            android:textCursorDrawable="@drawable/cousor_color"
-            android:layout_weight="1"
-            android:background="@null"
-            android:layout_height="30dp" />
-
-
-
+            android:text="课程+"
+            android:textColor="@color/white"
+            android:textSize="24sp">
+        </TextView>
     </LinearLayout>
-    <View
-        android:id="@+id/view_school"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#45000000"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        >
-        <TextView
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="110dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_gravity="center"
+            android:elevation="0dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学校"/>
+                <AutoCompleteTextView
+                    android:id="@+id/et_school"
+                    android:hint="请输入学校"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:textSize="14sp"
+                    android:textColor="#88000000"
+                    android:textCursorDrawable="@drawable/cousor_color"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:layout_height="30dp" />
+            </LinearLayout>
+            <View
+                android:id="@+id/view_school"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#45000000"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="角色"/>
+                <AutoCompleteTextView
+                    android:id="@+id/et_add_role"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:hint="教师 or 学生"
+                    android:textSize="14sp"
+                    android:textColor="#88000000"
+                    android:textCursorDrawable="@drawable/cousor_color"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:layout_height="30dp" />
+            </LinearLayout>
+        <View
+            android:id="@+id/view_role"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#45000000"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学号"/>
+            <EditText
+                android:id="@+id/et_student_num"
+                android:layout_marginLeft="30dp"
+                android:hint="请输入学号"
+                android:inputType="number"
+                android:textSize="14sp"
+                android:textColor="#88000000"
+                android:textCursorDrawable="@drawable/cousor_color"
+                android:layout_width="match_parent"
+                android:background="@null"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+        <View
+            android:id="@+id/view_student_number"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#45000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密码"/>
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_marginLeft="30dp"
+                android:hint="请输入密码"
+                android:password="true"
+                android:textSize="14sp"
+                android:textColor="#88000000"
+                android:textCursorDrawable="@drawable/cousor_color"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_height="30dp" />
+
+
+        </LinearLayout>
+            <View
+                android:id="@+id/view_password"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#45000000"/>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="登录"
+                android:textColor="#ffffff"
+                android:background="@drawable/btn_add_answer_bg"
+                android:textSize="16sp"
+                android:layout_marginBottom="30dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <ImageButton
+            android:src="@drawable/ic_account_circle_white_48dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="角色"/>
-        <AutoCompleteTextView
-            android:id="@+id/et_add_role"
-            android:layout_marginLeft="30dp"
-            android:layout_width="match_parent"
-            android:hint="教师 or 学生"
-            android:textSize="14sp"
-            android:textColor="#88000000"
-            android:textCursorDrawable="@drawable/cousor_color"
-            android:layout_weight="1"
-            android:background="@null"
-            android:layout_height="30dp" />
+            android:layout_centerHorizontal="true"
+            android:minWidth="80dp"
+            android:minHeight="80dp"
+            android:elevation="10dp"
+            android:background="@drawable/shape_login_icon"
+            android:layout_gravity="center" />
 
 
-
-    </LinearLayout>
-    <View
-        android:id="@+id/view_role"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#45000000"/>
+    </RelativeLayout>
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="学号"/>
-        <EditText
-            android:id="@+id/et_student_num"
-            android:layout_marginLeft="30dp"
-            android:hint="请输入学号"
-            android:inputType="number"
-            android:textSize="14sp"
-            android:textColor="#88000000"
-            android:textCursorDrawable="@drawable/cousor_color"
-            android:layout_width="match_parent"
-            android:background="@null"
-            android:layout_height="30dp" />
-
-    </LinearLayout>
-    <View
-        android:id="@+id/view_student_number"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#45000000"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="密码"/>
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_marginLeft="30dp"
-            android:hint="请输入密码"
-            android:password="true"
-            android:textSize="14sp"
-            android:textColor="#88000000"
-            android:textCursorDrawable="@drawable/cousor_color"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:layout_height="30dp" />
-
-
-    </LinearLayout>
-    <View
-        android:id="@+id/view_password"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#45000000"/>
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="登录"
-        android:textColor="#ffffff"
-        android:background="@drawable/btn_add_answer_bg"
-        android:textSize="16sp"
-        />
-
-
-
-</LinearLayout>
+</FrameLayout>

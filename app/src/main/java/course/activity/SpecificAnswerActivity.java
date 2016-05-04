@@ -42,6 +42,8 @@ public class SpecificAnswerActivity extends ActionBarActivity {
 
     private TextView tv_volt;
     private TextView tv_volt_down;
+    private ImageView iv_comment;
+    private ImageView iv_favorite;
 
     private int volt_count,vlot_down_count;
 
@@ -115,7 +117,7 @@ public class SpecificAnswerActivity extends ActionBarActivity {
 
                 //保存用户点赞信息成功
                 volt_ed = !volt_ed;
-                iv_volt.setImageResource(R.mipmap.ic_vote_checked);
+                iv_volt.setImageResource(R.drawable.ic_thumb_up_black_36dp);
                 volt_count = Integer.valueOf(tv_volt.getText().toString());
                 tv_volt.setText(String.valueOf(volt_count + 1));
 
@@ -127,7 +129,7 @@ public class SpecificAnswerActivity extends ActionBarActivity {
 
                 //取消点赞信息成功
                 volt_ed = !volt_ed;
-                iv_volt.setImageResource(R.mipmap.ic_vote_normal);
+                iv_volt.setImageResource(R.drawable.ic_thumb_up_white_36dp);
                 volt_count = Integer.valueOf(tv_volt.getText().toString());
                 tv_volt.setText(String.valueOf(volt_count - 1));
 
@@ -138,7 +140,7 @@ public class SpecificAnswerActivity extends ActionBarActivity {
 
                 //保存用户点踩信息成功
                 volt_down_ed = !volt_down_ed;
-                iv_volt_down.setImageResource(R.mipmap.ic_vote_down_checked);
+                iv_volt_down.setImageResource(R.drawable.ic_thumb_down_black_36dp);
                 vlot_down_count = Integer.valueOf(tv_volt_down.getText().toString());
                 tv_volt_down.setText(String.valueOf(vlot_down_count + 1));
 
@@ -149,7 +151,7 @@ public class SpecificAnswerActivity extends ActionBarActivity {
 
                 //保存取消点踩信息成功
                 volt_down_ed = !volt_down_ed;
-                iv_volt_down.setImageResource(R.mipmap.ic_vote_down_normal);
+                iv_volt_down.setImageResource(R.drawable.ic_thumb_down_white_36dp);
                 vlot_down_count = Integer.valueOf(tv_volt_down.getText().toString());
                 tv_volt_down.setText(String.valueOf(vlot_down_count - 1));
 
@@ -166,13 +168,13 @@ public class SpecificAnswerActivity extends ActionBarActivity {
                     //处理初始化的工作
                     volt_ed = true;
                     volt_down_ed = false;
-                    iv_volt.setImageResource(R.mipmap.ic_vote_checked);
+                    iv_volt.setImageResource(R.drawable.ic_thumb_up_black_36dp);
 
                 }else if(result == 2){
                     //处理初始化的工作
                     volt_ed = false;
                     volt_down_ed = true;
-                    iv_volt_down.setImageResource(R.mipmap.ic_vote_down_checked);
+                    iv_volt_down.setImageResource(R.drawable.ic_thumb_down_black_36dp);
 
                 }
 
@@ -256,7 +258,6 @@ public class SpecificAnswerActivity extends ActionBarActivity {
                 zanNum = bundle.getInt("zanNum");
                 caiNum = bundle.getInt("caiNum");
 
-
                 //根据上面获取的数据进行展示
                 //初始化界面
                 InitUI();
@@ -309,6 +310,11 @@ public class SpecificAnswerActivity extends ActionBarActivity {
         tv_user_name= (TextView)findViewById(R.id.tv_answer_author);
         tv_question_title = (TextView)findViewById(R.id.tv_question_title);
 
+        //添加评论 和 添加评论
+        iv_comment =(ImageView) this.findViewById(R.id.iv_comment);
+        iv_favorite =(ImageView) this.findViewById(R.id.iv_favorite);
+
+
         tv_user_name.setText(userName+" 的答案");
         tv_question_title.setText(questionTitle);
 
@@ -328,7 +334,6 @@ public class SpecificAnswerActivity extends ActionBarActivity {
         // 将从intent中获取的数据 暂时出来
         tv_volt.setText(String.valueOf(zanNum));
         tv_volt_down.setText(String.valueOf(caiNum));
-
 
 
 
@@ -374,14 +379,14 @@ public class SpecificAnswerActivity extends ActionBarActivity {
                         public void run() {
 
 
-                            Message msg  = new Message();
+                            Message msg = new Message();
 
-                            try{
+                            try {
                                 //3 代表 保存点踩 信息成功
                                 msg.what = 3;
-                                ApiClient.saveUserVoltOrVoltdown(appContext,self_sid,ansid,0);
+                                ApiClient.saveUserVoltOrVoltdown(appContext, self_sid, ansid, 0);
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                                 msg.what = -1;
                             }
@@ -403,14 +408,14 @@ public class SpecificAnswerActivity extends ActionBarActivity {
                         @Override
                         public void run() {
 
-                            Message msg  = new Message();
+                            Message msg = new Message();
 
-                            try{
+                            try {
                                 //4 代表 保存取消点踩 信息成功
                                 msg.what = 4;
                                 AppContext.SaveUserCancelVoltOrVoltdown(appContext, self_sid, ansid, 0);
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                                 msg.what = -1;
                             }
@@ -489,6 +494,50 @@ public class SpecificAnswerActivity extends ActionBarActivity {
             }
         });
 
+
+        // 进入评论
+        iv_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(SpecificAnswerActivity.this,AddAnswerCommentActivity.class);
+                i.putExtra("ansid",ansid);
+                SpecificAnswerActivity.this.startActivity(i);
+            }
+        });
+
+
+
+        iv_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                v.setEnabled(false);
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        Message msg = new Message();
+                        try{
+                            // 保存用户收藏问答的信息
+                            AppContext.saveUserCollect(appContext,self_sid,ansid);
+                            msg.what = 1;
+
+                        }catch (Exception e){
+                            //打印出错误
+                            e.printStackTrace();
+                            msg.what = -1;
+                        }
+                        //发送信息
+                        mHandler.sendMessage(msg);
+
+                    }
+                }).start();
+            }
+        });
+
     }
 
 
@@ -506,86 +555,7 @@ public class SpecificAnswerActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //////////////////////////////////////////////////////////////////
-    // ////////////////////////////////////////////////////////////////
-    /**
-     * 和menu相关的东西
-     * @param menu
-     * @return
-     */
 
-    @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        //先清空
-        menu.clear();
-
-        //初始化
-        menuTitles = this.getResources().getStringArray(R.array.answer_help);
-
-        for (String name : menuTitles){
-            MenuItem menuItem = menu.add(name);
-            menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-            menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-
-
-                    Log.e("menu", (String) item.getTitle());
-
-                    if(item.getTitle().equals("收藏")){
-
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                Message msg = new Message();
-                                try{
-                                    // 保存用户收藏问答的信息
-                                    AppContext.saveUserCollect(appContext,self_sid,ansid);
-                                    msg.what = 1;
-
-                                }catch (Exception e){
-                                    //打印出错误
-                                    e.printStackTrace();
-                                    msg.what = -1;
-                                }
-                                //发送信息
-                                mHandler.sendMessage(msg);
-
-                            }
-                        }).start();
-                        return true;
-                    }
-
-
-                    if(item.getTitle().equals("评论")){
-                        //Toast.makeText(SpecificAnswerActivity.this,"你点击的是评论",Toast.LENGTH_SHORT).show();
-
-                        Intent i = new Intent(SpecificAnswerActivity.this,AddAnswerCommentActivity.class);
-                        i.putExtra("ansid",ansid);
-                        SpecificAnswerActivity.this.startActivity(i);
-                        return true;
-                    }
-
-
-                    if(item.getTitle().equals("分享")){
-                        Toast.makeText(SpecificAnswerActivity.this,"你点击的是分享",Toast.LENGTH_SHORT).show();
-
-                        return true;
-                    }
-
-                    return false;
-                }
-            });
-        }
-
-        return true;
-    }
-
-    //和menu相关的东西结束
-    //////////////////////////////////////////////////////////////////
-    // ////////////////////////////////////////////////////////////////
 
 }
 

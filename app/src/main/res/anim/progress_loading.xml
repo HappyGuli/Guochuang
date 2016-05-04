@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+    >
+    <item android:drawable="@drawable/ic_done_black_36dp" android:duration="150"/>
+    <item android:drawable="@drawable/ic_done_white_36dp" android:duration="150"/>
+    <item android:drawable="@drawable/ic_favorite_black_36dp" android:duration="150"/>
+    <item android:drawable="@drawable/ic_favorite_white_36dp" android:duration="150"/>
+
+</animation-list>
